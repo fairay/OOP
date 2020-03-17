@@ -1,0 +1,17 @@
+release/main.o
+release/mainwindow.o
+release/model_interface.o
+release/action_interface.o
+release/point_arr.o
+release/proj_params.o
+release/edge_arr.o
+release/edge.o
+release/point.o
+release/transform.o
+release/pedge.o
+release/tranform_params.o
+release/model.o
+release/draw_module.o
+release/points_data.o
+release/edges_data.o
+release/moc_mainwindow.o
