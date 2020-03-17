@@ -98,10 +98,10 @@ err_t fscan_model(model_t &old_model, file_arg_t f_name)
     if (!f)         return UNREAD_FILE;
 
     model_t model = init_model();
-    err_t code = fscan_pdata(f, model.points);
+    err_t code = fscan_pdata(model.points, f);
     if (!code)
     {
-        code = fscan_edata(f, model.edges);
+        code = fscan_edata(model.edges, f);
         if (code)
             delete_pdata(model.points);
     }

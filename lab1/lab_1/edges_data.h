@@ -15,6 +15,6 @@ void delete_edata(edata_t &edata);
 unsigned int get_edges_n(const edata_t &edata);
 err_t get_edges_i(edge_t &p, const edata_t &edata, unsigned int i);
 
-err_t fscan_edata(FILE *f, edata_t &edata);
+err_t fscan_edata(edata_t &edata, FILE *f);
 
 #endif // EDGES_DATA_H

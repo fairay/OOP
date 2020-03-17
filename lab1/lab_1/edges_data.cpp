@@ -45,7 +45,7 @@ err_t get_edges_i(edge_t &e, const edata_t &edata, unsigned int i)
 }
 
 //
-err_t fscan_edge_n(FILE *f, unsigned int &n)
+err_t fscan_edge_n(unsigned int &n, FILE *f)
 {
     if (!f) return INCORRECT_FILE;
     int sc;
@@ -58,7 +58,7 @@ err_t fscan_edge_n(FILE *f, unsigned int &n)
     return CORRECT_WORK;
 }
 
-err_t fscan_edges(FILE *f, edata_t &edata)
+err_t fscan_edges(edata_t &edata, FILE *f)
 {
     if (!edata.n)       return WRONG_ARR_SIZE;
     err_t code = CORRECT_WORK;
@@ -66,26 +66,26 @@ err_t fscan_edges(FILE *f, edata_t &edata)
 
     for (unsigned int i = 0; (!code) && i < edata.n; i++)
     {
-        code = fscan_edge(f, e);
+        code = fscan_edge(e, f);
         if (!code)
             code = arr_set_edge(edata.arr, i, e);
     }
     return code;
 }
 
-err_t fscan_edata(FILE *f, edata_t &edata_old)
+err_t fscan_edata(edata_t &edata_old, FILE *f)
 {
     err_t code;
     edata_t edata = init_edata();
     unsigned int n;
 
-    code = fscan_edge_n(f, n);
+    code = fscan_edge_n(n, f);
     if (code)  return code;
 
     code = alloc_edata(edata, n);
     if (code)  return code;
 
-    code = fscan_edges(f, edata);
+    code = fscan_edges(edata, f);
 
     if (code)
     {

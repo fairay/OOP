@@ -118,7 +118,7 @@ err_t draw_points(draw_t &draw, const pdata_t &pdata, const proj_params_t &view_
 }
 
 //
-err_t fscan_point_n(FILE *f, unsigned int &n)
+err_t fscan_point_n(unsigned int &n, FILE *f)
 {
     if (!f) return INCORRECT_FILE;
     int sc;
@@ -131,7 +131,7 @@ err_t fscan_point_n(FILE *f, unsigned int &n)
     return CORRECT_WORK;
 }
 
-err_t fscan_points(FILE *f, pdata_t &pdata)
+err_t fscan_points(pdata_t &pdata, FILE *f)
 {
     if (!pdata.n)       return WRONG_ARR_SIZE;
     err_t code = CORRECT_WORK;
@@ -139,26 +139,26 @@ err_t fscan_points(FILE *f, pdata_t &pdata)
 
     for (unsigned int i = 0; (!code) && i < pdata.n; i++)
     {
-        code = fscan_point(f, p);
+        code = fscan_point(p, f);
         if (!code)
             code = arr_set_point(pdata.arr, i, p);
     }
     return code;
 }
 
-err_t fscan_pdata(FILE *f, pdata_t &pdata_old)
+err_t fscan_pdata(pdata_t &pdata_old, FILE *f)
 {
     err_t code;
     pdata_t pdata = init_pdata();
     unsigned int n;
 
-    code = fscan_point_n(f, n);
+    code = fscan_point_n(n, f);
     if (code)  return code;
 
     code = alloc_pdata(pdata, n);
     if (code)  return code;
 
-    code = fscan_points(f, pdata);
+    code = fscan_points(pdata, f);
 
     if (code)
     {

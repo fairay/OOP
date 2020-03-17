@@ -24,6 +24,6 @@ err_t rotate_points(pdata_t &pdata, const transform_t &trans);
 
 err_t draw_points(draw_t &draw, const pdata_t &pdata, const proj_params_t &view_par);
 
-err_t fscan_pdata(FILE *f, pdata_t &pdata);
+err_t fscan_pdata(pdata_t &pdata, FILE *f);
 
 #endif // POINTS_DATA_H

@@ -19,7 +19,7 @@ unsigned int eget_p2(const edge_t &edge)
     return edge.p2;
 }
 
-err_t fscan_edge(FILE *f, edge_t &e)
+err_t fscan_edge(edge_t &e, FILE *f)
 {
     int sc;
     unsigned int i1, i2;

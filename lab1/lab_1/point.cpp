@@ -132,7 +132,7 @@ err_t draw_line(draw_t &draw, const point_t &p1, const point_t &p2)
 }
 
 /// Point scan file
-err_t fscan_point(FILE *f, point_t &p)
+err_t fscan_point(point_t &p, FILE *f)
 {
     int sc;
     double x, y, z;
