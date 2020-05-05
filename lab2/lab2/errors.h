@@ -38,11 +38,20 @@ namespace err {
         virtual ~Index();
     };
 
-    class NoneExist: public List
+    class NullNode: public List
     {
     public:
-        NoneExist(const string file_, long line_n_);
-        virtual ~NoneExist();
+        NullNode(const string file_, long line_n_);
+        virtual ~NullNode();
     };
+
+    class WrongSize: public List
+    {
+    public:
+        WrongSize(const string file_, long line_n_,
+                int size);
+        virtual ~WrongSize();
+    };
+
 }
 #endif // ERRORS_H

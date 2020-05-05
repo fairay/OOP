@@ -64,10 +64,20 @@ Index::Index(const string file_, long line_n_,
 Index::~Index() = default;
 
 /// err::NoneExist
-NoneExist::NoneExist(const string file_, long line_n_): List(file_, line_n_)
+NullNode::NullNode(const string file_, long line_n_): List(file_, line_n_)
 {
     type = "NoneExistElement";
     add_info = "requied element allready deleted or null";
     fill_msg();
 }
-NoneExist::~NoneExist() = default;
+NullNode::~NullNode() = default;
+
+/// err::WrongSize
+WrongSize::WrongSize(const string file_, long line_n_,
+                     int size): List(file_, line_n_)
+{
+    type = "WrongSize";
+    add_info = "size of list changed to " + to_string(size) + " value";
+    fill_msg();
+}
+WrongSize::~WrongSize() = default;

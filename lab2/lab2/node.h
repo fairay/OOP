@@ -22,7 +22,7 @@ private:
     Node_sptr<Val_t> next = nullptr;
 public:
     Node(): next(nullptr) {}
-    Node(Val_t&);
+    Node(const Val_t&);
     ~Node() = default;
 
     void set_val(Val_t&);
@@ -35,7 +35,7 @@ public:
 };
 
 template <typename Val_t>
-Node<Val_t>::Node(Val_t& val)
+Node<Val_t>::Node(const Val_t& val)
 {
     value = val;
     next = nullptr;

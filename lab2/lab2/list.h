@@ -16,6 +16,7 @@ private:
 
     void _appfront(Node_sptr<Val_t>);
     void _append(Node_sptr<Val_t>);
+    Node_sptr<Val_t> _alloc_node(const Val_t& val);
 
 public:
     List() {}
@@ -23,28 +24,29 @@ public:
     explicit List(std::initializer_list<Val_t>);
     virtual ~List() = default;
 
-    ListIterator<Val_t> begin() {return ListIterator<Val_t>(head);}
-    ListIterator<Val_t> end() {return ListIterator<Val_t>(nullptr);}
     ListIterator<Val_t> begin() const {return ListIterator<Val_t>(head);}
     ListIterator<Val_t> end() const {return ListIterator<Val_t>(nullptr);}
 
     Val_t& operator[](size_t i);
+
     friend ostream& operator<<(ostream &os, const List<Val_t>& lst)
     {
         lst.print();
         return os;
     }
 
-    void appfront(Val_t);
-    void append(Val_t);
+    void appfront(const Val_t&);
+    void append(const Val_t&);
     void print() const;
+    void clear();
 };
 /// Constructors
-//template <typename Val_t>
-//List<Val_t>::List(const List<Val_t>& other)
-//{
-
-//}
+template <typename Val_t>
+List<Val_t>::List(const List<Val_t>& other)
+{
+    for (Val_t val : other)
+        append(val);
+}
 
 template <typename Val_t>
 List<Val_t>::List(std::initializer_list<Val_t> lst)
@@ -70,10 +72,34 @@ void List<Val_t>::_append(Node_sptr<Val_t> ptr)
     {
         tail->set_next(ptr);
         tail = ptr;
-        (*len)++;
+        inc_len();
     }
 }
 
+template <typename Val_t>
+void List<Val_t>::_appfront(Node_sptr<Val_t> ptr)
+{
+    if (!ptr)   return;
+    if (is_empty())
+    {
+        head = ptr;
+        tail = ptr;
+        *len = 1;
+    }
+    else
+    {
+        head->set_next(ptr);
+        head = ptr;
+        inc_len();
+    }
+}
+
+template <typename Val_t>
+Node_sptr<Val_t> List<Val_t>::_alloc_node(const Val_t& val)
+{
+    Node<Val_t> *new_node = new Node<Val_t>(val);
+    return Node_sptr<Val_t>(new_node);
+}
 
 ///
 /// public:
@@ -81,6 +107,12 @@ void List<Val_t>::_append(Node_sptr<Val_t> ptr)
 template <typename Val_t>
 void List<Val_t>::print() const
 {
+    if (is_empty())
+    {
+        cout << "Empty list";
+        return;
+    }
+
     ListIterator<Val_t> iter = this->begin();
     ListIterator<Val_t> end = this->end();
 
@@ -90,13 +122,21 @@ void List<Val_t>::print() const
 }
 
 template <typename Val_t>
-void List<Val_t>::append(Val_t val)
+void List<Val_t>::append(const Val_t& val)
 {
-    Node<Val_t> *new_node = new Node<Val_t>(val);
-    Node_sptr<Val_t> temp_ptr = Node_sptr<Val_t>(new_node);
+    Node_sptr<Val_t> temp_ptr = _alloc_node(val);
     _append(temp_ptr);
 }
 
+template <typename Val_t>
+void List<Val_t>::appfront(const Val_t& val)
+{
+    Node_sptr<Val_t> temp_ptr = _alloc_node(val);
+    _append(temp_ptr);
+}
+
+
+// Operators
 template <typename Val_t>
 Val_t& List<Val_t>::operator[](size_t i)
 {
