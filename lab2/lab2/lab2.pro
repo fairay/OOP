@@ -11,5 +11,5 @@ HEADERS += \
     errors.h \
     baselist.h \
     list.h \
-    iterator.h \
-    node.h
+    node.h \
+    iter.h

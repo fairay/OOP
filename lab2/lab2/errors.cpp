@@ -1,7 +1,14 @@
+#include <ctime>
 #include "errors.h"
 
 using namespace err;
-#pragma region Base Methods
+
+/// err::List
+List::List(const string file_, long line_n_): file(file_)
+{
+    line_n = to_string(line_n_);
+    err_time = cur_time();
+}
 List::~List()
 {
     delete []err_msg;
@@ -44,8 +51,23 @@ const char* List::what() const noexcept
 {
     return err_msg;
 }
-#pragma endregion
 
-#pragma region Index Methods
+
+/// err::Index
+Index::Index(const string file_, long line_n_,
+             size_t index): List(file_, line_n_)
+{
+    type = "WrongIndex";
+    add_info = "requesting index = " + to_string(index);
+    fill_msg();
+}
 Index::~Index() = default;
-#pragma endregion
+
+/// err::NoneExist
+NoneExist::NoneExist(const string file_, long line_n_): List(file_, line_n_)
+{
+    type = "NoneExistElement";
+    add_info = "requied element allready deleted or null";
+    fill_msg();
+}
+NoneExist::~NoneExist() = default;

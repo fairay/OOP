@@ -55,8 +55,8 @@ OBJECTS       = debug/main.o \
 DIST          =  errors.h \
 		baselist.h \
 		list.h \
-		iterator.h \
-		node.h ../lab2/main.cpp \
+		node.h \
+		iter.h ../lab2/main.cpp \
 		../lab2/errors.cpp
 QMAKE_TARGET  = lab2
 DESTDIR        = debug/ #avoid trailing-slash linebreak
@@ -108,10 +108,11 @@ compiler_clean:
 debug/main.o: ../lab2/main.cpp ../lab2/list.h \
 		../lab2/baselist.h \
 		../lab2/node.h \
-		../lab2/errors.h
+		../lab2/errors.h \
+		../lab2/iter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/main.o ../lab2/main.cpp
 
-debug/errors.o: ../lab2/errors.cpp 
+debug/errors.o: ../lab2/errors.cpp ../lab2/errors.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/errors.o ../lab2/errors.cpp
 
 ####### Install
