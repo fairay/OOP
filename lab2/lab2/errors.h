@@ -5,68 +5,46 @@
 #include <exception>
 #include <string>
 #include <iostream>
+#include <ctime>
 
 using namespace std;
-class ErrList: exception
+namespace err {
+
+class List: exception
 {
-protected:
-    char* err_msg;
-    void fill_msg()
-    {
-        string msg = base_msg() + "\n" + add_msg();
-        err_msg = new char[msg.length()];
-        strcpy(err_msg, msg.c_str());
-    }
-    string base_msg()
-    {
-        string msg = "List error! \n"
-                     "File " + file + ":" + line_n + "\t time " + time;
-        return msg;
-    }
-    string add_msg()
-    {
-        string msg = "";
-        if (type == "")     return msg;
-        msg += "Type: " + type;
-
-        if (add_info == "") return msg;
-        msg += " : " + add_info;
-        return msg;
-    }
-
+private:
     string file;
     string line_n;
-    string time;
+    string err_time;
 
+    string cur_time();
+    string base_msg();
+    string add_msg();
+protected:
+    char* err_msg;
+    void fill_msg();
     string type = "";
     string add_info = "";
 public:
-    ErrList(const string file_, long line_n_, const string time_):
-        file(file_), line_n(to_string(line_n_)), time(time_) {}
-    virtual ~ErrList() override;
+    List(const string file_, long line_n_):
+        file(file_), line_n(to_string(line_n_)) {err_time = cur_time();}
+    virtual ~List() override;
     virtual const char* what() const noexcept override;
 };
-ErrList::~ErrList()
-{
-    delete []err_msg;
-}
-const char* ErrList::what() const noexcept
-{
-    return err_msg;
-}
 
-class ErrIndex: public ErrList
+
+
+class Index: public List
 {
 public:
-    ErrIndex(const string file_, long line_n_, const string time_, size_t index):
-        ErrList(file_, line_n_, time_)
+    Index(const string file_, long line_n_, size_t index):
+        List(file_, line_n_)
     {
         type = "Wrong index";
         add_info = "index = " + to_string(index);
         fill_msg();
     }
-    virtual ~ErrIndex();
+    virtual ~Index();
 };
-ErrIndex::~ErrIndex() {};
-
+}
 #endif // ERRORS_H

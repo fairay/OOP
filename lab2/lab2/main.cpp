@@ -11,7 +11,7 @@ int main()
         for (size_t i=0; i < 4; i++)
             cout << a[i] << endl;
     }
-    catch (ErrList& err)
+    catch (err::List& err)
     {
         cout << err.what() << endl;
     }

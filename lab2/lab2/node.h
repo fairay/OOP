@@ -1,9 +1,9 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include <iostream>
 #include <stdlib.h>
 #include <memory>
+#include <iostream>
 
 template <typename Val_t>
 class Node;

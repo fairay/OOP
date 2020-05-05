@@ -64,14 +64,16 @@ void List<Val_t>::append(Val_t val)
 template <typename Val_t>
 Val_t& List<Val_t>::operator[](size_t i)
 {
+    if (*len <= i)
+        throw err::Index(__FILE__, __LINE__-1, i);
+
     Node_sptr<Val_t> temp_ptr = head;
     for (size_t j=0; j<i and temp_ptr; j++)
         temp_ptr = temp_ptr->get_next();
 
-    if (temp_ptr)
-        return temp_ptr->get_val();
-    else
-        throw ErrIndex(__FILE__, __LINE__-5, __TIME__, i);
+    if (!temp_ptr)
+        throw err::Index(__FILE__, __LINE__-5, i);
+    return temp_ptr->get_val();
 }
 
 
