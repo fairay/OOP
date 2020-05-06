@@ -55,7 +55,7 @@ const char* List::what() const noexcept
 
 /// err::Index
 Index::Index(const string file_, long line_n_,
-             size_t index): List(file_, line_n_)
+             int index): List(file_, line_n_)
 {
     type = "WrongIndex";
     add_info = "requesting index = " + to_string(index);
@@ -77,7 +77,25 @@ WrongSize::WrongSize(const string file_, long line_n_,
                      int size): List(file_, line_n_)
 {
     type = "WrongSize";
-    add_info = "size of list changed to " + to_string(size) + " value";
+    add_info = "size of list " + to_string(size) + " is invalid for this operation";
     fill_msg();
 }
 WrongSize::~WrongSize() = default;
+
+/// err::EmptyList
+EmptyList::EmptyList(const string file_, long line_n_): List(file_, line_n_)
+{
+    type = "EmptyList";
+    add_info = "empty list don't support such operation";
+    fill_msg();
+}
+EmptyList::~EmptyList() = default;
+
+/// err::AllocFailed
+AllocFailed::AllocFailed(const string file_, long line_n_): List(file_, line_n_)
+{
+    type = "AllocFailed";
+    add_info = "memory allocation of node was failed";
+    fill_msg();
+}
+AllocFailed::~AllocFailed() = default;

@@ -34,7 +34,7 @@ namespace err {
     {
     public:
         Index(const string file_, long line_n_,
-              size_t index);
+              int index);
         virtual ~Index();
     };
 
@@ -53,5 +53,18 @@ namespace err {
         virtual ~WrongSize();
     };
 
+    class EmptyList: public List
+    {
+    public:
+        EmptyList(const string file_, long line_n_);
+        virtual ~EmptyList();
+    };
+
+    class AllocFailed: public List
+    {
+    public:
+        AllocFailed(const string file_, long line_n_);
+        virtual ~AllocFailed();
+    };
 }
 #endif // ERRORS_H
