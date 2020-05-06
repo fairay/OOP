@@ -99,3 +99,13 @@ AllocFailed::AllocFailed(const string file_, long line_n_): List(file_, line_n_)
     fill_msg();
 }
 AllocFailed::~AllocFailed() = default;
+
+/// err::WrongSize
+ListCorrupted::ListCorrupted(const string file_, long line_n_,
+                             const string reason): List(file_, line_n_)
+{
+    type = "ListCorrupted";
+    add_info = "comment - " + reason;
+    fill_msg();
+}
+ListCorrupted::~ListCorrupted() = default;

@@ -16,7 +16,7 @@ public:
     BaseList();
     virtual ~BaseList();
 
-    size_t get_len();
+    size_t get_len() const;
     bool is_empty() const;
     operator bool() const;
 };
@@ -26,7 +26,7 @@ BaseList::BaseList(): len(0) {}
 BaseList::~BaseList() = default;
 
 
-size_t BaseList::get_len()
+size_t BaseList::get_len() const
 {
     return len;
 }

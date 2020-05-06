@@ -66,5 +66,13 @@ namespace err {
         AllocFailed(const string file_, long line_n_);
         virtual ~AllocFailed();
     };
+
+    class ListCorrupted: public List
+    {
+    public:
+        ListCorrupted(const string file_, long line_n_,
+                      const string reason);
+        virtual ~ListCorrupted();
+    };
 }
 #endif // ERRORS_H
