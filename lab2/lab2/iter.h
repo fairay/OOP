@@ -24,8 +24,9 @@ private:
     Node_sptr<Val_t> _get_ptr();
     const Node_sptr<Val_t> _get_ptr() const;
 
-public:
     ListIterator(const Node_sptr<Val_t>& node_): node(node_) {}
+
+public:
     ListIterator(const ListIterator<Val_t> &iter) = default;
 
     ListIterator<Val_t>& next();

@@ -3,6 +3,50 @@
 
 using namespace std;
 
+void test_attachment()
+{
+    cout<<endl<< "= and += tests" << endl;
+
+    int arr[3] = {1, 2, 3};
+    List<float> a{1, 2, 3, 9};
+    List<float> b{10, 23, 31};
+    List<double> c{};
+    List<int> d(arr, 3);
+
+    cout << "Previos d" << d << endl;
+    d = 3;
+    d += 10;
+    cout << d << endl;
+
+    a = b;
+    a += b;
+    cout << "b: "<< b << endl;
+    cout << "copy b: " << a << endl;
+
+    d = {2, 3, 10, 123};
+    d += {51, 12};
+    cout << "d: " << d << endl;
+}
+
+void test_get()
+{
+    cout<<endl<< "get, [] and get_arr tests" << endl;
+
+    List<int> a{1, 2, 3, 102, 9};
+    List<float> b{1.241f, 2.1f, 2};
+
+    cout << a.get_i(1) << endl;
+    cout << a.get_i(-1) << endl;
+    cout << a[2] << endl;
+    cout << a[-2] << endl;
+
+    float *b_arr = b.get_arr();
+    for (int i=0; i<3; i++)
+        cout << b_arr[i] << " ";
+    cout << endl;
+    delete []b_arr;
+}
+
 int main()
 {
     try
@@ -28,21 +72,9 @@ int main()
         cout << endl << b.pop_i(-1) << endl;
         cout << d << endl;
 
+        test_get();
+        test_attachment();
 
-        cout<<endl<< "= and += tests" << endl;
-        cout << "Previos d" << d << endl;
-        d = 3;
-        d += 10;
-        cout << d << endl;
-
-        a = b;
-        a += b;
-        cout << "b: "<< b << endl;
-        cout << "copy b: " << a << endl;
-
-        d = {2, 3, 10, 123};
-        d += {51, 12};
-        cout << "d: " << d << endl;
     }
     catch (err::List& err)
     {

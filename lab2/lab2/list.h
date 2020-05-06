@@ -20,8 +20,10 @@ private:
     void _append(Node_sptr<Val_t>);
     Node_sptr<Val_t> _alloc_node(const Val_t& val);
     Node_sptr<Val_t> _get_ptr(size_t i) const;
-    Val_t& _get_i(size_t i) const;
-    Val_t& _get_i(int i) const;
+    Val_t& _get_i(size_t i);
+    Val_t& _get_i(int i);
+    const Val_t& _get_i(size_t i) const;
+    const Val_t& _get_i(int i) const;
 
     void _append_list(const List<Val_t>& other);
     void _append_array(Val_t arr[], size_t _len);
@@ -43,8 +45,10 @@ public:
     ListIterator<Val_t> begin() const {return ListIterator<Val_t>(head);}
     ListIterator<Val_t> end() const {return ListIterator<Val_t>(nullptr);}
 
-    Val_t& operator[](size_t i) const;
-    Val_t& operator[](int i) const;
+    Val_t& operator[](size_t i);
+    Val_t& operator[](int i);
+    const Val_t& operator[](size_t i) const;
+    const Val_t& operator[](int i) const;
     //
     List<Val_t>& operator=(const Val_t& val);
     List<Val_t>& operator=(const List<Val_t>& other);
@@ -54,13 +58,13 @@ public:
     List<Val_t>& operator+=(const List<Val_t>& other);
     List<Val_t>& operator+=(std::initializer_list<Val_t> lst);
     //
-    List<Val_t>& operator==(const Val_t& val) const;
-    List<Val_t>& operator==(const List<Val_t>& other) const;
-    List<Val_t>& operator==(std::initializer_list<Val_t> lst) const;
+    bool operator==(const Val_t& val) const;
+    bool operator==(const List<Val_t>& other) const;
+    bool operator==(std::initializer_list<Val_t> lst) const;
     //
-    List<Val_t>& operator!=(const Val_t& val) const;
-    List<Val_t>& operator!=(const List<Val_t>& other) const;
-    List<Val_t>& operator!=(std::initializer_list<Val_t> lst) const;
+    bool operator!=(const Val_t& val) const;
+    bool operator!=(const List<Val_t>& other) const;
+    bool operator!=(std::initializer_list<Val_t> lst) const;
 
     template <typename _Val_t>
     friend List<_Val_t> operator+(const List<_Val_t>& lst1, const List<_Val_t>& lst2);
@@ -70,8 +74,8 @@ public:
         lst.print();
         return os;
     }
-    template <typename _Val_t>
-    friend ostream& operator>>(ostream &os, List<_Val_t>& lst);
+    // template <typename _Val_t>
+    // friend ostream& operator>>(ostream &os, List<_Val_t>& lst);
 
     void appfront(const Val_t&);
     void appfront(const List<Val_t>& lst);
@@ -105,9 +109,12 @@ public:
     bool isnt_equal(std::initializer_list<Val_t> lst) const;
     bool isnt_equal(Val_t arr[], int len_) const;
 
-    Val_t& get_i(size_t i) const;
-    Val_t& get_i(int i) const;
+    Val_t& get_i(size_t i);
+    Val_t& get_i(int i);
+    const Val_t& get_i(size_t i) const;
+    const Val_t& get_i(int i) const;
     Val_t* get_arr();
+
     void set_i(Val_t& val, size_t i);
     void set_i(Val_t& val, int i);
 
@@ -120,7 +127,6 @@ template <typename Val_t>
 List<Val_t>::List(const List<Val_t>& other)
 {
     _append_list(other);
-
 }
 
 template <typename Val_t>
@@ -219,14 +225,28 @@ Node_sptr<Val_t> List<Val_t>::_get_ptr(size_t i) const
     return temp_ptr;
 }
 
+
 template <typename Val_t>
-Val_t& List<Val_t>::_get_i(size_t i) const
+Val_t& List<Val_t>::_get_i(size_t i)
 {
     Node_sptr<Val_t> ptr = _get_ptr(i);
     return ptr->get_val();
 }
 template <typename Val_t>
-Val_t& List<Val_t>::_get_i(int i) const
+Val_t& List<Val_t>::_get_i(int i)
+{
+    size_t convert_i = _convert_index(i);
+    Node_sptr<Val_t> ptr = _get_ptr(convert_i);
+    return ptr->get_val();
+}
+template <typename Val_t>
+const Val_t& List<Val_t>::_get_i(size_t i) const
+{
+    Node_sptr<Val_t> ptr = _get_ptr(i);
+    return ptr->get_val();
+}
+template <typename Val_t>
+const Val_t& List<Val_t>::_get_i(int i) const
 {
     size_t convert_i = _convert_index(i);
     Node_sptr<Val_t> ptr = _get_ptr(convert_i);
@@ -461,18 +481,57 @@ bool List<Val_t>::isnt_equal(std::initializer_list<Val_t> lst) const
     return _is_equal(lst);
 }
 
+template <typename Val_t>
+Val_t& List<Val_t>::get_i(size_t i)
+{
+    return _get_i(i);
+}
+template <typename Val_t>
+Val_t& List<Val_t>::get_i(int i)
+{
+    return _get_i(i);
+}
+template <typename Val_t>
+const Val_t& List<Val_t>::get_i(size_t i) const
+{
+    return _get_i(i);
+}
+template <typename Val_t>
+const Val_t& List<Val_t>::get_i(int i) const
+{
+    return _get_i(i);
+}
 
+template <typename Val_t>
+Val_t* List<Val_t>::get_arr()
+{
+    if (!len)   return nullptr;
+    Val_t *arr = new Val_t[len];
+    for (size_t i=0; i<len; i++)
+        arr[i] = get_i(i);
+    return arr;
+}
 
 //
 // Operators
 //
 template <typename Val_t>
-Val_t& List<Val_t>::operator[](size_t i) const
+Val_t& List<Val_t>::operator[](size_t i)
 {
     return _get_i(i);
 }
 template <typename Val_t>
-Val_t& List<Val_t>::operator[](int i) const
+Val_t& List<Val_t>::operator[](int i)
+{
+    return _get_i(i);
+}
+template <typename Val_t>
+const Val_t& List<Val_t>::operator[](size_t i) const
+{
+    return _get_i(i);
+}
+template <typename Val_t>
+const Val_t& List<Val_t>::operator[](int i) const
 {
     return _get_i(i);
 }
@@ -518,5 +577,36 @@ List<Val_t>& List<Val_t>::operator+=(std::initializer_list<Val_t> lst)
     return (*this);
 }
 
+template <typename Val_t>
+bool List<Val_t>::operator==(const Val_t& val) const
+{
+    return _is_equal(val);
+}
+template <typename Val_t>
+bool List<Val_t>::operator==(const List<Val_t>& other) const
+{
+    return _is_equal(other);
+}
+template <typename Val_t>
+bool List<Val_t>::operator==(std::initializer_list<Val_t> lst) const
+{
+    return _is_equal(lst);
+}
+
+template <typename Val_t>
+bool List<Val_t>::operator!=(const Val_t& val) const
+{
+    return not _is_equal(val);
+}
+template <typename Val_t>
+bool List<Val_t>::operator!=(const List<Val_t>& other) const
+{
+    return not _is_equal(other);
+}
+template <typename Val_t>
+bool List<Val_t>::operator!=(std::initializer_list<Val_t> lst) const
+{
+    return not _is_equal(lst);
+}
 
 #endif // LIST_H
