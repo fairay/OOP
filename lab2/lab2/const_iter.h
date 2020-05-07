@@ -4,7 +4,7 @@
 #include "baseiter.h"
 
 template <typename Val_t>
-class ConstListIterator: BaseIterator<Val_t>
+class ConstListIterator: public BaseIterator<Val_t>
 {
     friend class List<Val_t>;
 private:
