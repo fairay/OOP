@@ -3,6 +3,11 @@
 
 using namespace std;
 
+bool cmp_test(const int &a1, const int &a2)
+{
+    return (a1 % 10) > (a2 % 10);
+}
+
 void test_attachment()
 {
     cout<<endl<< "= and += tests" << endl;
@@ -28,7 +33,6 @@ void test_attachment()
     d.append({-1, -10});
     cout << "d: " << d << endl;
 }
-
 void test_get()
 {
     cout<<endl<< "get, [] and get_arr tests" << endl;
@@ -47,7 +51,6 @@ void test_get()
     cout << endl;
     delete []b_arr;
 }
-
 void test_set()
 {
     cout<<endl<< "set, set_i tests" << endl;
@@ -61,7 +64,6 @@ void test_set()
 
 
 }
-
 void test_insert_pop()
 {
     cout<<endl<< "insert and pop tests" << endl;
@@ -88,11 +90,70 @@ void test_insert_pop()
     a.pop_i(static_cast<size_t>(2));
     cout << a << endl;
 }
-
 void test_cmp()
 {
     cout<<endl<< "== != tests" << endl;
 }
+void test_order()
+{
+    cout<<endl<< "swap, revese, shuffle sort tests" << endl;
+
+    List<int> a{1, 2, 3, 4, 5, 6, 7, 8};
+    cout << a << endl;
+
+    a.shuffle();
+    cout << a << endl;
+
+    a.swap(0, 4);
+    cout << a << endl;
+
+    a.reverse();
+    cout << a << endl;
+
+    a.shuffle();
+    a.sort();
+    cout << a << endl;
+
+    a.shuffle();
+    a.sort(true);
+    cout << a << endl;
+
+    a.shuffle();
+    a.sort_cmp(cmp_test);
+    cout << a << endl;
+}
+void test_find()
+{
+    cout<<endl<< "find and below tests" << endl;
+
+    List<int> a{1, 2, 3, 4, 5, 6, 7, 8};
+    cout << a << endl;
+
+    cout << "9 is on " << a.find(9)<< " position"<< endl;
+    cout << "9 is " << (a.is_belongs(9) ? "belongs" : "not belongs") << endl;
+
+    cout << "1 is on " << a.find(1)<< " position"<< endl;
+    cout << "1 is " << (a.is_belongs(1) ? "belongs" : "not belongs") << endl;
+}
+void test_addition()
+{
+    cout<<endl<< "addition tests" << endl;
+
+    const List<float> a{1, 2, 3, 9};
+    List<float> b{10, 23, 31};
+    List<float> c = List<float>();
+
+    cout << a + b << endl;
+    cout << b + a << endl;
+
+    c = b+b;
+    c += a;
+    c += {1, 1.2f};
+    c.append({10, 20});
+    c.append(1.2f);
+    cout << c << endl;
+}
+
 
 int main()
 {
@@ -101,7 +162,6 @@ int main()
         int arr[3] = {1, 2, 3};
         const List<float> a{1, 2, 3, 9};
         List<float> b{10, 23, 31};
-        // List<double> c{101, 22, 31, 41.1};
         List<double> c{};
         List<int> d(arr, 3);
 
@@ -122,8 +182,10 @@ int main()
         test_get();
         test_set();
         test_insert_pop();
-        test_cmp();
         test_attachment();
+        test_order();
+        test_find();
+        test_addition();
     }
     catch (err::List& err)
     {

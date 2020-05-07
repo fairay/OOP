@@ -42,7 +42,7 @@ private:
     bool _is_equal(std::initializer_list<Val_t> lst) const;
 
 public:
-    List() {}
+    List(): head(nullptr), tail(nullptr) {}
     List(const List<Val_t>&);
     List(Val_t arr[], size_t _len);
     explicit List(std::initializer_list<Val_t>);
@@ -80,6 +80,10 @@ public:
     void set_i(const Val_t& val, int i);
 
     /// Adders
+    List<Val_t> operator+(const Val_t& val) const;
+    List<Val_t> operator+(const List<Val_t>& other) const;
+    List<Val_t> operator+(std::initializer_list<Val_t> lst) const;
+    //
     List<Val_t>& operator+=(const Val_t& val);
     List<Val_t>& operator+=(const List<Val_t>& other);
     List<Val_t>& operator+=(std::initializer_list<Val_t> lst);
@@ -128,9 +132,15 @@ public:
     bool isnt_equal(std::initializer_list<Val_t> lst) const;
     bool isnt_equal(Val_t arr[], size_t len_) const;
 
+    void swap(size_t i1, size_t i2);
+    void reverse();
+    void shuffle();
+    void sort(bool is_rev=false);
+    void sort_cmp(bool (*cmp)(const Val_t&, const Val_t&));
 
-    template <typename _Val_t>
-    friend List<_Val_t> operator+(const List<_Val_t>& lst1, const List<_Val_t>& lst2);
+    void print() const;
+    int find(const Val_t& val);
+    bool is_belongs(const Val_t& val);
 
     friend ostream& operator<<(ostream &os, const List<Val_t>& lst)
     {
@@ -138,13 +148,6 @@ public:
         return os;
     }
 
-    void print() const;
-    void swap(size_t i1, size_t i2);
-    void reverse();
-    void sort(bool is_rev=false);
-    void sort(bool (*cmp)(const Val_t&, const Val_t&));
-    int find(const Val_t& val);
-    bool is_belongs(const Val_t& val);
 };
 ///
 /// private:
@@ -506,6 +509,28 @@ Val_t* List<Val_t>::get_arr()
 // Adders
 //
 template <typename Val_t>
+List<Val_t> List<Val_t>::operator+(const Val_t& val) const
+{
+    List<Val_t> new_lst(*this);
+    new_lst += val;
+    return new_lst;
+}
+template <typename Val_t>
+List<Val_t> List<Val_t>::operator+(const List<Val_t>& other) const
+{
+    List<Val_t> new_lst(*this);
+    new_lst += other;
+    return new_lst;
+}
+template <typename Val_t>
+List<Val_t> List<Val_t>::operator+(std::initializer_list<Val_t> lst) const
+{
+    List<Val_t> new_lst(*this);
+    new_lst += lst;
+    return new_lst;
+}
+
+template <typename Val_t>
 List<Val_t>& List<Val_t>::operator+=(const Val_t& val)
 {
     _append(val);
@@ -784,22 +809,48 @@ bool List<Val_t>::isnt_equal(std::initializer_list<Val_t> lst) const
 template <typename Val_t>
 void List<Val_t>::swap(size_t i1, size_t i2)
 {
+    if (i1 >= len)  throw err::Index(__FILE__, __LINE__-1, i1);
+    if (i2 >= len)  throw err::Index(__FILE__, __LINE__-1, i2);
 
+    if (i1 == i2)   return;
+
+    Val_t& ptr1 = get_i(i1);
+    Val_t& ptr2 = get_i(i2);
+
+    Val_t temp = ptr2;
+    ptr2 = ptr1;
+    ptr1 = temp;
 }
 template <typename Val_t>
 void List<Val_t>::reverse()
 {
-
+    for (size_t i=0; i*2 < (len-1); i++)
+        swap(i, len-i-1);
 }
+template <typename Val_t>
+void List<Val_t>::shuffle()
+{
+    for (size_t i=0; i < len; i++)
+        swap(i, (std::rand() % len));
+}
+//
 template <typename Val_t>
 void List<Val_t>::sort(bool is_rev)
 {
-
+    for (size_t i=0; i < len-1; i++)
+        for (size_t j=0; j < len-i-1; j++)
+            if (is_rev && (get_i(j) < get_i(j+1)))
+                swap(j, j+1);
+            else if (!is_rev && (get_i(j) > get_i(j+1)))
+                swap(j, j+1);
 }
 template <typename Val_t>
-void List<Val_t>::sort(bool (*cmp)(const Val_t&, const Val_t&))
+void List<Val_t>::sort_cmp(bool (*cmp)(const Val_t &, const Val_t &))
 {
-
+    for (size_t i=0; i < len-1; i++)
+        for (size_t j=0; j < len-i-1; j++)
+            if (cmp(get_i(j), get_i(j+1)))
+                swap(j, j+1);
 }
 
 
@@ -830,12 +881,15 @@ void List<Val_t>::print() const
 template <typename Val_t>
 int List<Val_t>::find(const Val_t& val)
 {
-
+    for (size_t i=0; i < len; i++)
+        if (get_i(i) == val)
+            return i;
+    return -1;
 }
 template <typename Val_t>
 bool List<Val_t>::is_belongs(const Val_t& val)
 {
-
+    return find(val) != -1;
 }
 
 
