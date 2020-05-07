@@ -33,8 +33,8 @@ namespace err {
     class Index: public List
     {
     public:
-        Index(const string file_, long line_n_,
-              int index);
+        Index(const string file_, long line_n_, int index);
+        Index(const string file_, long line_n_, size_t index);
         virtual ~Index();
     };
 

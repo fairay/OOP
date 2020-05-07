@@ -61,6 +61,13 @@ Index::Index(const string file_, long line_n_,
     add_info = "requesting index = " + to_string(index);
     fill_msg();
 }
+Index::Index(const string file_, long line_n_,
+             size_t index): List(file_, line_n_)
+{
+    type = "WrongIndex";
+    add_info = "requesting index = " + to_string(index);
+    fill_msg();
+}
 Index::~Index() = default;
 
 /// err::NoneExist
