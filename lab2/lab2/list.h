@@ -6,6 +6,7 @@
 #include "node.h"
 #include "errors.h"
 #include "iter.h"
+#include "const_iter.h"
 
 template <typename Val_t>
 class List: public BaseList
@@ -48,8 +49,10 @@ public:
 
     virtual ~List() = default;
 
-    ListIterator<Val_t> begin() const {return ListIterator<Val_t>(head);}
-    ListIterator<Val_t> end() const {return ListIterator<Val_t>(nullptr);}
+    ListIterator<Val_t> begin() {return ListIterator<Val_t>(head);}
+    ListIterator<Val_t> end() {return ListIterator<Val_t>(nullptr);}
+    ConstListIterator<Val_t> begin() const {return ConstListIterator<Val_t>(head);}
+    ConstListIterator<Val_t> end() const {return ConstListIterator<Val_t>(nullptr);}
 
     /// Getters
     Val_t& operator[](size_t i);
@@ -813,12 +816,16 @@ void List<Val_t>::print() const
         return;
     }
 
-    ListIterator<Val_t> iter = this->begin();
-    ListIterator<Val_t> end = this->end();
+    ConstListIterator<Val_t> iter = this->begin();
+    ConstListIterator<Val_t> end = this->end();
 
-    cout << "[" << (*iter++) << "]";
+    cout << "[" << (*iter) << "]";
+    iter++;
     while (iter != end)
-        cout << " -> [" << (*iter++) << "]";
+    {
+        cout << " -> [" << (*iter) << "]";
+        iter++;
+    }
 }
 template <typename Val_t>
 int List<Val_t>::find(const Val_t& val)

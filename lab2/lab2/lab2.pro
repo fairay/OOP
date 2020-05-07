@@ -12,4 +12,6 @@ HEADERS += \
     baselist.h \
     list.h \
     node.h \
-    iter.h
+    iter.h \
+    baseiter.h \
+    const_iter.h

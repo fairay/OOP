@@ -99,7 +99,7 @@ int main()
     try
     {
         int arr[3] = {1, 2, 3};
-        List<float> a{1, 2, 3, 9};
+        const List<float> a{1, 2, 3, 9};
         List<float> b{10, 23, 31};
         // List<double> c{101, 22, 31, 41.1};
         List<double> c{};

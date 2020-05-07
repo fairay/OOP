@@ -56,7 +56,9 @@ DIST          =  errors.h \
 		baselist.h \
 		list.h \
 		node.h \
-		iter.h ../lab2/main.cpp \
+		iter.h \
+		baseiter.h \
+		const_iter.h ../lab2/main.cpp \
 		../lab2/errors.cpp
 QMAKE_TARGET  = lab2
 DESTDIR        = debug/ #avoid trailing-slash linebreak
@@ -107,9 +109,11 @@ compiler_clean:
 
 debug/main.o: ../lab2/main.cpp ../lab2/list.h \
 		../lab2/baselist.h \
-		../lab2/node.h \
 		../lab2/errors.h \
-		../lab2/iter.h
+		../lab2/node.h \
+		../lab2/iter.h \
+		../lab2/const_iter.h \
+		../lab2/baseiter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/main.o ../lab2/main.cpp
 
 debug/errors.o: ../lab2/errors.cpp ../lab2/errors.h
