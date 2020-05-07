@@ -18,7 +18,8 @@ private:
         BaseIterator<Val_t>(node_) {}
 
     Val_t& _get_value() const;
-    Node_sptr<Val_t> _get_ptr() const;
+    Val_t* _get_ptr() const;
+    Node_sptr<Val_t> _get_node_ptr() const;
 
 public:
     ListIterator(const ListIterator<Val_t> &other):
@@ -27,8 +28,8 @@ public:
     Val_t& get_value() const;
     Val_t& operator*() const;
 
-    Node_sptr<Val_t> get_ptr() const;
-    Node_sptr<Val_t> operator->() const;
+    Val_t* get_ptr() const;
+    Val_t* operator->() const;
 };
 ///
 /// private:
@@ -40,9 +41,13 @@ Val_t& ListIterator<Val_t>::_get_value() const
         throw err::NullNode(__FILE__, __LINE__+1);
     return this->node.lock()->get_val();
 }
-
 template <typename Val_t>
-Node_sptr<Val_t> ListIterator<Val_t>::_get_ptr() const
+Val_t* ListIterator<Val_t>::_get_ptr() const
+{
+    return _get_node_ptr()->get_ptr();
+}
+template <typename Val_t>
+Node_sptr<Val_t> ListIterator<Val_t>::_get_node_ptr() const
 {
     if (this->node.expired())
         throw err::NullNode(__FILE__, __LINE__+1);
@@ -64,12 +69,12 @@ Val_t& ListIterator<Val_t>::operator*() const
 }
 
 template <typename Val_t>
-Node_sptr<Val_t> ListIterator<Val_t>::get_ptr() const
+Val_t* ListIterator<Val_t>::get_ptr() const
 {
     return _get_ptr();
 }
 template <typename Val_t>
-Node_sptr<Val_t> ListIterator<Val_t>::operator->() const
+Val_t* ListIterator<Val_t>::operator->() const
 {
     return _get_ptr();
 }

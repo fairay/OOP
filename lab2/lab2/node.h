@@ -10,9 +10,10 @@ class Node;
 
 template <typename Val_t>
 using Node_sptr = std::shared_ptr<Node<Val_t>>;
-
 template <typename Val_t>
 using Node_wptr = std::weak_ptr<Node<Val_t>>;
+
+
 
 template <typename Val_t>
 class Node
@@ -25,13 +26,16 @@ public:
     Node(const Val_t&);
     ~Node() = default;
 
-    void set_val(Val_t&);
-    Val_t& get_val();
-
+    void set_val(const Val_t&);
     void set_next(Node_sptr<Val_t>);
+
+    Val_t& get_val();
+    const Val_t& get_val() const;
+    Val_t* get_ptr();
+    const Val_t* get_ptr() const;
     Node_sptr<Val_t> get_next();
 
-    bool is_last();
+    bool is_last() const;
 };
 
 template <typename Val_t>
@@ -42,22 +46,16 @@ Node<Val_t>::Node(const Val_t& val)
 }
 
 template <typename Val_t>
-void Node<Val_t>::set_val(Val_t& new_val)
+void Node<Val_t>::set_val(const Val_t &new_val)
 {
     value = new_val;
 }
-
-template <typename Val_t>
-Val_t& Node<Val_t>::get_val()
-{
-    return value;
-}
-
 template <typename Val_t>
 void Node<Val_t>::set_next(Node_sptr<Val_t> ptr)
 {
     next = ptr;
 }
+
 
 template <typename Val_t>
 Node_sptr<Val_t> Node<Val_t>::get_next()
@@ -66,7 +64,30 @@ Node_sptr<Val_t> Node<Val_t>::get_next()
 }
 
 template <typename Val_t>
-bool Node<Val_t>::is_last()
+Val_t& Node<Val_t>::get_val()
+{
+    return value;
+}
+template <typename Val_t>
+const Val_t& Node<Val_t>::get_val() const
+{
+    return value;
+}
+
+template <typename Val_t>
+Val_t* Node<Val_t>::get_ptr()
+{
+    return &value;
+}
+template <typename Val_t>
+const Val_t* Node<Val_t>::get_ptr() const
+{
+    return &value;
+}
+
+
+template <typename Val_t>
+bool Node<Val_t>::is_last() const
 {
     return *next == nullptr;
 }
