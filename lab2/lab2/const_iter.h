@@ -7,14 +7,6 @@ template <typename Val_t>
 class ConstListIterator: public BaseIterator<Val_t>
 {
     friend class List<Val_t>;
-private:
-    ConstListIterator(const Node_sptr<Val_t>& node_):
-        BaseIterator<Val_t>(node_) {}
-
-    const Val_t& _get_value() const;
-    const Val_t* _get_ptr() const;
-    const Node_sptr<Val_t> _get_node_ptr() const;
-
 public:
     ConstListIterator(const ConstListIterator<Val_t> &other):
         BaseIterator<Val_t>(other) {}
@@ -24,6 +16,14 @@ public:
 
     const Val_t* get_ptr() const;
     const Val_t* operator->() const;
+
+private:
+    ConstListIterator(const Node_sptr<Val_t>& node_):
+        BaseIterator<Val_t>(node_) {}
+
+    const Val_t& _get_value() const;
+    const Val_t* _get_ptr() const;
+    const Node_sptr<Val_t> _get_node_ptr() const;
 };
 ///
 /// private:

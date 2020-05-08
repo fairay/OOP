@@ -4,30 +4,30 @@
 using namespace err;
 
 /// err::List
-List::List(const string file_, long line_n_): file(file_)
+ListError::ListError(const string file_, long line_n_): file(file_)
 {
     line_n = to_string(line_n_);
     err_time = cur_time();
 }
-List::~List()
+ListError::~ListError()
 {
     delete []err_msg;
 }
 
 // private
-string List::cur_time()
+string ListError::cur_time()
 {
     const time_t cur_t = time(nullptr);
     string str = asctime(localtime(&cur_t));
     return str;
 }
-string List::base_msg()
+string ListError::base_msg()
 {
     string msg = "List error! \n"
                  "File " + file + ":" + line_n + "\t" + err_time;
     return msg;
 }
-string List::add_msg()
+string ListError::add_msg()
 {
     string msg = "";
     if (type == "")     return msg;
@@ -39,15 +39,15 @@ string List::add_msg()
 }
 
 // protected
-void List::fill_msg()
+void ListError::fill_msg()
 {
     string msg = base_msg() + "\n" + add_msg();
-    err_msg = new char[msg.length()];
+    err_msg = new char[msg.length()+1];
     strcpy(err_msg, msg.c_str());
 }
 
 // public
-const char* List::what() const noexcept
+const char* ListError::what() const noexcept
 {
     return err_msg;
 }
@@ -55,14 +55,14 @@ const char* List::what() const noexcept
 
 /// err::Index
 Index::Index(const string file_, long line_n_,
-             int index): List(file_, line_n_)
+             int index): ListError(file_, line_n_)
 {
     type = "WrongIndex";
     add_info = "requesting index = " + to_string(index);
     fill_msg();
 }
 Index::Index(const string file_, long line_n_,
-             size_t index): List(file_, line_n_)
+             size_t index): ListError(file_, line_n_)
 {
     type = "WrongIndex";
     add_info = "requesting index = " + to_string(index);
@@ -71,7 +71,7 @@ Index::Index(const string file_, long line_n_,
 Index::~Index() = default;
 
 /// err::NoneExist
-NullNode::NullNode(const string file_, long line_n_): List(file_, line_n_)
+NullNode::NullNode(const string file_, long line_n_): ListError(file_, line_n_)
 {
     type = "NoneExistElement";
     add_info = "requied element allready deleted or null";
@@ -81,7 +81,7 @@ NullNode::~NullNode() = default;
 
 /// err::WrongSize
 WrongSize::WrongSize(const string file_, long line_n_,
-                     int size): List(file_, line_n_)
+                     int size): ListError(file_, line_n_)
 {
     type = "WrongSize";
     add_info = "size of list " + to_string(size) + " is invalid for this operation";
@@ -90,7 +90,7 @@ WrongSize::WrongSize(const string file_, long line_n_,
 WrongSize::~WrongSize() = default;
 
 /// err::EmptyList
-EmptyList::EmptyList(const string file_, long line_n_): List(file_, line_n_)
+EmptyList::EmptyList(const string file_, long line_n_): ListError(file_, line_n_)
 {
     type = "EmptyList";
     add_info = "empty list don't support such operation";
@@ -99,7 +99,7 @@ EmptyList::EmptyList(const string file_, long line_n_): List(file_, line_n_)
 EmptyList::~EmptyList() = default;
 
 /// err::AllocFailed
-AllocFailed::AllocFailed(const string file_, long line_n_): List(file_, line_n_)
+AllocFailed::AllocFailed(const string file_, long line_n_): ListError(file_, line_n_)
 {
     type = "AllocFailed";
     add_info = "memory allocation of node was failed";
@@ -109,7 +109,7 @@ AllocFailed::~AllocFailed() = default;
 
 /// err::WrongSize
 ListCorrupted::ListCorrupted(const string file_, long line_n_,
-                             const string reason): List(file_, line_n_)
+                             const string reason): ListError(file_, line_n_)
 {
     type = "ListCorrupted";
     add_info = "comment - " + reason;

@@ -5,7 +5,8 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
-    errors.cpp
+    errors.cpp \
+    baselist.cpp
 
 HEADERS += \
     errors.h \
@@ -14,4 +15,5 @@ HEADERS += \
     node.h \
     iter.h \
     baseiter.h \
-    const_iter.h
+    const_iter.h \
+    list.hpp

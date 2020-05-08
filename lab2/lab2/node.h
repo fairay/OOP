@@ -18,9 +18,6 @@ using Node_wptr = std::weak_ptr<Node<Val_t>>;
 template <typename Val_t>
 class Node
 {
-private:
-    Val_t value;
-    Node_sptr<Val_t> next = nullptr;
 public:
     Node(): next(nullptr) {}
     Node(const Val_t&);
@@ -30,12 +27,15 @@ public:
     void set_next(Node_sptr<Val_t>);
 
     Val_t& get_val();
-    const Val_t& get_val() const;
     Val_t* get_ptr();
+    const Val_t& get_val() const;
     const Val_t* get_ptr() const;
     Node_sptr<Val_t> get_next();
 
     bool is_last() const;
+private:
+    Val_t value;
+    Node_sptr<Val_t> next = nullptr;
 };
 
 template <typename Val_t>

@@ -71,6 +71,15 @@ void test_insert_pop()
     List<float> b{0, 0, 0};
     cout << a << endl;
 
+    ListIterator<float> iter = a.begin();
+    iter++;
+    a.insert(iter, -100);
+    cout << a << endl;
+
+    iter = a.end();
+    a.insert(iter, -200);
+    cout << a << endl;
+
     a.insert(3, 2);
     cout << a << endl;
 
@@ -86,13 +95,19 @@ void test_insert_pop()
 
     a.popfront();
     a.popend();
-    a.pop_i(-2);
-    a.pop_i(static_cast<size_t>(2));
     cout << a << endl;
 }
 void test_cmp()
 {
     cout<<endl<< "== != tests" << endl;
+    List<int> a{1, 2, 3, 4, 5, 6, 7, 8};
+    List<int> b{1, 2, 3, 4, 5, 6, 7, 8};
+
+    cout << "a: " << a << endl;
+    cout << "b: " << b << endl;
+    cout << (a==b ? "equal" : "not equal")<< endl;
+    cout << (a.is_equal({1,3,4}) ? "equal" : "not equal")<< endl;
+    cout << (a.is_equal(1) ? "equal" : "not equal")<< endl;
 }
 void test_order()
 {
@@ -100,27 +115,8 @@ void test_order()
 
     List<int> a{1, 2, 3, 4, 5, 6, 7, 8};
     cout << a << endl;
-
-    a.shuffle();
     cout << a << endl;
 
-    a.swap(0, 4);
-    cout << a << endl;
-
-    a.reverse();
-    cout << a << endl;
-
-    a.shuffle();
-    a.sort();
-    cout << a << endl;
-
-    a.shuffle();
-    a.sort(true);
-    cout << a << endl;
-
-    a.shuffle();
-    a.sort_cmp(cmp_test);
-    cout << a << endl;
 }
 void test_find()
 {
@@ -165,6 +161,9 @@ int main()
         List<double> c{};
         List<int> d(arr, 3);
 
+        List<float> iter_list(b.begin(), b.end());
+        cout << "ITERATOR: " << iter_list << endl;
+
         cout << a[0] << " = " << a[-4] << endl;
         for (size_t i=0; i < 4; i++)
             cout << a[i] << endl;
@@ -174,9 +173,7 @@ int main()
         cout << endl;
 
         cout << c << endl;
-        c.print();
 
-        cout << endl << b.pop_i(-1) << endl;
         cout << d << endl;
 
         test_get();
@@ -186,8 +183,9 @@ int main()
         test_order();
         test_find();
         test_addition();
+        test_cmp();
     }
-    catch (err::List& err)
+    catch (err::ListError& err)
     {
         cout << err.what() << endl;
     }

@@ -8,8 +8,17 @@
 using namespace std;
 namespace err {
 
-    class List: exception
+    class ListError: exception
     {
+    public:
+        ListError(const string file_, long line_n_);
+        virtual ~ListError() override;
+        virtual const char* what() const noexcept override;
+    protected:
+        char* err_msg;
+        void fill_msg();
+        string type = "";
+        string add_info = "";
     private:
         string file;
         string line_n;
@@ -18,19 +27,10 @@ namespace err {
         string cur_time();
         string base_msg();
         string add_msg();
-    protected:
-        char* err_msg;
-        void fill_msg();
-        string type = "";
-        string add_info = "";
-    public:
-        List(const string file_, long line_n_);
-        virtual ~List() override;
-        virtual const char* what() const noexcept override;
     };
 
 
-    class Index: public List
+    class Index: public ListError
     {
     public:
         Index(const string file_, long line_n_, int index);
@@ -38,14 +38,14 @@ namespace err {
         virtual ~Index();
     };
 
-    class NullNode: public List
+    class NullNode: public ListError
     {
     public:
         NullNode(const string file_, long line_n_);
         virtual ~NullNode();
     };
 
-    class WrongSize: public List
+    class WrongSize: public ListError
     {
     public:
         WrongSize(const string file_, long line_n_,
@@ -53,21 +53,21 @@ namespace err {
         virtual ~WrongSize();
     };
 
-    class EmptyList: public List
+    class EmptyList: public ListError
     {
     public:
         EmptyList(const string file_, long line_n_);
         virtual ~EmptyList();
     };
 
-    class AllocFailed: public List
+    class AllocFailed: public ListError
     {
     public:
         AllocFailed(const string file_, long line_n_);
         virtual ~AllocFailed();
     };
 
-    class ListCorrupted: public List
+    class ListCorrupted: public ListError
     {
     public:
         ListCorrupted(const string file_, long line_n_,
