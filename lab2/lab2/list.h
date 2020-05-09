@@ -39,15 +39,6 @@ public:
     ConstListIterator<Val_t> c_end() const {return ConstListIterator<Val_t>(nullptr);}
 
     /// Getters
-    Val_t& operator[](size_t i);
-    Val_t& operator[](int i);
-    const Val_t& operator[](size_t i) const;
-    const Val_t& operator[](int i) const;
-    //
-    Val_t& get_i(size_t i);
-    Val_t& get_i(int i);
-    const Val_t& get_i(size_t i) const;
-    const Val_t& get_i(int i) const;
     Val_t* get_arr();
 
     /// Setters
@@ -96,7 +87,6 @@ public:
     // Val_t pop_i(size_t i);
     // Val_t pop_i(int i);
 
-
     /// Comparators
     /// Equal
     bool operator==(const Val_t& val) const;
@@ -117,17 +107,21 @@ public:
     bool isnt_equal(Val_t arr[], size_t len_) const;
 
     void swap(ListIterator<Val_t>& iter1, ListIterator<Val_t>& iter2);
-    // void sort(bool is_rev=false);
-    // void sort_cmp(bool (*cmp)(const Val_t&, const Val_t&));
-
-    int find(const Val_t& val);
-    bool is_belongs(const Val_t& val);
+    ListIterator<Val_t> find(const Val_t& val);
+    ConstListIterator<Val_t> find(const Val_t& val) const;
+    bool is_belongs(const Val_t& val) const;
 
     friend ostream& operator<<(ostream &os, const List<Val_t>& lst)
     {
         lst._print();
         return os;
     }
+
+protected:
+    Val_t& operator[](size_t i);
+    Val_t& operator[](int i);
+    const Val_t& operator[](size_t i) const;
+    const Val_t& operator[](int i) const;
 
 private:
     Node_sptr<Val_t> head{nullptr};

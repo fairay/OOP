@@ -61,7 +61,11 @@ DIST          =  errors.h \
 		iter.h \
 		baseiter.h \
 		const_iter.h \
-		list.hpp ../lab2/main.cpp \
+		list.hpp \
+		iter.hpp \
+		const_iter.hpp \
+		node.hpp \
+		baseiter.hpp ../lab2/main.cpp \
 		../lab2/errors.cpp \
 		../lab2/baselist.cpp
 QMAKE_TARGET  = lab2
@@ -115,9 +119,13 @@ debug/main.o: ../lab2/main.cpp ../lab2/list.h \
 		../lab2/baselist.h \
 		../lab2/errors.h \
 		../lab2/node.h \
+		../lab2/node.hpp \
 		../lab2/iter.h \
 		../lab2/baseiter.h \
+		../lab2/baseiter.hpp \
+		../lab2/iter.hpp \
 		../lab2/const_iter.h \
+		../lab2/const_iter.hpp \
 		../lab2/list.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/main.o ../lab2/main.cpp
 

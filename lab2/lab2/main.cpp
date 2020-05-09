@@ -40,11 +40,6 @@ void test_get()
     List<int> a{1, 2, 3, 102, 9};
     List<float> b{1.241f, 2.1f, 2};
 
-    cout << a.get_i(1) << endl;
-    cout << a.get_i(-1) << endl;
-    cout << a[2] << endl;
-    cout << a[-2] << endl;
-
     float *b_arr = b.get_arr();
     for (int i=0; i<3; i++)
         cout << b_arr[i] << " ";
@@ -125,11 +120,10 @@ void test_find()
     List<int> a{1, 2, 3, 4, 5, 6, 7, 8};
     cout << a << endl;
 
-    cout << "9 is on " << a.find(9)<< " position"<< endl;
     cout << "9 is " << (a.is_belongs(9) ? "belongs" : "not belongs") << endl;
 
-    cout << "1 is on " << a.find(1)<< " position"<< endl;
-    cout << "1 is " << (a.is_belongs(1) ? "belongs" : "not belongs") << endl;
+    cout << "3 is on " << *a.find(3) << endl;
+    cout << "3 is " << (a.is_belongs(3) ? "belongs" : "not belongs") << endl;
 }
 void test_addition()
 {
@@ -164,16 +158,11 @@ int main()
         List<float> iter_list(b.begin(), b.end());
         cout << "ITERATOR: " << iter_list << endl;
 
-        cout << a[0] << " = " << a[-4] << endl;
-        for (size_t i=0; i < 4; i++)
-            cout << a[i] << endl;
-
         for (auto val:b)
             cout << val << " ";
         cout << endl;
 
         cout << c << endl;
-
         cout << d << endl;
 
         test_get();

@@ -16,4 +16,8 @@ HEADERS += \
     iter.h \
     baseiter.h \
     const_iter.h \
-    list.hpp
+    list.hpp \
+    iter.hpp \
+    const_iter.hpp \
+    node.hpp \
+    baseiter.hpp

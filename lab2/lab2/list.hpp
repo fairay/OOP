@@ -341,26 +341,6 @@ const Val_t& List<Val_t>::operator[](int i) const
     return _get_i(i);
 }
 
-template <typename Val_t>
-Val_t& List<Val_t>::get_i(size_t i)
-{
-    return _get_i(i);
-}
-template <typename Val_t>
-Val_t& List<Val_t>::get_i(int i)
-{
-    return _get_i(i);
-}
-template <typename Val_t>
-const Val_t& List<Val_t>::get_i(size_t i) const
-{
-    return _get_i(i);
-}
-template <typename Val_t>
-const Val_t& List<Val_t>::get_i(int i) const
-{
-    return _get_i(i);
-}
 
 template <typename Val_t>
 Val_t* List<Val_t>::get_arr()
@@ -719,7 +699,6 @@ void List<Val_t>::sort_cmp(bool (*cmp)(const Val_t &, const Val_t &))
 //
 // Other apply functions
 //
-
 template <typename Val_t>
 void List<Val_t>::_print() const
 {
@@ -742,17 +721,33 @@ void List<Val_t>::_print() const
 }
 
 template <typename Val_t>
-int List<Val_t>::find(const Val_t& val)
+ListIterator<Val_t> List<Val_t>::find(const Val_t& val)
 {
-    for (size_t i=0; i < len; i++)
-        if (_get_i(i) == val)
-            return i;
-    return -1;
+    ListIterator<Val_t> iter = begin();
+    while (iter)
+    {
+        if ((*iter) == val)
+            return iter;
+        iter++;
+    }
+    return end();
 }
 template <typename Val_t>
-bool List<Val_t>::is_belongs(const Val_t& val)
+ConstListIterator<Val_t> List<Val_t>::find(const Val_t& val) const
 {
-    return find(val) != -1;
+    ConstListIterator<Val_t> iter = begin();
+    while (iter)
+    {
+        if ((*iter) == val)
+            return iter;
+        iter++;
+    }
+    return end();
+}
+template <typename Val_t>
+bool List<Val_t>::is_belongs(const Val_t& val) const
+{
+    return find(val) != end();
 }
 
 
