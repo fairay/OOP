@@ -56,7 +56,7 @@ const Val_t* Node<Val_t>::get_ptr() const
 template <typename Val_t>
 bool Node<Val_t>::is_last() const
 {
-    return *next == nullptr;
+    return next == nullptr;
 }
 
 

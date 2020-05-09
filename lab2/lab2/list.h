@@ -16,16 +16,8 @@ public:
     explicit List(const List<Val_t>&);
     List(List<Val_t>&&);
     List(Val_t arr[], size_t _len);
-    template <typename Iter>
-    List(const Iter& begin_, const Iter& end_)
-    {
-        Iter temp_iter(begin_);
-        while (end_ != temp_iter)
-        {
-            _append(*temp_iter);
-            ++temp_iter;
-        }
-    }
+    List(const ListIterator<Val_t>& begin_, const ListIterator<Val_t>& end_);
+    List(const ConstListIterator<Val_t>& begin_, const ConstListIterator<Val_t>& end_);
     explicit List(std::initializer_list<Val_t>);
 
     virtual ~List() = default;
@@ -45,14 +37,6 @@ public:
     List<Val_t>& operator=(const Val_t& val);
     List<Val_t>& operator=(const List<Val_t>& other);
     List<Val_t>& operator=(std::initializer_list<Val_t> lst);
-    //
-    void set(const Val_t& other);
-    void set(const List<Val_t>& other);
-    void set(std::initializer_list<Val_t> lst);
-    void set(Val_t arr[], size_t len_);
-    //
-    void set_i(const Val_t& val, size_t i);
-    void set_i(const Val_t& val, int i);
 
     /// Adders
     List<Val_t> operator+(const Val_t& val) const;
@@ -74,18 +58,15 @@ public:
 
     /// Inserters
     void insert(ListIterator<Val_t>& iter, const Val_t& val);
-    void insert(size_t i, const Val_t& val);
-    void insert(size_t i, const List<Val_t>& other);
-    void insert(size_t i, std::initializer_list<Val_t> lst);
-    void insert(size_t i, Val_t arr[], size_t len_);
+    void insert(ListIterator<Val_t>& iter, const List<Val_t>& other);
+    void insert(ListIterator<Val_t>& iter, std::initializer_list<Val_t> lst);
+    void insert(ListIterator<Val_t>& iter, Val_t arr[], size_t len_);
 
     /// Deleters
     void clear();
     Val_t popfront();
     Val_t popend();
     Val_t remove(ListIterator<Val_t>& iter);
-    // Val_t pop_i(size_t i);
-    // Val_t pop_i(int i);
 
     /// Comparators
     /// Equal
@@ -146,7 +127,7 @@ private:
     void _append_init_list(std::initializer_list<Val_t> lst);
 
     void _insert_ptr(size_t i, Node_sptr<Val_t> ptr);
-    void _insert(size_t i, const Val_t& val);
+    void _insert(ListIterator<Val_t>& iter, const Val_t& val);
 
     bool _is_equal(const Val_t& val) const;
     bool _is_equal(const List<Val_t>& other) const;

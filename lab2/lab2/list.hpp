@@ -163,16 +163,27 @@ void List<Val_t>::_insert_ptr(size_t i, Node_sptr<Val_t> ptr)
     len++;
 }
 template <typename Val_t>
-void List<Val_t>::_insert(size_t i, const Val_t &val)
+void List<Val_t>::_insert(ListIterator<Val_t>& iter, const Val_t &val)
 {
-    if (i > len)
-        throw err::Index(__FILE__, __LINE__-1, i);
+    if (iter.is_end())
+    {
+        _append(val);
+        iter = ListIterator<Val_t>(tail);
+    }
+    else
+    {
+        Node_sptr<Val_t> ptr = iter._get_node_ptr();
+        Val_t old_val = *iter;
 
-    Node_sptr<Val_t> temp_ptr = _alloc_node(val);
+        Node_sptr<Val_t> new_ptr = _alloc_node(old_val);
+        if (ptr->is_last())
+            tail = new_ptr;
+        new_ptr->set_next(ptr->get_next());
+        ptr->set_next(new_ptr);
 
-    if (i == 0)             _appfront_ptr(temp_ptr);
-    else if (i == len)      _append_ptr(temp_ptr);
-    else                    _insert_ptr(i, temp_ptr);
+        (*iter) = val;
+        len++;
+    }
 }
 
 template <typename Val_t>
@@ -233,6 +244,12 @@ List<Val_t>::List(const List<Val_t>& other)
     _append_list(other);
 }
 template <typename Val_t>
+List<Val_t>::List(List<Val_t>&& other)
+{
+    _append_list(other);
+    other.clear();
+}
+template <typename Val_t>
 List<Val_t>::List(Val_t arr[], size_t _len)
 {
     _append_array(arr, _len);
@@ -242,18 +259,42 @@ List<Val_t>::List(std::initializer_list<Val_t> lst)
 {
     _append_init_list(lst);
 }
-//template <typename Val_t>
-//List<Val_t>::List(std::iterator<output_iterator_tag, Val_t> begin_,
-//                  std::iterator<output_iterator_tag, Val_t> end_)
-//{
-//    std::iterator<std::output_iterator_tag, Val_t> temp_iter(begin_);
-//    temp_iter = begin_;
-//    while (end_ != temp_iter)
-//    {
-//        _append(*temp_iter);
-//        ++temp_iter;
-//    }
-//}
+
+template <typename Val_t>
+List<Val_t>::List(const ListIterator<Val_t>& begin_, const ListIterator<Val_t>& end_)
+{
+    ListIterator<Val_t> temp_iter(begin_);
+    while (end_ != temp_iter)
+    {
+        _append(*temp_iter);
+        ++temp_iter;
+    }
+}
+template <typename Val_t>
+List<Val_t>::List(const ConstListIterator<Val_t>& begin_, const ConstListIterator<Val_t>& end_)
+{
+    ConstListIterator<Val_t> temp_iter(begin_);
+    while (end_ != temp_iter)
+    {
+        _append(*temp_iter);
+        ++temp_iter;
+    }
+}
+
+/*
+template <typename Val_t>
+List<Val_t>::List(iterator<input_iterator_tag, Val_t> begin_,
+                  iterator<input_iterator_tag, Val_t> end_)
+{
+    std::iterator<std::input_iterator_tag, Val_t> temp_iter(begin_);
+    temp_iter = begin_;
+    while (end_ != temp_iter)
+    {
+        _append(*temp_iter);
+        ++temp_iter;
+    }
+}
+*/
 
 
 
@@ -277,42 +318,6 @@ List<Val_t>& List<Val_t>::operator=(std::initializer_list<Val_t> lst)
     if (!is_empty()) clear();
     _append_init_list(lst);
     return (*this);
-}
-
-template <typename Val_t>
-void List<Val_t>::set(const Val_t& val)
-{
-    if (!is_empty()) clear();
-    _append(val);
-}
-template <typename Val_t>
-void List<Val_t>::set(const List<Val_t>& other)
-{
-    if (!is_empty()) clear();
-    _append_list(other);
-}
-template <typename Val_t>
-void List<Val_t>::set(std::initializer_list<Val_t> lst)
-{
-    if (!is_empty()) clear();
-    _append_init_list(lst);
-}
-template <typename Val_t>
-void List<Val_t>::set(Val_t arr[], size_t len_)
-{
-    if (!is_empty()) clear();
-    _append_array(arr, len_);
-}
-
-template <typename Val_t>
-void List<Val_t>::set_i(const Val_t& val, size_t i)
-{
-    _get_i(i) = val;
-}
-template <typename Val_t>
-void List<Val_t>::set_i(const Val_t& val, int i)
-{
-    _get_i(i) = val;
 }
 
 
@@ -448,23 +453,42 @@ void List<Val_t>::appfront(Val_t arr[], size_t len_)
 template <typename Val_t>
 void List<Val_t>::insert(ListIterator<Val_t>& iter, const Val_t& val)
 {
-    if (iter.is_end())
+    _insert(iter, val);
+}
+template <typename Val_t>
+void List<Val_t>::insert(ListIterator<Val_t>& iter, const List<Val_t>& other)
+{
+    ListIterator<Val_t> temp_iter(iter);
+    for (Val_t val : other)
     {
-        _append(val);
-        iter = ListIterator<Val_t>(tail);
-    }
-    else
-    {
-        Node_sptr<Val_t> ptr = iter._get_node_ptr();
-        Val_t old_val = *iter;
-
-        Node_sptr<Val_t> new_ptr = _alloc_node(old_val);
-        new_ptr->set_next(ptr->get_next());
-        ptr->set_next(new_ptr);
-
-        (*iter) = val;
+        _insert(temp_iter, val);
+        temp_iter++;
     }
 }
+template <typename Val_t>
+void List<Val_t>::insert(ListIterator<Val_t>& iter, std::initializer_list<Val_t> lst)
+{
+    ListIterator<Val_t> temp_iter(iter);
+    for (Val_t val : lst)
+    {
+        _insert(temp_iter, val);
+        temp_iter++;
+    }
+}
+template <typename Val_t>
+void List<Val_t>::insert(ListIterator<Val_t>& iter, Val_t arr[], size_t len_)
+{
+    ListIterator<Val_t> temp_iter(iter);
+    for (size_t j=0; j<len_; j++)
+    {
+        _insert(temp_iter, arr[j]);
+        temp_iter++;
+    }
+}
+
+
+
+/*
 template <typename Val_t>
 void List<Val_t>::insert(size_t i, const Val_t& val)
 {
@@ -492,18 +516,34 @@ void List<Val_t>::insert(size_t i, Val_t arr[], size_t len_)
     for (size_t j=0; j<len_; j++)
         _insert(i+j, arr[j]);
 }
-
-
-//
+*/
 // Deleters, popers
 //
 template <typename Val_t>
 Val_t List<Val_t>::remove(ListIterator<Val_t>& iter)
 {
-    Val_t val = *iter;
     Node_sptr<Val_t> ptr = iter._get_node_ptr();
-    return val;
+    if (ptr->is_last())
+    {
+        iter++;
+        return popend();
+    }
+    else if (iter == this->begin())
+    {
+        iter++;
+        return popfront();
+    }
+    else
+    {
+        Val_t val = *iter;
+        Node_sptr<Val_t> next_ptr = ptr->get_next();
+
+        ptr->set_val(next_ptr->get_val());
+        ptr->set_next(next_ptr->get_next());
+        return val;
+    }
 }
+
 template <typename Val_t>
 Val_t List<Val_t>::popfront()
 {
@@ -542,6 +582,22 @@ Val_t List<Val_t>::popend()
     len--;
     return val;
 }
+
+template <typename Val_t>
+void List<Val_t>::clear()
+{
+    if (is_empty()) return;
+    Node_sptr<Val_t> temp_ptr;
+    while (head)
+    {
+        temp_ptr = head->get_next();
+        head.reset();
+        head = temp_ptr;
+    }
+    tail.reset();
+    len = 0;
+}
+
 /*
 template <typename Val_t>
 Val_t List<Val_t>::pop_i(size_t i)
@@ -573,20 +629,6 @@ Val_t List<Val_t>::pop_i(int i)
     return pop_i(_convert_index(i));
 }
 */
-template <typename Val_t>
-void List<Val_t>::clear()
-{
-    if (is_empty()) return;
-    Node_sptr<Val_t> temp_ptr;
-    while (head)
-    {
-        temp_ptr = head->get_next();
-        head.reset();
-        head = temp_ptr;
-    }
-    tail.reset();
-    len = 0;
-}
 
 
 

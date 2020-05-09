@@ -48,20 +48,24 @@ void test_get()
 }
 void test_set()
 {
-    cout<<endl<< "set, set_i tests" << endl;
+    cout<<endl<< "set tests" << endl;
 
     List<int> a{0, 1, 2, 3, 4, 5};
+    List<int> b{1, 5, 1151};
     cout << a << endl;
 
-    a.set_i(10, 1);
-    a.set_i(-20, -2);
+    a = {1, 3};
     cout << a << endl;
 
+    a = 1;
+    cout << a << endl;
 
+    a = b;
+    cout << a << endl;
 }
-void test_insert_pop()
+void test_insert_remove()
 {
-    cout<<endl<< "insert and pop tests" << endl;
+    cout<<endl<< "insert and remove tests" << endl;
     List<float> a{1, 1.2f, 3};
     List<float> b{0, 0, 0};
     cout << a << endl;
@@ -71,25 +75,32 @@ void test_insert_pop()
     a.insert(iter, -100);
     cout << a << endl;
 
+    iter = a.begin();
+    a.insert(iter, b);
+    cout << a << endl;
+
     iter = a.end();
-    a.insert(iter, -200);
+    a.insert(iter, {3.14f, 1.2f});
     cout << a << endl;
 
-    a.insert(3, 2);
+    float arr[3] = {1.222f, 2, 3};
+    iter = a.begin();
+    iter++;
+    iter++;
+    a.insert(iter, arr, 3);
     cout << a << endl;
 
-    a.insert(0, b);
+    cout << "POPING" << endl;
+    cout << a.popfront() << endl;
+    cout << a.popend() << endl;
     cout << a << endl;
 
-    a.insert(2, {-1, -1});
-    cout << a << endl;
-
-    float arr[3] = {1, 2, 3};
-    a.insert(5, arr, 3);
-    cout << a << endl;
-
-    a.popfront();
-    a.popend();
+    cout << "REMOVING" << endl;
+    iter = a.begin();
+    iter++;
+    iter++;
+    iter++;
+    cout << a.remove(iter) << ":\t";
     cout << a << endl;
 }
 void test_cmp()
@@ -131,7 +142,7 @@ void test_addition()
 
     const List<float> a{1, 2, 3, 9};
     List<float> b{10, 23, 31};
-    List<float> c = List<float>();
+    List<float> c;
 
     cout << a + b << endl;
     cout << b + a << endl;
@@ -152,8 +163,12 @@ int main()
         int arr[3] = {1, 2, 3};
         const List<float> a{1, 2, 3, 9};
         List<float> b{10, 23, 31};
-        List<double> c{};
+
+        List<double> ra{1,3};
+        List<double> c(std::move(ra));  // Вызов List<>&& конструктора
+
         List<int> d(arr, 3);
+        List<int> e(d);
 
         List<float> iter_list(b.begin(), b.end());
         cout << "ITERATOR: " << iter_list << endl;
@@ -167,7 +182,7 @@ int main()
 
         test_get();
         test_set();
-        test_insert_pop();
+        test_insert_remove();
         test_attachment();
         test_order();
         test_find();
