@@ -259,17 +259,6 @@ List<Val_t>::List(std::initializer_list<Val_t> lst)
 {
     _append_init_list(lst);
 }
-
-template <typename Val_t>
-List<Val_t>::List(const ListIterator<Val_t>& begin_, const ListIterator<Val_t>& end_)
-{
-    ListIterator<Val_t> temp_iter(begin_);
-    while (end_ != temp_iter)
-    {
-        _append(*temp_iter);
-        ++temp_iter;
-    }
-}
 template <typename Val_t>
 List<Val_t>::List(const ConstListIterator<Val_t>& begin_, const ConstListIterator<Val_t>& end_)
 {
@@ -715,27 +704,25 @@ void List<Val_t>::swap(ListIterator<Val_t>& iter1, ListIterator<Val_t>& iter2)
     (*iter2) = (*iter1);
     (*iter1) = temp;
 }
-/*
 template <typename Val_t>
 void List<Val_t>::sort(bool is_rev)
 {
+    ListIterator<Val_t> iter1 = this->begin(), iter2 = this->begin();
+    ListIterator<Val_t> iter_end = this->end();
     for (size_t i=0; i < len-1; i++)
-        for (size_t j=0; j < len-i-1; j++)
-            if (is_rev && (get_i(j) < get_i(j+1)))
-                swap(j, j+1);
-            else if (!is_rev && (get_i(j) > get_i(j+1)))
-                swap(j, j+1);
+    {
+        iter1 = this->begin();
+        iter2 = this->begin();
+        iter2++;
+        for (;iter2 != iter_end; iter1++, iter2++)
+            if (is_rev && (*iter1 < *iter2))
+                swap(iter1, iter2);
+            else if (!is_rev && (*iter1 > *iter2))
+                swap(iter1, iter2);
+        iter_end = iter1;
+    }
 }
 
-template <typename Val_t>
-void List<Val_t>::sort_cmp(bool (*cmp)(const Val_t &, const Val_t &))
-{
-    for (size_t i=0; i < len-1; i++)
-        for (size_t j=0; j < len-i-1; j++)
-            if (cmp(get_i(j), get_i(j+1)))
-                swap(j, j+1);
-}
-*/
 
 
 //

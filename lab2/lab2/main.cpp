@@ -3,11 +3,6 @@
 
 using namespace std;
 
-bool cmp_test(const int &a1, const int &a2)
-{
-    return (a1 % 10) > (a2 % 10);
-}
-
 void test_attachment()
 {
     cout<<endl<< "= and += tests" << endl;
@@ -35,7 +30,7 @@ void test_attachment()
 }
 void test_get()
 {
-    cout<<endl<< "get, [] and get_arr tests" << endl;
+    cout<<endl<< "get_arr tests" << endl;
 
     List<int> a{1, 2, 3, 102, 9};
     List<float> b{1.241f, 2.1f, 2};
@@ -117,12 +112,16 @@ void test_cmp()
 }
 void test_order()
 {
-    cout<<endl<< "swap, revese, shuffle sort tests" << endl;
+    cout<<endl<< "swap and sort tests" << endl;
 
-    List<int> a{1, 2, 3, 4, 5, 6, 7, 8};
-    cout << a << endl;
+    List<int> a{4, 2, 3, 7, 5, 6, 9, 8};
     cout << a << endl;
 
+    a.sort();
+    cout << a << endl;
+
+    a.sort(true);
+    cout << a << endl;
 }
 void test_find()
 {
@@ -153,6 +152,11 @@ void test_addition()
     c.append({10, 20});
     c.append(1.2f);
     cout << c << endl;
+
+    List<float> q;
+    int j = 2;
+    q += j;
+    cout << q << endl;
 }
 
 
@@ -170,7 +174,7 @@ int main()
         List<int> d(arr, 3);
         List<int> e(d);
 
-        List<float> iter_list(b.begin(), b.end());
+        List<float> iter_list(b.c_begin(), b.c_end());
         cout << "ITERATOR: " << iter_list << endl;
 
         for (auto val:b)

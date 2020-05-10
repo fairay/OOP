@@ -16,7 +16,6 @@ public:
     explicit List(const List<Val_t>&);
     List(List<Val_t>&&);
     List(Val_t arr[], size_t _len);
-    List(const ListIterator<Val_t>& begin_, const ListIterator<Val_t>& end_);
     List(const ConstListIterator<Val_t>& begin_, const ConstListIterator<Val_t>& end_);
     explicit List(std::initializer_list<Val_t>);
 
@@ -88,6 +87,7 @@ public:
     bool isnt_equal(Val_t arr[], size_t len_) const;
 
     void swap(ListIterator<Val_t>& iter1, ListIterator<Val_t>& iter2);
+    void sort(bool is_rev=false);
     ListIterator<Val_t> find(const Val_t& val);
     ConstListIterator<Val_t> find(const Val_t& val) const;
     bool is_belongs(const Val_t& val) const;
