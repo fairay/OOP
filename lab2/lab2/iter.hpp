@@ -1,6 +1,5 @@
 #ifndef ITER_HPP
 #define ITER_HPP
-#define ITER_HPP_EXERNAL
 
 #include "iter.h"
 

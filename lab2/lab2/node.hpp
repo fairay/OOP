@@ -1,6 +1,5 @@
 #ifndef NODE_HPP
 #define NODE_HPP
-#define NODE_HPP_EXERNAL
 
 #include "node.h"
 

@@ -1,6 +1,5 @@
 #ifndef BASEITER_HPP
 #define BASEITER_HPP
-#define BASEITER_HPP_EXERNAL
 
 #include "baseiter.h"
 

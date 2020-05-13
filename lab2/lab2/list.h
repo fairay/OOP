@@ -16,8 +16,24 @@ public:
     explicit List(const List<Val_t>&);
     List(List<Val_t>&&);
     List(Val_t arr[], size_t _len);
-    List(const ConstListIterator<Val_t>& begin_, const ConstListIterator<Val_t>& end_);
+
+    template<class Iter>
+    List(const Iter& begin_, const Iter& end_)
+    {
+        Iter temp_iter(begin_);
+        while (end_ != temp_iter)
+        {
+            _append(*temp_iter);
+            ++temp_iter;
+        }
+    }
+
     explicit List(std::initializer_list<Val_t>);
+
+    /*
+    List(const ConstListIterator<Val_t>& begin_, const ConstListIterator<Val_t>& end_);
+    List(std::iterator<input_iterator_tag, Val_t> begin_, std::iterator<input_iterator_tag, Val_t> end_)
+    */
 
     virtual ~List() = default;
 
@@ -86,36 +102,18 @@ public:
     bool isnt_equal(std::initializer_list<Val_t> lst) const;
     bool isnt_equal(Val_t arr[], size_t len_) const;
 
+    // Order and belong functions
     void swap(ListIterator<Val_t>& iter1, ListIterator<Val_t>& iter2);
-    void sort(bool is_rev=false);
-    ListIterator<Val_t> find(const Val_t& val);
-    ConstListIterator<Val_t> find(const Val_t& val) const;
-    bool is_belongs(const Val_t& val) const;
-
-    friend ostream& operator<<(ostream &os, const List<Val_t>& lst)
-    {
-        lst._print();
-        return os;
-    }
-
-protected:
-    Val_t& operator[](size_t i);
-    Val_t& operator[](int i);
-    const Val_t& operator[](size_t i) const;
-    const Val_t& operator[](int i) const;
+    void print() const;
 
 private:
     Node_sptr<Val_t> head{nullptr};
     Node_sptr<Val_t> tail{nullptr};
 
-    size_t _convert_index(int i) const;
-
     Node_sptr<Val_t> _alloc_node(const Val_t& val);
     Node_sptr<Val_t> _get_ptr(size_t i) const;
     Val_t& _get_i(size_t i);
-    Val_t& _get_i(int i);
     const Val_t& _get_i(size_t i) const;
-    const Val_t& _get_i(int i) const;
 
     void _appfront_ptr(Node_sptr<Val_t>);
     void _append_ptr(Node_sptr<Val_t>);
@@ -133,12 +131,11 @@ private:
     bool _is_equal(const List<Val_t>& other) const;
     bool _is_equal(Val_t arr[], size_t len_) const;
     bool _is_equal(std::initializer_list<Val_t> lst) const;
-
-    void _print() const;
 };
 
-#ifndef LIST_HPP_EXERNAL
+
+#ifndef LIST_HPP
 #include "list.hpp"
-#endif // LIST_HPP_EXERNAL
+#endif // LIST_HPP
 
 #endif // LIST_H

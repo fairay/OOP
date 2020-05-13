@@ -38,8 +38,8 @@ private:
     Node_sptr<Val_t> next = nullptr;
 };
 
-#ifndef NODE_HPP_EXERNAL
+#ifndef NODE_HPP
 #include "node.hpp"
-#endif // NODE_HPP_EXERNAL
+#endif // NODE_HPP
 
 #endif // NODE_H

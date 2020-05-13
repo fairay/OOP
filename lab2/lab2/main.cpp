@@ -117,23 +117,6 @@ void test_order()
     List<int> a{4, 2, 3, 7, 5, 6, 9, 8};
     cout << a << endl;
 
-    a.sort();
-    cout << a << endl;
-
-    a.sort(true);
-    cout << a << endl;
-}
-void test_find()
-{
-    cout<<endl<< "find and below tests" << endl;
-
-    List<int> a{1, 2, 3, 4, 5, 6, 7, 8};
-    cout << a << endl;
-
-    cout << "9 is " << (a.is_belongs(9) ? "belongs" : "not belongs") << endl;
-
-    cout << "3 is on " << *a.find(3) << endl;
-    cout << "3 is " << (a.is_belongs(3) ? "belongs" : "not belongs") << endl;
 }
 void test_addition()
 {
@@ -163,7 +146,7 @@ void test_addition()
 int main()
 {
     try
-    {
+    {   
         int arr[3] = {1, 2, 3};
         const List<float> a{1, 2, 3, 9};
         List<float> b{10, 23, 31};
@@ -177,6 +160,14 @@ int main()
         List<float> iter_list(b.c_begin(), b.c_end());
         cout << "ITERATOR: " << iter_list << endl;
 
+        std::array<int, 5> iter_arr{1, 2, 3, 6, 100};
+        auto iter_border = iter_arr.begin();
+        iter_border++;
+        List<float> iter_list2(iter_border++, iter_arr.end());
+        cout << "ITERATOR2: " << iter_list2 << endl;
+
+        // std::copy(a.begin(), a.end(), ostream_iterator<int>(cout, " "));
+
         for (auto val:b)
             cout << val << " ";
         cout << endl;
@@ -189,7 +180,6 @@ int main()
         test_insert_remove();
         test_attachment();
         test_order();
-        test_find();
         test_addition();
         test_cmp();
     }

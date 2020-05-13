@@ -1,6 +1,5 @@
 #ifndef CONST_ITER_HPP
 #define CONST_ITER_HPP
-#define CONST_ITER_HPP_EXERNAL
 
 #include "const_iter.h"
 

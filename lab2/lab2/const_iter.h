@@ -26,8 +26,8 @@ private:
     const Node_sptr<Val_t> _get_node_ptr() const;
 };
 
-#ifndef CONST_ITER_HPP_EXERNAL
+#ifndef CONST_ITER_HPP
 #include "const_iter.hpp"
-#endif // CONST_ITER_HPP_EXERNAL
+#endif // CONST_ITER_HPP
 
 #endif // CONST_ITER_H

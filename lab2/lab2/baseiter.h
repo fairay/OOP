@@ -34,8 +34,8 @@ private:
     bool _is_end() const;
 };
 
-#ifndef BASEITER_HPP_EXERNAL
+#ifndef BASEITER_HPP
 #include "baseiter.hpp"
-#endif // BASEITER_HPP_EXERNAL
+#endif // BASEITER_HPP
 
 #endif // BASEITER_H

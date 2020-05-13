@@ -39,8 +39,8 @@ private:
     const Node_sptr<Val_t> _get_node_ptr() const;
 };
 
-#ifndef ITER_HPP_EXERNAL
+#ifndef ITER_HPP
 #include "iter.hpp"
-#endif // ITER_HPP_EXERNAL
+#endif // ITER_HPP
 
 #endif // ITERATOR_H
