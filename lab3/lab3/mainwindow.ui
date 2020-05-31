@@ -442,7 +442,7 @@
          <x>460</x>
          <y>40</y>
          <width>35</width>
-         <height>10</height>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -455,7 +455,7 @@
          <x>460</x>
          <y>70</y>
          <width>35</width>
-         <height>10</height>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -468,7 +468,7 @@
          <x>460</x>
          <y>100</y>
          <width>35</width>
-         <height>10</height>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -481,9 +481,9 @@
    <widget class="QPushButton" name="transButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>550</x>
       <y>70</y>
-      <width>141</width>
+      <width>151</width>
       <height>151</height>
      </rect>
     </property>
@@ -518,9 +518,9 @@
    <widget class="QPushButton" name="readButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>550</x>
       <y>5</y>
-      <width>141</width>
+      <width>151</width>
       <height>41</height>
      </rect>
     </property>

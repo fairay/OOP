@@ -26,10 +26,25 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    array/base_array.cpp \
+    errors/base_error.cpp \
+    errors/array_errors.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    command/base_command.h \
+    array/array.h \
+    errors/base_error.h \
+    array/base_array.h \
+    array/base_iter.h \
+    array/base_iter.hpp \
+    errors/array_errors.h \
+    array/const_iter.h \
+    array/iter.h \
+    array/const_iter.hpp \
+    array/iter.hpp \
+    array/array.hpp
 
 FORMS += \
         mainwindow.ui
