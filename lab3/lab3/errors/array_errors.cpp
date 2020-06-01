@@ -26,6 +26,14 @@ ArrayPtrExpired::ArrayPtrExpired(const string file_, long line_n_): ArrayError(f
 }
 ArrayPtrExpired::~ArrayPtrExpired() = default;
 
+AllocFailed::AllocFailed(const string file_, long line_n_): ArrayError(file_, line_n_)
+{
+    type += "AllocFailed";
+    add_info = "memory allocation of array was failed";
+    fill_msg();
+}
+AllocFailed::~AllocFailed() = default;
+
 OutOfRange::OutOfRange(const string file_, long line_n_, size_t index): ArrayError(file_, line_n_)
 {
     type = "OutOfRange";

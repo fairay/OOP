@@ -4,12 +4,14 @@
 #include "base_array.h"
 #include "iter.h"
 #include "const_iter.h"
+#include "errors/array_errors.h"
 
 template <typename Type>
 class Array: public BaseArray
 {
 public:
     Array();
+    Array(initializer_list<Type> args);
     explicit Array(size_t num);
     explicit Array(const Array<Type>& other);
     Array(Array<Type>&& other);
@@ -27,9 +29,22 @@ public:
     const Type& operator[](size_t index) const;
     Type* get_arr();
 
-    void append(const Type&);
+    Array<Type>& operator=(const Array<Type>& other);
+    Array<Type>& operator=(initializer_list<Type> args);
+    Array<Type>& operator=(Array<Type>&& other);
+
+    void append(const Type& new_el);
+
+    void clear();
 private:
-    shared_ptr<Type[]>& _arr;
+    shared_ptr<Type[]> _arr {nullptr};
+
+    void _copy_array(const Array<Type>& other);
+    void _clone_array(Array<Type>&& other);
+
+    void _realloc(size_t new_n);
+    Type& _get_elem(size_t index);
+    const Type& _get_elem(size_t index) const;
 };
 
 #ifndef ARRAY_HPP

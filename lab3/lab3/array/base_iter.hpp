@@ -50,7 +50,7 @@ bool BaseIterator<Type>::is_end() const
 template<typename Type>
 BaseIterator<Type>::operator bool() const
 {
-    return _is_end();
+    return not _is_end();
 }
 
 template<typename Type>
@@ -73,4 +73,5 @@ bool BaseIterator<Type>::operator ==(const BaseIterator<Type> &other) const
 {
     return _index == other._index;
 }
+
 #endif // BASE_ITER_HPP

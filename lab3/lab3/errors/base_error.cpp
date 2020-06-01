@@ -23,7 +23,7 @@ string SceneError::cur_time()
 }
 string SceneError::base_msg()
 {
-    string msg = "List error! \n"
+    string msg = "Scene error! \n"
                  "File " + file + ":" + line_n + "\t" + err_time;
     return msg;
 }

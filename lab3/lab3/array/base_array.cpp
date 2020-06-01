@@ -2,7 +2,11 @@
 
 BaseArray::BaseArray(size_t size_)
 {
-    _count = shared_ptr<size_t>( new size_t(size_) );
+    _count = shared_ptr<size_t>(new size_t(size_));
+}
+BaseArray::BaseArray(const BaseArray& other)
+{
+    _count = shared_ptr<size_t>(new size_t(other.get_size()));
 }
 
 BaseArray::~BaseArray() {};

@@ -5,7 +5,6 @@
 
 namespace err
 {
-
 class ArrayError: public SceneError
 {
 public:
@@ -20,12 +19,21 @@ public:
     CountPtrExpired(const string file_, long line_n_);
     virtual ~CountPtrExpired();
 };
+
 class ArrayPtrExpired: public ArrayError
 {
 public:
     ArrayPtrExpired(const string file_, long line_n_);
     virtual ~ArrayPtrExpired();
 };
+
+class AllocFailed: public ArrayError
+{
+public:
+    AllocFailed(const string file_, long line_n_);
+    virtual ~AllocFailed();
+};
+
 class OutOfRange: public ArrayError
 {
 public:

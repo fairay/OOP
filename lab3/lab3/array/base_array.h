@@ -8,6 +8,7 @@ class BaseArray
 {
 public:
     BaseArray(size_t sz = 0);
+    BaseArray(const BaseArray& other);
     virtual ~BaseArray() = 0;
 
     size_t get_size() const;
