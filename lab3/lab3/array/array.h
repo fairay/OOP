@@ -34,6 +34,7 @@ public:
     Array<Type>& operator=(Array<Type>&& other);
 
     void append(const Type& new_el);
+    void remove(const Iterator<Type>& iter);
 
     void clear();
 private:

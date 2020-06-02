@@ -91,10 +91,19 @@ const Type& Array<Type>::_get_elem(size_t index) const
 template<typename Type>
 void Array<Type>::append(const Type& new_el)
 {
-    cout << "Adding new element: " << new_el << endl;
     _realloc(get_size()+1);
     _get_elem(get_size()-1) = new_el;
-    cout << "Added sucsessfully" << endl;
+}
+template<typename Type>
+void Array<Type>::remove(const Iterator<Type>& iter_)
+{
+    if (iter_.is_end())  return;
+    Iterator<Type> iter(iter_);
+    Iterator<Type> forward(iter);
+    forward++;
+    for (; forward; iter++, forward++)
+        *iter = *forward;
+    _realloc(get_size()-1);
 }
 
 template <typename Type>
@@ -110,7 +119,6 @@ void Array<Type>::_realloc(size_t new_n)
 
     if (_arr == nullptr)
     {
-        cout << "_arr == nullptr" << endl;
         try
         {
             _arr = shared_ptr<Type[]>(new Type[new_n]);
@@ -122,7 +130,6 @@ void Array<Type>::_realloc(size_t new_n)
     }
     else if (new_n != 0)
     {
-        cout << "realloc" << endl;
         Array<Type> new_arr(new_n);
         Iterator<Type> new_iter = new_arr.begin();
         ConstIterator<Type> iter = this->cbegin();
@@ -130,25 +137,13 @@ void Array<Type>::_realloc(size_t new_n)
         {
             *new_iter = *iter;
         }
-        // (*this) = new_arr;
         _clone_array(std::move(new_arr));
-        cout << "realloc succsefffully" << endl;
-
-        /*
-        Type* new_ptr = _arr.get();
-        new_ptr = static_cast<Type*>(realloc(new_ptr, sizeof(Type)*new_n));
-
-        if (new_ptr == nullptr)
-            throw err::AllocFailed(__FILE__, __LINE__-2);
-        _arr = shared_ptr<Type[]>(new_ptr);
-        */
     }
     else
     {
         _arr.reset();
     }
     *_count = new_n;
-    cout << "Mne " << *_count << endl;
 }
 
 #endif // ARRAY_HPP

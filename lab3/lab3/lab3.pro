@@ -29,7 +29,8 @@ SOURCES += \
         mainwindow.cpp \
     array/base_array.cpp \
     errors/base_error.cpp \
-    errors/array_errors.cpp
+    errors/array_errors.cpp \
+    errors/object_errors.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,7 +45,11 @@ HEADERS += \
     array/iter.h \
     array/const_iter.hpp \
     array/iter.hpp \
-    array/array.hpp
+    array/array.hpp \
+    errors/object_errors.h \
+    objects/simple_object.h \
+    objects/scene_object.h \
+    objects/composite_object.h
 
 FORMS += \
         mainwindow.ui

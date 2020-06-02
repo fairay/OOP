@@ -2,17 +2,6 @@
 #include <QApplication>
 #include "array/array.h"
 
-class Tea
-{
-public:
-    Tea(): num(0) {}
-    Tea(int i);
-    void call() {cout << "My name is " << num << endl;}
-    void set_num(int n) {num = n;}
-private:
-    int num;
-};
-
 int main(int argc, char *argv[])
 {
     try
@@ -29,11 +18,11 @@ int main(int argc, char *argv[])
             cout << val << " ";
         cout << "END!" << endl;
 
-        Array<Tea> att(3);
-        att[2].set_num(4);
-        Iterator<Tea> beg = att.begin();
-        for (; bool(beg); beg++)
-            beg->call();
+        arr.clear();
+        arr.append(3);
+        for (auto val : arr)
+            cout << val << " ";
+        cout << endl << "END!" << arr.get_size() << endl;
     }
     catch (err::ArrayError &error) {
         cout << error.what() << endl;
