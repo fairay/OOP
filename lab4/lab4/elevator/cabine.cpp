@@ -11,6 +11,16 @@ Cabine::Cabine(int init_floor, int move_delay): _status(REQUEST_WAIT),
                      this, SLOT(started()));
     QWidget::connect(&_move_t, SIGNAL(timeout()),
                      this, SLOT(move()));
+
+    QWidget::connect(this, SIGNAL(_request_sig()),
+                     this, SLOT(request_waiting()));
+    QWidget::connect(this, SIGNAL(_stoped_sig()),
+                     this, SLOT(stoped()));
+    QWidget::connect(this, SIGNAL(_started_sig()),
+                     this, SLOT(started()));
+    QWidget::connect(this, SIGNAL(_move_sig()),
+                     this, SLOT(move()));
+
 }
 
 Cabine::~Cabine() {}
@@ -43,7 +53,7 @@ void Cabine::doors_waiting(int floor)
     _dest_floor = floor;
 
     if (_doors.is_close())
-        started();
+        emit _started_sig();
 }
 
 void Cabine::stoped()
@@ -56,7 +66,7 @@ void Cabine::stoped()
     _move_dir = STAY;
 
     emit open_doors();
-    request_waiting();
+    emit _request_sig();
     emit dest_get(_dest_floor, old_dir);
 }
 
@@ -68,7 +78,7 @@ void Cabine::started()
 
     if (_cur_floor > _dest_floor) _move_dir = DOWN;
     else _move_dir = UP;
-    move();
+    emit _move_sig();
 }
 
 void Cabine::move()
@@ -78,7 +88,7 @@ void Cabine::move()
         _cur_floor += _move_dir;
         cout << "/_\\\t Reached " << _cur_floor << " floor" << endl;
         if (_cur_floor == _dest_floor)
-            stoped();
+            emit _stoped_sig();
         else
             _move_t.start();
     }

@@ -24,13 +24,15 @@ Controller::Controller(size_t floor_n, QWidget *parent):
         shared_ptr<Button> ptr = _but_arr[_to_index(i)];
         _but_box.addWidget(ptr.get());
     }
+
+    QWidget::connect(this, SIGNAL(_new_call(int)),
+                     this, SLOT(get_new_call(int)));
 }
 
 Controller::~Controller() {}
 
 void Controller::floor_visited(int floor, Direction dir)
 {
-    if (_status != WAITING) return;
     _status = WAITING;
 
     size_t arr_i = _to_index(floor);
@@ -38,7 +40,7 @@ void Controller::floor_visited(int floor, Direction dir)
 
     int new_floor = _find_request(floor, dir);
     if (new_floor <= _up_floor)
-        get_new_call(new_floor);
+        emit _new_call(new_floor);
 }
 
 void Controller::get_new_call(int floor)

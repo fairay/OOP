@@ -27,6 +27,11 @@ signals:
     void dest_get(int floor, Direction dir);
     void open_doors();
 
+    void _request_sig();
+    void _stoped_sig();
+    void _started_sig();
+    void _move_sig();
+
 public slots:
     void request_waiting(int floor=0);
     void doors_waiting(int floor);

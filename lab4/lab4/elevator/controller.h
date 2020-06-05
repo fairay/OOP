@@ -20,6 +20,7 @@ public:
 
 signals:
     void request_visit(int floor);
+    void _new_call(int floor);
 
 public slots:
     void floor_visited(int floor, Direction dir);
