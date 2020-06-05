@@ -16,7 +16,7 @@ class Cabine: public QObject
         MOVE,
         STOPING,
         REQUEST_WAIT,
-        CLOSIG_WAIT
+        CLOSING_WAIT
     };
 
 public:
@@ -38,14 +38,15 @@ private slots:
 
 private:
     CabineStatus _status;
-    int cur_floor;
-    int dest_floor;
-    Direction move_dir;
+    int _cur_floor;
+    int _dest_floor;
+    Direction _move_dir;
 
     Doors _doors;
 
-    QTimer move_timer;
+    QTimer _move_t;
 
     bool _is_new_dest(int floor);
 };
+
 #endif // CABINE_H

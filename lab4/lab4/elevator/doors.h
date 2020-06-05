@@ -38,8 +38,8 @@ private slots:
 
 private:
     DoorsStatus _status;
-    QTimer opening_timer;
-    QTimer open_timer;
-    QTimer closing_timer;
+    QTimer _opening_t;
+    QTimer _open_t;
+    QTimer _closing_t;
 };
 #endif // DOORS_H

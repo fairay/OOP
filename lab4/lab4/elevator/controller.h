@@ -30,15 +30,15 @@ private slots:
 private:
     ControllerStatus _status;
     size_t _floor_n;
-    int min_floor, max_floor;
+    int _low_floor, _up_floor;
 
     vector<shared_ptr<Button>> _but_arr;
     vector<bool> _call_arr;
 
     QVBoxLayout _but_box;
 
-    int find_request(int floor, Direction dir);
-    size_t to_index(int floor);
+    int _find_request(int floor, Direction dir);
+    size_t _to_index(int floor);
 };
 
 #endif // CONTROLLER_H

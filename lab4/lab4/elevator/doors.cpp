@@ -3,15 +3,15 @@
 Doors::Doors(int move_delay, int open_delay):
     _status(CLOSE)
 {
-    opening_timer.setInterval(move_delay*1000);
-    open_timer.setInterval(open_delay*1000);
-    closing_timer.setInterval(move_delay*1000);
+    _opening_t.setInterval(move_delay*1000);
+    _open_t.setInterval(open_delay*1000);
+    _closing_t.setInterval(move_delay*1000);
 
-    QWidget::connect(&opening_timer, SIGNAL(timeout()),
+    QWidget::connect(&_opening_t, SIGNAL(timeout()),
                      this, SLOT(opening_over()));
-    QWidget::connect(&open_timer, SIGNAL(timeout()),
+    QWidget::connect(&_open_t, SIGNAL(timeout()),
                      this, SLOT(open_over()));
-    QWidget::connect(&closing_timer, SIGNAL(timeout()),
+    QWidget::connect(&_closing_t, SIGNAL(timeout()),
                      this, SLOT(closing_over()));
 }
 
@@ -32,7 +32,7 @@ void Doors::open()
     if (_status != CLOSE) return;
     _status = OPENING;
     cout << "|<->|\t Opening doors" << endl;
-    opening_timer.start();
+    _opening_t.start();
 }
 
 void Doors::opening_over()
@@ -40,7 +40,7 @@ void Doors::opening_over()
     if (_status != OPENING) return;
     _status = OPEN;
     cout << "|<->|\t Doors are opened" << endl;
-    open_timer.start();
+    _open_t.start();
     emit opened();
 }
 
@@ -49,7 +49,7 @@ void Doors::open_over()
     if (_status != OPEN) return;
     _status = CLOSIG;
     cout << "|<->|\t Closing doors" << endl;
-    closing_timer.start();
+    _closing_t.start();
 }
 
 void Doors::closing_over()
