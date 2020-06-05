@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Cabine_t {
-    QByteArrayData data[11];
-    char stringdata0[81];
+    QByteArrayData data[12];
+    char stringdata0[98];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,16 +37,17 @@ QT_MOC_LITERAL(2, 16, 0), // ""
 QT_MOC_LITERAL(3, 17, 5), // "floor"
 QT_MOC_LITERAL(4, 23, 9), // "Direction"
 QT_MOC_LITERAL(5, 33, 3), // "dir"
-QT_MOC_LITERAL(6, 37, 10), // "get_signal"
-QT_MOC_LITERAL(7, 48, 12), // "doors_closed"
-QT_MOC_LITERAL(8, 61, 6), // "stoped"
-QT_MOC_LITERAL(9, 68, 7), // "started"
-QT_MOC_LITERAL(10, 76, 4) // "move"
+QT_MOC_LITERAL(6, 37, 10), // "open_doors"
+QT_MOC_LITERAL(7, 48, 15), // "request_waiting"
+QT_MOC_LITERAL(8, 64, 13), // "doors_waiting"
+QT_MOC_LITERAL(9, 78, 6), // "stoped"
+QT_MOC_LITERAL(10, 85, 7), // "started"
+QT_MOC_LITERAL(11, 93, 4) // "move"
 
     },
     "Cabine\0dest_get\0\0floor\0Direction\0dir\0"
-    "get_signal\0doors_closed\0stoped\0started\0"
-    "move"
+    "open_doors\0request_waiting\0doors_waiting\0"
+    "stoped\0started\0move"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +57,7 @@ static const uint qt_meta_data_Cabine[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -64,15 +65,16 @@ static const uint qt_meta_data_Cabine[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   49,    2, 0x06 /* Public */,
-       1,    0,   54,    2, 0x06 /* Public */,
+       1,    2,   54,    2, 0x06 /* Public */,
+       6,    0,   59,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   55,    2, 0x0a /* Public */,
-       7,    0,   58,    2, 0x08 /* Private */,
-       8,    0,   59,    2, 0x08 /* Private */,
-       9,    0,   60,    2, 0x08 /* Private */,
-      10,    0,   61,    2, 0x08 /* Private */,
+       7,    1,   60,    2, 0x0a /* Public */,
+       7,    0,   63,    2, 0x2a /* Public | MethodCloned */,
+       8,    1,   64,    2, 0x0a /* Public */,
+       9,    0,   67,    2, 0x08 /* Private */,
+      10,    0,   68,    2, 0x08 /* Private */,
+      11,    0,   69,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, 0x80000000 | 4,    3,    5,
@@ -81,6 +83,7 @@ static const uint qt_meta_data_Cabine[] = {
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -95,12 +98,13 @@ void Cabine::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->dest_get((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< Direction(*)>(_a[2]))); break;
-        case 1: _t->dest_get(); break;
-        case 2: _t->get_signal((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 3: _t->doors_closed(); break;
-        case 4: _t->stoped(); break;
-        case 5: _t->started(); break;
-        case 6: _t->move(); break;
+        case 1: _t->open_doors(); break;
+        case 2: _t->request_waiting((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 3: _t->request_waiting(); break;
+        case 4: _t->doors_waiting((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 5: _t->stoped(); break;
+        case 6: _t->started(); break;
+        case 7: _t->move(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -114,7 +118,7 @@ void Cabine::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         }
         {
             using _t = void (Cabine::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Cabine::dest_get)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Cabine::open_doors)) {
                 *result = 1;
                 return;
             }
@@ -151,13 +155,13 @@ int Cabine::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }
@@ -170,7 +174,7 @@ void Cabine::dest_get(int _t1, Direction _t2)
 }
 
 // SIGNAL 1
-void Cabine::dest_get()
+void Cabine::open_doors()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }

@@ -25,13 +25,13 @@ public:
 
 signals:
     void dest_get(int floor, Direction dir);
-    void dest_get();
+    void open_doors();
 
 public slots:
-    void get_signal(int floor);
+    void request_waiting(int floor=0);
+    void doors_waiting(int floor);
 
 private slots:
-    void doors_closed();
     void stoped();
     void started();
     void move();

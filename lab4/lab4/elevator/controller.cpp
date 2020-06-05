@@ -30,19 +30,15 @@ Controller::~Controller() {}
 
 void Controller::floor_visited(int floor, Direction dir)
 {
-    if (_status == WAITING) return;
+    if (_status != WAITING) return;
+    _status = WAITING;
 
     size_t arr_i = _to_index(floor);
     _call_arr[arr_i] = false;
 
     int new_floor = _find_request(floor, dir);
     if (new_floor <= _up_floor)
-    {
-        std::cout << "(*)\t Request " << new_floor << " floor" << endl;
-        emit request_visit(new_floor);
-    }
-    else
-        _status = WAITING;
+        get_new_call(new_floor);
 }
 
 void Controller::get_new_call(int floor)
@@ -50,12 +46,9 @@ void Controller::get_new_call(int floor)
     _status = PROCESSING;
 
     size_t arr_i = _to_index(floor);
-    if (!_call_arr[arr_i])
-    {
-        std::cout << "(*)\t Request " << floor << " floor" << endl;
-        _call_arr[arr_i] = true;
-        emit request_visit(floor);
-    }
+    std::cout << "(*)\t Request " << floor << " floor" << endl;
+    _call_arr[arr_i] = true;
+    emit request_visit(floor);
 }
 
 size_t Controller::_to_index(int floor)

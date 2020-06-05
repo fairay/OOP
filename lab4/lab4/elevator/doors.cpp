@@ -40,8 +40,8 @@ void Doors::opening_over()
     if (_status != OPENING) return;
     _status = OPEN;
     cout << "|<->|\t Doors are opened" << endl;
-    _open_t.start();
     emit opened();
+    _open_t.start();
 }
 
 void Doors::open_over()
