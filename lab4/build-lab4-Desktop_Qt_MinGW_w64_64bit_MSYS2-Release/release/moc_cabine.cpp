@@ -69,7 +69,7 @@ static const uint qt_meta_data_Cabine[] = {
 
  // slots: name, argc, parameters, tag, flags
        6,    1,   55,    2, 0x0a /* Public */,
-       7,    0,   58,    2, 0x0a /* Public */,
+       7,    0,   58,    2, 0x08 /* Private */,
        8,    0,   59,    2, 0x08 /* Private */,
        9,    0,   60,    2, 0x08 /* Private */,
       10,    0,   61,    2, 0x08 /* Private */,

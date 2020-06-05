@@ -18,7 +18,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QVBoxLayout _layout;
     Elevator _elevator;
 };
 

@@ -19,7 +19,7 @@ class Doors : public QObject
     };
 
 public:
-    Doors(int move_delay=1, int open_delay=1);
+    Doors(int move_delay=2, int open_delay=5);
     virtual ~Doors();
     bool is_open();
     bool is_close();

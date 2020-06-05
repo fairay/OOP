@@ -8,5 +8,6 @@ debug/cabine.o
 debug/moc_mainwindow.o
 debug/moc_button.o
 debug/moc_controller.o
+debug/moc_elevator.o
 debug/moc_doors.o
 debug/moc_cabine.o

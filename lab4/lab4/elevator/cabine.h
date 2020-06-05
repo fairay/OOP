@@ -20,7 +20,7 @@ class Cabine: public QObject
     };
 
 public:
-    Cabine(int move_delay=2);
+    Cabine(int init_floor, int move_delay=2);
     virtual ~Cabine();
 
 signals:
@@ -29,9 +29,9 @@ signals:
 
 public slots:
     void get_signal(int floor);
-    void doors_closed();
 
 private slots:
+    void doors_closed();
     void stoped();
     void started();
     void move();

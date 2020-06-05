@@ -8,5 +8,6 @@ release/cabine.o
 release/moc_mainwindow.o
 release/moc_button.o
 release/moc_controller.o
+release/moc_elevator.o
 release/moc_doors.o
 release/moc_cabine.o

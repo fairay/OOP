@@ -31,7 +31,7 @@ void Doors::open()
 {
     if (_status != CLOSE) return;
     _status = OPENING;
-    cout << "Opening doors" << endl;
+    cout << "|<->|\t Opening doors" << endl;
     opening_timer.start();
 }
 
@@ -39,7 +39,7 @@ void Doors::opening_over()
 {
     if (_status != OPENING) return;
     _status = OPEN;
-    cout << "Doors are opened" << endl;
+    cout << "|<->|\t Doors are opened" << endl;
     open_timer.start();
     emit opened();
 }
@@ -48,7 +48,7 @@ void Doors::open_over()
 {
     if (_status != OPEN) return;
     _status = CLOSIG;
-    cout << "Closing dors" << endl;
+    cout << "|<->|\t Closing doors" << endl;
     closing_timer.start();
 }
 
@@ -56,6 +56,6 @@ void Doors::closing_over()
 {
     if (_status != CLOSIG) return;
     _status = CLOSE;
-    cout << "Doors are closed" << endl;
+    cout << "|<->|\t Doors are closed" << endl;
     emit closed();
 }
