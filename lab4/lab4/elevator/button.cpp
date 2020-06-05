@@ -3,8 +3,8 @@
 Button::Button(int floor, QWidget *parent):
     QPushButton(parent), _status(RELEASED), _floor(floor)
 {
-    QString name("Этаж ");
-    name.append(floor);
+    QString name("Floor ");
+    name.append(std::to_string(floor).c_str());
     this->setText(name);
 
     QWidget::connect(this, SIGNAL(pressed()),

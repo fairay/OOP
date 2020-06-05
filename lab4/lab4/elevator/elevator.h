@@ -12,7 +12,7 @@ public:
     QWidget* get_qwidget();
 
 private:
-    Controller _controler;
+    Controller _controller;
 };
 
 #endif // ELEVATOR_H

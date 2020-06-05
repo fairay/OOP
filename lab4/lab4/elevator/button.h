@@ -2,6 +2,7 @@
 #define BUTTON_H
 
 #include <QPushButton>
+#include <iostream>
 
 class Button: public QPushButton
 {

@@ -29,13 +29,17 @@ SOURCES += \
         mainwindow.cpp \
     elevator/button.cpp \
     elevator/controller.cpp \
-    elevator/elevator.cpp
+    elevator/elevator.cpp \
+    elevator/doors.cpp \
+    elevator/cabine.cpp
 
 HEADERS += \
         mainwindow.h \
     elevator/button.h \
     elevator/controller.h \
-    elevator/elevator.h
+    elevator/elevator.h \
+    elevator/doors.h \
+    elevator/cabine.h
 
 FORMS += \
         mainwindow.ui

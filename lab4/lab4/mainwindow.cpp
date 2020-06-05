@@ -3,11 +3,11 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow), _layout(new QVBoxLayout), _elevator(7)
+    ui(new Ui::MainWindow), _layout(), _elevator(5)
 {
     ui->setupUi(this);
-    ui->elv_widget->setLayout(_layout);
-    _layout->addWidget(_elevator.get_qwidget());
+    ui->elv_widget->setLayout(&_layout);
+    _layout.addWidget(_elevator.get_qwidget());
 }
 
 MainWindow::~MainWindow()
