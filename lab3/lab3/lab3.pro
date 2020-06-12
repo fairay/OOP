@@ -33,7 +33,15 @@ SOURCES += \
     errors/object_errors.cpp \
     objects/composite_object.cpp \
     objects/point/base_point.cpp \
-    objects/point/point.cpp
+    objects/point/point.cpp \
+    objects/camera/base_camera.cpp \
+    objects/camera/camera.cpp \
+    objects/edge/base_edge.cpp \
+    objects/edge/edge.cpp \
+    objects/carcass/base_carcass.cpp \
+    objects/carcass/carcass.cpp \
+    objects/visitor/draw_visitor.cpp \
+    objects/visitor/transform_visitor.cpp
 
 
 HEADERS += \
@@ -63,7 +71,12 @@ HEADERS += \
     objects/creator/object_creator.h \
     objects/creator/edge_creator.h \
     objects/creator/point_creator.h \
-    objects/creator/camera_creator.h
+    objects/creator/camera_creator.h \
+    objects/camera/camera.h \
+    objects/edge/edge.h \
+    objects/carcass/carcass.h \
+    objects/visitor/draw_visitor.h \
+    objects/visitor/transform_visitor.h
 
 FORMS += \
         mainwindow.ui

@@ -7,4 +7,12 @@ debug/object_errors.o
 debug/composite_object.o
 debug/base_point.o
 debug/point.o
+debug/base_camera.o
+debug/camera.o
+debug/base_edge.o
+debug/edge.o
+debug/base_carcass.o
+debug/carcass.o
+debug/draw_visitor.o
+debug/transform_visitor.o
 debug/moc_mainwindow.o

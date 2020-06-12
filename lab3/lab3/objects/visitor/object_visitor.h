@@ -9,8 +9,8 @@
 class ObjectVisitor
 {
 public:
-    ObjectVisitor() {}
-    virtual ~ObjectVisitor() = 0;
+    ObjectVisitor();
+    virtual ~ObjectVisitor() = default;
 
     virtual void visit(BasePoint& point) = 0;
     virtual void visit(BaseCamera& point) = 0;

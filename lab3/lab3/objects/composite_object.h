@@ -26,7 +26,7 @@ public:
     void add_object(const SceneObject&);
     void remove_object(const Iterator<SceneObject>&);
 
-private:
+protected:
     Array<SceneObject> _obj_arr;
 };
 

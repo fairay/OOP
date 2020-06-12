@@ -7,4 +7,12 @@ release/object_errors.o
 release/composite_object.o
 release/base_point.o
 release/point.o
+release/base_camera.o
+release/camera.o
+release/base_edge.o
+release/edge.o
+release/base_carcass.o
+release/carcass.o
+release/draw_visitor.o
+release/transform_visitor.o
 release/moc_mainwindow.o
