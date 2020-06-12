@@ -25,6 +25,12 @@ public:
     NotTransable(const string file_, long line_n_);
     virtual ~NotTransable();
 };
+class UndefindeVisiter: public ObjectError
+{
+public:
+    UndefindeVisiter(const string file_, long line_n_);
+    virtual ~UndefindeVisiter();
+};
 class UndefindeClone: public ObjectError
 {
 public:

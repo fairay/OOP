@@ -30,7 +30,11 @@ SOURCES += \
     array/base_array.cpp \
     errors/base_error.cpp \
     errors/array_errors.cpp \
-    errors/object_errors.cpp
+    errors/object_errors.cpp \
+    objects/composite_object.cpp \
+    objects/point/base_point.cpp \
+    objects/point/point.cpp
+
 
 HEADERS += \
         mainwindow.h \
@@ -49,7 +53,17 @@ HEADERS += \
     errors/object_errors.h \
     objects/simple_object.h \
     objects/scene_object.h \
-    objects/composite_object.h
+    objects/composite_object.h \
+    objects/camera/base_camera.h \
+    objects/carcass/base_carcass.h \
+    objects/edge/base_edge.h \
+    objects/point/base_point.h \
+    objects/point/point.h \
+    objects/visitor/object_visitor.h \
+    objects/creator/object_creator.h \
+    objects/creator/edge_creator.h \
+    objects/creator/point_creator.h \
+    objects/creator/camera_creator.h
 
 FORMS += \
         mainwindow.ui

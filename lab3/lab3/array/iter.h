@@ -8,7 +8,7 @@ class Array;
 
 
 template<typename Type>
-class Iterator : public BaseIterator<Type>
+class Iterator: public BaseIterator<Type>
 {
     friend class Array<Type>;
 

@@ -6,21 +6,27 @@
 class SimpleObject: public SceneObject
 {
 public:
-    SimpleObject();
+    SimpleObject() = default;
+    virtual ~SimpleObject() = default;
+
     virtual bool is_complex() final {return false;}
 };
 
 class VisibleObject: public SimpleObject
 {
 public:
-    VisibleObject();
+    VisibleObject() = default;
+    virtual ~VisibleObject() = default;
+
     virtual bool is_visible() final {return true;}
 };
 
 class InvisibleObject: public SimpleObject
 {
 public:
-    InvisibleObject();
+    InvisibleObject() = default;
+    virtual ~InvisibleObject() = default;
+
     virtual bool is_visible() final {return false;}
 };
 

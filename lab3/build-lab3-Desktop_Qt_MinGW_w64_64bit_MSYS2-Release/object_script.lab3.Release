@@ -1,0 +1,10 @@
+release/main.o
+release/mainwindow.o
+release/base_array.o
+release/base_error.o
+release/array_errors.o
+release/object_errors.o
+release/composite_object.o
+release/base_point.o
+release/point.o
+release/moc_mainwindow.o

@@ -8,6 +8,11 @@ class CompositeObject: public SceneObject
 {
 public:
     CompositeObject();
+    explicit CompositeObject(const CompositeObject& other);
+
+    virtual bool is_complex() final {return true;}
+    virtual bool is_observer();
+    virtual bool is_drawable();
 
     Iterator<SceneObject> begin() {return _obj_arr.begin();}
     Iterator<SceneObject> end() {return _obj_arr.end();}
@@ -16,11 +21,13 @@ public:
     ConstIterator<SceneObject> cbegin() {return _obj_arr.cbegin();}
     ConstIterator<SceneObject> cend() {return _obj_arr.cend();}
 
-    virtual bool is_complex() final {return true;}
+    size_t get_size() const;
+
+    void add_object(const SceneObject&);
+    void remove_object(const Iterator<SceneObject>&);
 
 private:
     Array<SceneObject> _obj_arr;
-    Iterator<SceneObject> _camera;
 };
 
 #endif // COMPOSITE_OBJECT_H

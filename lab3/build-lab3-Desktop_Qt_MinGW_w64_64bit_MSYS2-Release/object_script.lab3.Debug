@@ -1,0 +1,10 @@
+debug/main.o
+debug/mainwindow.o
+debug/base_array.o
+debug/base_error.o
+debug/array_errors.o
+debug/object_errors.o
+debug/composite_object.o
+debug/base_point.o
+debug/point.o
+debug/moc_mainwindow.o

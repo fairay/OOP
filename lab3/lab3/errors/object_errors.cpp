@@ -26,6 +26,14 @@ NotTransable::NotTransable(const string file_, long line_n_): ObjectError(file_,
 }
 NotTransable::~NotTransable() = default;
 
+UndefindeVisiter::UndefindeVisiter(const string file_, long line_n_): ObjectError(file_, line_n_)
+{
+    type += "UndefindeVisiter";
+    add_info = "operation of visit isn't defided for object";
+    fill_msg();
+}
+UndefindeVisiter::~UndefindeVisiter() = default;
+
 UndefindeClone::UndefindeClone(const string file_, long line_n_): ObjectError(file_, line_n_)
 {
     type += "UndefindeClone";

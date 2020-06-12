@@ -4,7 +4,7 @@
 #include "array.h"
 
 template <typename Type>
-Array<Type>::Array(): BaseArray (0), _arr(nullptr) {}
+Array<Type>::Array(): BaseArray (0) {}
 template <typename Type>
 Array<Type>::Array(initializer_list<Type> args)
 {
