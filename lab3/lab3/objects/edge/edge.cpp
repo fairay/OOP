@@ -1,7 +1,7 @@
 #include "edge.h"
 
 Edge::Edge() {}
-Edge::Edge(const BasePoint& p1, const BasePoint& p2): BaseEdge (p1, p2) {}
+Edge::Edge(const Point &p1, const Point &p2): BaseEdge (p1, p2) {}
 Edge::Edge(const Edge& other): BaseEdge (other) {}
 
 Edge::~Edge() {}

@@ -3,6 +3,7 @@
 
 #include "object_creator.h"
 #include "objects/edge/edge.h"
+#include "objects/point/point.h"
 
 class EdgeCreator: public ObjectCreator
 {

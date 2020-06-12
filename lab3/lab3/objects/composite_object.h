@@ -23,6 +23,9 @@ public:
 
     size_t get_size() const;
 
+    SceneObject& operator[] (size_t index);
+    const SceneObject& operator[] (size_t index) const;
+
     void add_object(const SceneObject&);
     void remove_object(const Iterator<SceneObject>&);
 

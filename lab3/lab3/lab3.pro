@@ -41,7 +41,9 @@ SOURCES += \
     objects/carcass/base_carcass.cpp \
     objects/carcass/carcass.cpp \
     objects/visitor/draw_visitor.cpp \
-    objects/visitor/transform_visitor.cpp
+    objects/visitor/transform_visitor.cpp \
+    builder/carcass_builder/txt_builder.cpp \
+    errors/builder_errors.cpp
 
 
 HEADERS += \
@@ -76,7 +78,13 @@ HEADERS += \
     objects/edge/edge.h \
     objects/carcass/carcass.h \
     objects/visitor/draw_visitor.h \
-    objects/visitor/transform_visitor.h
+    objects/visitor/transform_visitor.h \
+    builder/builder.h \
+    builder/build_director.h \
+    builder/carcass_builder/base_builder.h \
+    builder/carcass_builder/director.h \
+    builder/carcass_builder/txt_builder.h \
+    errors/builder_errors.h
 
 FORMS += \
         mainwindow.ui

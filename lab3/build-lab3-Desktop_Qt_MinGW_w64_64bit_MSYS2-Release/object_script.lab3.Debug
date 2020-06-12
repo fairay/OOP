@@ -15,4 +15,6 @@ debug/base_carcass.o
 debug/carcass.o
 debug/draw_visitor.o
 debug/transform_visitor.o
+debug/txt_builder.o
+debug/builder_errors.o
 debug/moc_mainwindow.o

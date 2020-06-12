@@ -15,4 +15,6 @@ release/base_carcass.o
 release/carcass.o
 release/draw_visitor.o
 release/transform_visitor.o
+release/txt_builder.o
+release/builder_errors.o
 release/moc_mainwindow.o
