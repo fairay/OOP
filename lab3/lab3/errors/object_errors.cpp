@@ -41,3 +41,27 @@ UndefindeClone::UndefindeClone(const string file_, long line_n_): ObjectError(fi
     fill_msg();
 }
 UndefindeClone::~UndefindeClone() = default;
+
+
+
+VisitorError::VisitorError(const string file_, long line_n_): ObjectError(file_, line_n_)
+{
+    type += "Visitor Error: ";
+}
+VisitorError::~VisitorError() = default;
+
+VisualExpired::VisualExpired(const string file_, long line_n_): VisitorError(file_, line_n_)
+{
+    type += "Visual Expired";
+    add_info = "pointer of Visualisator has expired";
+    fill_msg();
+}
+VisualExpired::~VisualExpired() = default;
+
+TransExpired::TransExpired(const string file_, long line_n_): VisitorError(file_, line_n_)
+{
+    type += "Trans Expired";
+    add_info = "pointer of Transformation has expired";
+    fill_msg();
+}
+TransExpired::~TransExpired() = default;

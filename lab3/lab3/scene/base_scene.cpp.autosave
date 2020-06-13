@@ -1,0 +1,4 @@
+#include "base_scene.h"
+
+: _arr(), _curr_cam(_arr.end()) {}
+BaseScene::~BaseScene() {}

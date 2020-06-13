@@ -5,6 +5,7 @@
 #include "objects/edge/base_edge.h"
 #include "objects/point/base_point.h"
 #include "objects/carcass/base_carcass.h"
+#include "errors/object_errors.h"
 
 class ObjectVisitor
 {

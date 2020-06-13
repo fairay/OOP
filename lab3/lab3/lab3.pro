@@ -43,7 +43,14 @@ SOURCES += \
     objects/visitor/draw_visitor.cpp \
     objects/visitor/transform_visitor.cpp \
     builder/carcass_builder/txt_builder.cpp \
-    errors/builder_errors.cpp
+    errors/builder_errors.cpp \
+    visualiser/qdrawer.cpp \
+    errors/drawer_errors.cpp \
+    visualiser/qdrawer_factory.cpp \
+    visualiser/visualiser.cpp \
+    builder/carcass_builder/director.cpp \
+    transform/transformation.cpp \
+    scene/base_scene.cpp
 
 
 HEADERS += \
@@ -84,7 +91,19 @@ HEADERS += \
     builder/carcass_builder/base_builder.h \
     builder/carcass_builder/director.h \
     builder/carcass_builder/txt_builder.h \
-    errors/builder_errors.h
+    errors/builder_errors.h \
+    managers/scene_manager.h \
+    scene/base_scene.h \
+    scene/scene.h \
+    scene/scene_interface.h \
+    transform/transformator.h \
+    transform/tranformation.h \
+    visualiser/visualizer.h \
+    visualiser/base_drawer.h \
+    visualiser/qdrawer.h \
+    errors/drawer_errors.h \
+    visualiser/base_drawer_factory.h \
+    visualiser/qdrawer_factory.h
 
 FORMS += \
         mainwindow.ui

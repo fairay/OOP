@@ -38,6 +38,26 @@ public:
     virtual ~UndefindeClone();
 };
 
+class VisitorError: public ObjectError
+{
+public:
+    VisitorError(const string file_, long line_n_);
+    virtual ~VisitorError();
+};
+
+class VisualExpired: public VisitorError
+{
+public:
+    VisualExpired(const string file_, long line_n_);
+    virtual ~VisualExpired();
+};
+class TransExpired: public VisitorError
+{
+public:
+    TransExpired(const string file_, long line_n_);
+    virtual ~TransExpired();
+};
+
 } // namespace err
 
 #endif // OBJECT_ERRORS_H

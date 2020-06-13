@@ -6,11 +6,11 @@ BaseCarcass::BaseCarcass(const BaseCarcass& other):
 
 BaseCarcass::~BaseCarcass() {}
 
-bool BaseCarcass::is_drawable()
+bool BaseCarcass::is_drawable() const
 {
     return true;
 }
-bool BaseCarcass::is_observer()
+bool BaseCarcass::is_observer() const
 {
     return false;
 }

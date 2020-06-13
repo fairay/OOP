@@ -8,8 +8,12 @@ namespace CarcassBuilder {
 class Director: public BuildDirector
 {
 public:
-    Director() {}
+    Director(shared_ptr<BaseBuilder> bld);
+    virtual ~Director();
 
+    virtual shared_ptr<SceneObject> create();
+private:
+    shared_ptr<BaseBuilder> _builder;
 };
 } // CarcassBuilder
 

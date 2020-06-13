@@ -19,6 +19,9 @@ public:
     virtual void load_edges();
     virtual void close();
 
+    virtual shared_ptr<SceneObject> get_object()
+    { return _carcass; }
+
 protected:
     shared_ptr<Carcass> _carcass;
 };

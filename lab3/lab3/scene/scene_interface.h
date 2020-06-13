@@ -1,0 +1,4 @@
+#ifndef SCENE_INTERFACE_H
+#define SCENE_INTERFACE_H
+
+#endif // SCENE_INTERFACE_H

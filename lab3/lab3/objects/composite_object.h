@@ -10,9 +10,9 @@ public:
     CompositeObject();
     explicit CompositeObject(const CompositeObject& other);
 
-    virtual bool is_complex() final {return true;}
-    virtual bool is_observer();
-    virtual bool is_drawable();
+    virtual bool is_complex() const final {return true;}
+    virtual bool is_observer() const;
+    virtual bool is_drawable() const;
 
     Iterator<SceneObject> begin() {return _obj_arr.begin();}
     Iterator<SceneObject> end() {return _obj_arr.end();}

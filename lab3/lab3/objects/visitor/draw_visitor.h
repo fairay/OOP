@@ -2,6 +2,7 @@
 #define DRAW_VISITOR_H
 
 #include "object_visitor.h"
+#include "visualiser/visualizer.h"
 
 class DrawVisitor: public ObjectVisitor
 {

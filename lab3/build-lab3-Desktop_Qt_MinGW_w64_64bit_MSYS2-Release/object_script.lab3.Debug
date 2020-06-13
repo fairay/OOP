@@ -17,4 +17,11 @@ debug/draw_visitor.o
 debug/transform_visitor.o
 debug/txt_builder.o
 debug/builder_errors.o
+debug/qdrawer.o
+debug/drawer_errors.o
+debug/qdrawer_factory.o
+debug/visualiser.o
+debug/director.o
+debug/transformation.o
+debug/base_scene.o
 debug/moc_mainwindow.o

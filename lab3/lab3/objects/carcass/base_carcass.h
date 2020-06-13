@@ -10,8 +10,8 @@ public:
     explicit BaseCarcass(const BaseCarcass& other);
     virtual ~BaseCarcass();
 
-    virtual bool is_drawable() final;
-    virtual bool is_observer() final;
+    virtual bool is_drawable() const final;
+    virtual bool is_observer() const final;
 };
 
 #endif // BASE_CARCASS_H

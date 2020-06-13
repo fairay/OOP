@@ -13,9 +13,9 @@ public:
     SceneObject() = default;
     virtual ~SceneObject() = default;
 
-    virtual bool is_drawable() {return false;}
-    virtual bool is_observer() {return false;}
-    virtual bool is_complex() {return false;}
+    virtual bool is_drawable() const {return false;}
+    virtual bool is_observer() const {return false;}
+    virtual bool is_complex() const {return false;}
 
     virtual void accept(shared_ptr<ObjectVisitor>)
     {throw err::UndefindeVisiter(__FILE__, __LINE__);}

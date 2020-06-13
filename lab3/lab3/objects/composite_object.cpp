@@ -7,14 +7,14 @@ CompositeObject::CompositeObject(const CompositeObject& other)
     _obj_arr = other._obj_arr;
 }
 
-bool CompositeObject::is_observer()
+bool CompositeObject::is_observer() const
 {
     for (auto obj : *this)
         if (obj.is_observer())
             return true;
     return false;
 }
-bool CompositeObject::is_drawable()
+bool CompositeObject::is_drawable() const
 {
     for (auto obj : *this)
         if (obj.is_drawable())
