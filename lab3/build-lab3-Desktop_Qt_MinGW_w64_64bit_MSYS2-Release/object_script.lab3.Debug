@@ -33,4 +33,5 @@ debug/base_command.o
 debug/transform.o
 debug/draw_scene.o
 debug/base_drawer_factory.o
+debug/load.o
 debug/moc_mainwindow.o

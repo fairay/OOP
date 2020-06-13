@@ -33,4 +33,5 @@ release/base_command.o
 release/transform.o
 release/draw_scene.o
 release/base_drawer_factory.o
+release/load.o
 release/moc_mainwindow.o

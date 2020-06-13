@@ -59,7 +59,8 @@ SOURCES += \
     command/base_command.cpp \
     command/transform.cpp \
     command/draw_scene.cpp \
-    visualiser/base_drawer_factory.cpp
+    visualiser/base_drawer_factory.cpp \
+    command/load.cpp
 
 
 HEADERS += \
@@ -115,7 +116,8 @@ HEADERS += \
     visualiser/qdrawer_factory.h \
     errors/managers_errors.h \
     command/transform.h \
-    command/draw_scene.h
+    command/draw_scene.h \
+    command/load.h
 
 FORMS += \
         mainwindow.ui

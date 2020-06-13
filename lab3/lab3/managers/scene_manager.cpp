@@ -94,15 +94,15 @@ void RemoveManager::execute()
 
 
 LoadManager::LoadManager(weak_ptr<BaseScene> scene_ptr,
-                         weak_ptr<Builder> build):
-    SceneManageer(scene_ptr), _build(build) {}
+                         weak_ptr<BuildDirector> dir):
+    SceneManageer(scene_ptr), _director(dir) {}
 LoadManager::~LoadManager() {}
 void LoadManager::execute()
 {
     if (_scene.expired())
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "LoadManager");
-    if (_build.expired())
+    if (_director.expired())
         throw err::AttributePtrExpired(__FILE__, __LINE__-1, "LoadManager");
 
-    _scene.lock()->add_object(*_build.lock()->get_object());
+    _scene.lock()->add_object(*_director.lock()->create());
 }

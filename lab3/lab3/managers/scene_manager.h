@@ -7,7 +7,7 @@
 #include "objects/visitor/transform_visitor.h"
 #include "objects/visitor/draw_visitor.h"
 #include "objects/creator/object_creator.h"
-#include "builder/builder.h"
+#include "builder/build_director.h"
 
 #include "errors/managers_errors.h"
 
@@ -89,12 +89,12 @@ class LoadManager: public SceneManageer
 {
 public:
     LoadManager(weak_ptr<BaseScene> scene_ptr,
-                weak_ptr<Builder> build);
+                weak_ptr<BuildDirector> director);
     virtual ~LoadManager();
 
     virtual void execute();
 private:
-    weak_ptr<Builder> _build;
+    weak_ptr<BuildDirector> _director;
 };
 
 #endif // SCENE_MANAGER_H
