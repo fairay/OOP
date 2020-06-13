@@ -55,7 +55,8 @@ SOURCES += \
     objects/visitor/object_visitor.cpp \
     builder/carcass_builder/base_builder.cpp \
     managers/scene_manager.cpp \
-    errors/managers_errors.cpp
+    errors/managers_errors.cpp \
+    command/base_command.cpp
 
 
 HEADERS += \
@@ -109,7 +110,8 @@ HEADERS += \
     errors/drawer_errors.h \
     visualiser/base_drawer_factory.h \
     visualiser/qdrawer_factory.h \
-    errors/managers_errors.h
+    errors/managers_errors.h \
+    command/transform.h
 
 FORMS += \
         mainwindow.ui
