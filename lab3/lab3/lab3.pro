@@ -50,7 +50,11 @@ SOURCES += \
     visualiser/visualiser.cpp \
     builder/carcass_builder/director.cpp \
     transform/transformation.cpp \
-    scene/base_scene.cpp
+    scene/base_scene.cpp \
+    scene/scene.cpp \
+    objects/visitor/object_visitor.cpp \
+    builder/carcass_builder/base_builder.cpp \
+    managers/scene_manager.cpp
 
 
 HEADERS += \

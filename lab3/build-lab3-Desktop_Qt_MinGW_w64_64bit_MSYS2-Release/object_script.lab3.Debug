@@ -24,4 +24,7 @@ debug/visualiser.o
 debug/director.o
 debug/transformation.o
 debug/base_scene.o
+debug/scene.o
+debug/object_visitor.o
+debug/base_builder.o
 debug/moc_mainwindow.o

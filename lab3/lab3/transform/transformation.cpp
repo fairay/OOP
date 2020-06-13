@@ -1,5 +1,7 @@
 #include "tranformation.h"
 
+Transformation::~Transformation() {}
+
 using namespace transf;
 
 Move::Move(double dx, double dy, double dz):

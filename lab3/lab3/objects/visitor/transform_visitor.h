@@ -2,6 +2,7 @@
 #define TRANSFORM_VISITOR_H
 
 #include "object_visitor.h"
+#include "transform/transformator.h"
 
 class TransformVisitor: public ObjectVisitor
 {

@@ -24,4 +24,7 @@ release/visualiser.o
 release/director.o
 release/transformation.o
 release/base_scene.o
+release/scene.o
+release/object_visitor.o
+release/base_builder.o
 release/moc_mainwindow.o

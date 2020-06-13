@@ -11,16 +11,15 @@ namespace CarcassBuilder {
 class BaseBuilder: public Builder
 {
 public:
-    BaseBuilder(): _carcass(new Carcass()) {}
-    virtual ~BaseBuilder() = default;
+    BaseBuilder();
+    virtual ~BaseBuilder() = 0;
 
-    virtual void open();
-    virtual void load_nodes();
-    virtual void load_edges();
-    virtual void close();
+    virtual void open() = 0;
+    virtual void load_nodes() = 0;
+    virtual void load_edges() = 0;
+    virtual void close() = 0;
 
-    virtual shared_ptr<SceneObject> get_object()
-    { return _carcass; }
+    virtual shared_ptr<SceneObject> get_object();
 
 protected:
     shared_ptr<Carcass> _carcass;
