@@ -20,5 +20,23 @@ void Scene::add_object(SceneObject& obj)
 }
 void Scene::remove_object(Iterator<SceneObject>& iter)
 {
-    _arr.remove(iter);
+    if (iter == _curr_cam)
+    {
+        _arr.remove(iter);
+        _curr_cam = _find_camera();
+    }
+    else
+    {
+        _arr.remove(iter);
+    }
+}
+
+
+Iterator<SceneObject> Scene::_find_camera()
+{
+    Iterator<SceneObject> iter = begin();
+    for (;iter;iter++)
+        if (iter->is_observer())
+            break;
+    return iter;
 }

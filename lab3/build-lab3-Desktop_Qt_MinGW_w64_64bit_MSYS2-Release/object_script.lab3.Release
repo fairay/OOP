@@ -27,4 +27,6 @@ release/base_scene.o
 release/scene.o
 release/object_visitor.o
 release/base_builder.o
+release/scene_manager.o
+release/managers_errors.o
 release/moc_mainwindow.o
