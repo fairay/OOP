@@ -34,4 +34,8 @@ debug/transform.o
 debug/draw_scene.o
 debug/base_drawer_factory.o
 debug/load.o
+debug/add_object.o
+debug/object_creator.o
+debug/remove_object.o
+debug/change_camera.o
 debug/moc_mainwindow.o

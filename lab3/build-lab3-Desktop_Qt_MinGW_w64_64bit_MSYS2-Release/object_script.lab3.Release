@@ -34,4 +34,8 @@ release/transform.o
 release/draw_scene.o
 release/base_drawer_factory.o
 release/load.o
+release/add_object.o
+release/object_creator.o
+release/remove_object.o
+release/change_camera.o
 release/moc_mainwindow.o

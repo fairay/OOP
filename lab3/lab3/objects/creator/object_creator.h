@@ -8,7 +8,7 @@ class ObjectCreator
 {
 public:
     ObjectCreator();
-    virtual ~ObjectCreator() = default;
+    virtual ~ObjectCreator() = 0;
 
     virtual unique_ptr<SceneObject> create() = 0;
 };

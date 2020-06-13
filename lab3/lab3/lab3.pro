@@ -60,7 +60,11 @@ SOURCES += \
     command/transform.cpp \
     command/draw_scene.cpp \
     visualiser/base_drawer_factory.cpp \
-    command/load.cpp
+    command/load.cpp \
+    command/add_object.cpp \
+    objects/creator/object_creator.cpp \
+    command/remove_object.cpp \
+    command/change_camera.cpp
 
 
 HEADERS += \
@@ -117,7 +121,10 @@ HEADERS += \
     errors/managers_errors.h \
     command/transform.h \
     command/draw_scene.h \
-    command/load.h
+    command/load.h \
+    command/add_object.h \
+    command/remove_object.h \
+    command/change_camera.h
 
 FORMS += \
         mainwindow.ui
