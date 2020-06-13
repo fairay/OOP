@@ -4,7 +4,7 @@
 #include "base_drawer_factory.h"
 #include "qdrawer.h"
 
-class QDrawerFactory
+class QDrawerFactory: public BaseDrawerFactory
 {
 public:
     QDrawerFactory(weak_ptr<QGraphicsScene> scene,

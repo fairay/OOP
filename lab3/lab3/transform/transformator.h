@@ -8,9 +8,11 @@ using namespace std;
 class Transformator
 {
 public:
-    Transformator(Transformation* trans): _trans(trans) {}
+    Transformator(Transformation* trans=nullptr): _trans(trans) {}
     ~Transformator() {}
 
+    void set_trans(Transformation* trans)
+    { _trans = unique_ptr<Transformation>(trans);}
     void transform(double& x, double& y, double& z)
     { _trans->execute(x, y, z); }
 private:

@@ -29,4 +29,8 @@ debug/object_visitor.o
 debug/base_builder.o
 debug/scene_manager.o
 debug/managers_errors.o
+debug/base_command.o
+debug/transform.o
+debug/draw_scene.o
+debug/base_drawer_factory.o
 debug/moc_mainwindow.o

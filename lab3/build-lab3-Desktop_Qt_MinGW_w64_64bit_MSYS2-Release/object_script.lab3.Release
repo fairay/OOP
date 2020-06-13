@@ -29,4 +29,8 @@ release/object_visitor.o
 release/base_builder.o
 release/scene_manager.o
 release/managers_errors.o
+release/base_command.o
+release/transform.o
+release/draw_scene.o
+release/base_drawer_factory.o
 release/moc_mainwindow.o

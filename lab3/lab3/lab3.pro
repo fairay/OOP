@@ -56,7 +56,10 @@ SOURCES += \
     builder/carcass_builder/base_builder.cpp \
     managers/scene_manager.cpp \
     errors/managers_errors.cpp \
-    command/base_command.cpp
+    command/base_command.cpp \
+    command/transform.cpp \
+    command/draw_scene.cpp \
+    visualiser/base_drawer_factory.cpp
 
 
 HEADERS += \
@@ -111,7 +114,8 @@ HEADERS += \
     visualiser/base_drawer_factory.h \
     visualiser/qdrawer_factory.h \
     errors/managers_errors.h \
-    command/transform.h
+    command/transform.h \
+    command/draw_scene.h
 
 FORMS += \
         mainwindow.ui

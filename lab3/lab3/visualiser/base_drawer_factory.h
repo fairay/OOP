@@ -9,7 +9,7 @@ class BaseDrawerFactory
 {
 public:
     BaseDrawerFactory();
-    virtual ~BaseDrawerFactory() = default;
+    virtual ~BaseDrawerFactory() = 0;
 
     virtual unique_ptr<BaseDrawer> create() = 0;
 };

@@ -41,12 +41,12 @@ class DrawManager: public SceneManageer
 {
 public:
     DrawManager(weak_ptr<BaseScene> scene_ptr,
-                weak_ptr<Visualizer> visual);
+                weak_ptr<BaseDrawerFactory> draw_factory);
     virtual ~DrawManager();
 
     virtual void execute();
 private:
-    weak_ptr<Visualizer> _visual;
+    weak_ptr<BaseDrawerFactory> _draw;
 };
 
 class CameraManager: public SceneManageer

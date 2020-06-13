@@ -15,6 +15,8 @@ Iterator<SceneObject> SceneManageer::_find_i(size_t index)
     return iter;
 }
 
+
+
 TransformManager::TransformManager(weak_ptr<BaseScene> scene_ptr,
                                    weak_ptr<Transformator> trans, size_t index):
     SceneManageer(scene_ptr), _trans(trans), _index(index) {}
@@ -30,14 +32,21 @@ void TransformManager::execute()
 
 
 DrawManager::DrawManager(weak_ptr<BaseScene> scene_ptr,
-                         weak_ptr<Visualizer> visual):
-    SceneManageer(scene_ptr), _visual(visual) {}
+                         weak_ptr<BaseDrawerFactory> draw_factory):
+    SceneManageer(scene_ptr), _draw(draw_factory) {}
 DrawManager::~DrawManager() {}
 void DrawManager::execute()
 {
     if (_scene.expired())
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "DrawManager");
-    shared_ptr<ObjectVisitor> visitor(new DrawVisitor(_visual));
+    if (_draw.expired())
+        throw err::AttributePtrExpired(__FILE__, __LINE__-1, "DrawManager");
+
+    shared_ptr<Visualizer> visual(new Visualizer());
+    visual->set_draw(*_draw.lock());
+    visual->set_camera(_scene.lock()->get_camera());
+
+    shared_ptr<ObjectVisitor> visitor(new DrawVisitor(visual));
     for (auto obj: *_scene.lock())
         obj.accept(visitor);
 }
