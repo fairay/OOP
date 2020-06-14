@@ -2,6 +2,7 @@
 #define TRANFORMATION_H
 
 #include "math.h"
+#define PI 3.1415
 
 class Transformation
 {
@@ -39,6 +40,8 @@ private:
     void rotate_x(double& x, double& y, double& z);
     void rotate_y(double& x, double& y, double& z);
     void rotate_z(double& x, double& y, double& z);
+
+    double _to_radians(double a);
 };
 
 class Scale: public Transformation

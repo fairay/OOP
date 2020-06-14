@@ -30,8 +30,12 @@ void Scale::execute(double& x, double& y, double& z)
 }
 
 
-Rotate::Rotate(double dx, double dy, double dz):
-    _ax(dx), _ay(dy), _az(dz) {}
+Rotate::Rotate(double dx, double dy, double dz)
+{
+    _ax = _to_radians(dx);
+    _ay = _to_radians(dy);
+    _az = _to_radians(dz);
+}
 
 Rotate::~Rotate() {}
 
@@ -68,4 +72,9 @@ void Rotate::rotate_z(double& x_, double& y_, double&)
 
     x_ = x;
     y_ = y;
+}
+
+double Rotate::_to_radians(double a)
+{
+    return a * PI / 180;
 }
