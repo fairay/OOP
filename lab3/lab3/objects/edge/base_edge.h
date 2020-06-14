@@ -10,7 +10,7 @@ public:
     BaseEdge();
     BaseEdge(const BasePoint& p1, const BasePoint& p2);
     explicit BaseEdge(const BaseEdge& other);
-    virtual ~BaseEdge();
+    virtual ~BaseEdge() = 0;
 
     BasePoint& get_p1();
     BasePoint& get_p2();

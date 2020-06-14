@@ -67,7 +67,9 @@ SOURCES += \
     command/change_camera.cpp \
     objects/scene_object.cpp \
     builder/build_director.cpp \
-    builder/builder.cpp
+    builder/builder.cpp \
+    objects/simple_object.cpp \
+    visualiser/base_drawer.cpp
 
 
 HEADERS += \

@@ -3,14 +3,12 @@
 BaseEdge::BaseEdge() {}
 BaseEdge::BaseEdge(const BasePoint& p1, const BasePoint& p2):
     _p1(p1), _p2(p2) {}
-
 BaseEdge::BaseEdge(const BaseEdge& other)
 {
     _p1 = other.get_p1();
     _p2 = other.get_p2();
 }
-
-BaseEdge::~BaseEdge() = default;
+BaseEdge::~BaseEdge() {}
 
 BasePoint& BaseEdge::get_p1()
 {

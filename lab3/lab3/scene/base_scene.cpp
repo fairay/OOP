@@ -2,7 +2,12 @@
 
 BaseScene::BaseScene():
     _arr(), _curr_cam(_arr.end()) {}
-BaseScene::~BaseScene() {}
+BaseScene::~BaseScene()
+{
+    for (auto ptr: _arr)
+        delete ptr;
+    _arr.clear();
+}
 
 
 size_t BaseScene::get_size()

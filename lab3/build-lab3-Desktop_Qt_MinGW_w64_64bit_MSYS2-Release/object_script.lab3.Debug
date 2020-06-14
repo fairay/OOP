@@ -39,4 +39,8 @@ debug/object_creator.o
 debug/remove_object.o
 debug/change_camera.o
 debug/scene_object.o
+debug/build_director.o
+debug/builder.o
+debug/simple_object.o
+debug/base_drawer.o
 debug/moc_mainwindow.o

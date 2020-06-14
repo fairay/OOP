@@ -6,8 +6,8 @@
 class BaseDrawer
 {
 public:
-    BaseDrawer() = default;
-    virtual ~BaseDrawer() = default;
+    BaseDrawer();
+    virtual ~BaseDrawer() = 0;
 
     virtual void draw_line(double x1, double y1, double x2, double y2) = 0;
     virtual void draw_point(double x, double y) = 0;

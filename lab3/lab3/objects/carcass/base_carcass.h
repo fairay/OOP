@@ -8,7 +8,7 @@ class BaseCarcass: public CompositeObject
 public:
     BaseCarcass();
     explicit BaseCarcass(const BaseCarcass& other);
-    virtual ~BaseCarcass();
+    virtual ~BaseCarcass() = 0;
 
     virtual bool is_drawable() const final;
     virtual bool is_observer() const final;

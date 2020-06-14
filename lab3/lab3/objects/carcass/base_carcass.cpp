@@ -3,7 +3,6 @@
 BaseCarcass::BaseCarcass() {};
 BaseCarcass::BaseCarcass(const BaseCarcass& other):
     CompositeObject (other) {}
-
 BaseCarcass::~BaseCarcass() {}
 
 bool BaseCarcass::is_drawable() const

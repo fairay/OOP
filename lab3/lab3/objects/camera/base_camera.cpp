@@ -11,7 +11,7 @@ BaseCamera::BaseCamera(const BaseCamera& other)
     _z = other.get_z();
 }
 
-BaseCamera::~BaseCamera() = default;
+BaseCamera::~BaseCamera() {};
 
 double& BaseCamera::get_x() {return _x;}
 double& BaseCamera::get_y() {return _y;}

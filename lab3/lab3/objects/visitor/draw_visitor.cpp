@@ -8,11 +8,9 @@ DrawVisitor::~DrawVisitor() = default;
 
 void DrawVisitor::visit(BasePoint &point)
 {
-    cout << "Draw point: ";
     if (_visual.expired())
         throw err::VisualExpired(__FILE__, __LINE__-1);
     _visual.lock()->draw_point(point);
-    cout << "Ok" << endl;
 }
 
 void DrawVisitor::visit(BaseCamera&)
@@ -32,7 +30,6 @@ void DrawVisitor::visit(BaseCarcass& carcass)
     if (_visual.expired())
         throw err::VisualExpired(__FILE__, __LINE__-1);
 
-    cout << "Draw carcass" << endl;
     for (auto obj : carcass)
         obj->accept(_this_ptr);
 }

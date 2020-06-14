@@ -4,7 +4,7 @@
 #include "base_drawer.h"
 #include "base_drawer_factory.h"
 #include "objects/camera/base_camera.h"
-#include "objects/point/base_point.h"
+#include "objects/point/point.h"
 #include "memory"
 #include "math.h"
 
@@ -26,7 +26,7 @@ private:
     shared_ptr<BaseDrawer> _draw;
     shared_ptr<BaseCamera> _camera;
 
-    BasePoint _proj_point(const BasePoint& p);
+    shared_ptr<BasePoint> _proj_point(const BasePoint& p);
 };
 
 #endif // VISUALIZER_H

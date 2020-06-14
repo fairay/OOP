@@ -1,11 +1,16 @@
 #include "composite_object.h"
 
 CompositeObject::CompositeObject(): _obj_arr() {}
-
 CompositeObject::CompositeObject(const CompositeObject& other)
 {
     for (auto obj: other._obj_arr)
         _obj_arr.append(obj->clone());
+}
+CompositeObject::~CompositeObject()
+{
+    for (auto ptr: _obj_arr)
+        delete ptr;
+    _obj_arr.clear();
 }
 
 bool CompositeObject::is_observer() const

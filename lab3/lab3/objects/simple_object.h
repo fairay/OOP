@@ -6,8 +6,8 @@
 class SimpleObject: public SceneObject
 {
 public:
-    SimpleObject() = default;
-    virtual ~SimpleObject() = default;
+    SimpleObject();
+    virtual ~SimpleObject() = 0;
 
     virtual bool is_complex() const final {return false;}
 };
@@ -15,8 +15,8 @@ public:
 class VisibleObject: public SimpleObject
 {
 public:
-    VisibleObject() = default;
-    virtual ~VisibleObject() = default;
+    VisibleObject();
+    virtual ~VisibleObject() = 0;
 
     virtual bool is_drawable() const final {return true;}
 };
@@ -24,8 +24,8 @@ public:
 class InvisibleObject: public SimpleObject
 {
 public:
-    InvisibleObject() = default;
-    virtual ~InvisibleObject() = default;
+    InvisibleObject();
+    virtual ~InvisibleObject() = 0;
 
     virtual bool is_drawable() const final {return false;}
 };

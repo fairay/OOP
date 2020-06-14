@@ -13,15 +13,12 @@ public:
     SceneObject();
     virtual ~SceneObject() = 0;
 
-    virtual bool is_drawable() const {return false;}
-    virtual bool is_observer() const { cout<< "0"; return false;}
-    virtual bool is_complex() const {return false;}
+    virtual bool is_drawable() const;
+    virtual bool is_observer() const;
+    virtual bool is_complex() const;
 
-    virtual void accept(shared_ptr<ObjectVisitor>)
-    {throw err::UndefindeVisiter(__FILE__, __LINE__);}
-
-    virtual SceneObject* clone()
-    { throw err::UndefindeClone(__FILE__, __LINE__);}
+    virtual void accept(shared_ptr<ObjectVisitor>);
+    virtual SceneObject* clone();
 };
 
 #endif // SNENE_OBJECT_H

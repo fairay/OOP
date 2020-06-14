@@ -39,4 +39,8 @@ release/object_creator.o
 release/remove_object.o
 release/change_camera.o
 release/scene_object.o
+release/build_director.o
+release/builder.o
+release/simple_object.o
+release/base_drawer.o
 release/moc_mainwindow.o

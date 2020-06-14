@@ -9,7 +9,7 @@ public:
     BaseCamera();
     BaseCamera(double x, double y, double z);
     explicit BaseCamera(const BaseCamera& other);
-    virtual ~BaseCamera();
+    virtual ~BaseCamera() = 0;
 
     virtual bool is_observer() const final {cout <<"1"; return true;}
 

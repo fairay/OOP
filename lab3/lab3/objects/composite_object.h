@@ -9,6 +9,7 @@ class CompositeObject: public SceneObject
 public:
     CompositeObject();
     explicit CompositeObject(const CompositeObject& other);
+    virtual ~CompositeObject();
 
     virtual bool is_complex() const final {return true;}
     virtual bool is_observer() const;
