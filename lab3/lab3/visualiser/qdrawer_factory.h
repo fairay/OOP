@@ -11,7 +11,7 @@ public:
                    const QPen& p_pen, const QPen& l_pen);
     virtual ~QDrawerFactory();
 
-    virtual unique_ptr<BaseDrawer> create();
+    virtual BaseDrawer* create();
 
 private:
     weak_ptr<QGraphicsScene> _scene;

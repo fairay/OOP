@@ -5,7 +5,7 @@ Visualizer::~Visualizer() {}
 
 void Visualizer::set_draw(BaseDrawerFactory& factory)
 {
-    _draw = factory.create();
+    _draw = shared_ptr<BaseDrawer>(factory.create());
 }
 void Visualizer::set_camera(shared_ptr<BaseCamera> camera)
 {

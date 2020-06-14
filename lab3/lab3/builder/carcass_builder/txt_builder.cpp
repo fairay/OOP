@@ -56,7 +56,7 @@ void TxtBuilder::_load_node()
 {
     double x, y, z;
     _file >> x >> y >> z;
-    _carcass->add_object(Point(x, y, z));
+    _carcass->add_object(new Point(x, y, z));
     _p_arr.append(Point(x, y, z));
 }
 
@@ -70,5 +70,5 @@ void TxtBuilder::_load_edge()
     if (i1 >= _p_arr.get_size())
         throw err::NodeOutOfRange(__FILE__, __LINE__-1, i1);
 
-    _carcass->add_object(Edge(_p_arr[i1], _p_arr[i2]));
+    _carcass->add_object(new Edge(_p_arr[i1], _p_arr[i2]));
 }

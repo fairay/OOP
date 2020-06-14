@@ -6,7 +6,9 @@ DrawScene::DrawScene() {}
 DrawScene::~DrawScene() {}
 void DrawScene::execute(weak_ptr<BaseScene> scene)
 {
-    DrawManager(scene, _draw_factory).execute();
+    DrawManager mng(scene, _draw_factory);
+    mng.execute();
+    cout << "Done" << endl;
 }
 
 QDrawScene::QDrawScene(weak_ptr<QGraphicsScene> scene,

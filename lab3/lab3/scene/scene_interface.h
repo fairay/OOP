@@ -11,7 +11,7 @@ public:
         _scene(scene) {}
     ~SceneInterface() = default;
 
-    void execute(BaseCommand& cmd)
+    void execute(command::BaseCommand& cmd)
     { cmd.execute(weak_ptr<BaseScene>(_scene)); }
 private:
     shared_ptr<BaseScene> _scene;

@@ -12,12 +12,10 @@ public:
         _x(x), _y(y), _z(z) {}
     virtual ~PointCreator() override;
 
-    virtual unique_ptr<SceneObject> create() override
-    { return unique_ptr<SceneObject>(new Point(_x, _y, _z));}
+    virtual SceneObject* create() override
+    { return new Point(_x, _y, _z);}
 private:
     double _x, _y, _z;
 };
-
-PointCreator::~PointCreator() {}
 
 #endif // POINT_CREATOR_H

@@ -17,9 +17,9 @@ Rotate::Rotate(double ax, double ay, double az, size_t index):
 Rotate::~Rotate() {}
 
 Move::Move(double ax, double ay, double az, size_t index):
-    Transform (new transf::Rotate(ax, ay, az), index) {}
+    Transform (new transf::Move(ax, ay, az), index) {}
 Move::~Move() {}
 
 Scale::Scale(double ax, double ay, double az, size_t index):
-    Transform (new transf::Rotate(ax, ay, az), index) {}
+    Transform (new transf::Scale(ax, ay, az), index) {}
 Scale::~Scale() {}

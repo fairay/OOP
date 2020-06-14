@@ -10,7 +10,7 @@ public:
     ObjectCreator();
     virtual ~ObjectCreator() = 0;
 
-    virtual unique_ptr<SceneObject> create() = 0;
+    virtual SceneObject* create() = 0;
 };
 
 #endif // OBJECT_CREATOR_H

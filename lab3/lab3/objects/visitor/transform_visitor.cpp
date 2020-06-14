@@ -24,10 +24,10 @@ void TransformVisitor::visit(BaseEdge& edge)
 {
     if (_trans.expired())
         throw err::TransExpired(__FILE__, __LINE__-1);
-    BasePoint& p = edge.get_p1();
-    _trans.lock()->transform(p.get_x(), p.get_y(), p.get_z());
-    p = edge.get_p2();
-    _trans.lock()->transform(p.get_x(), p.get_y(), p.get_z());
+    BasePoint& p1 = edge.get_p1();
+    BasePoint& p2 = edge.get_p2();
+    _trans.lock()->transform(p1.get_x(), p1.get_y(), p1.get_z());
+    _trans.lock()->transform(p2.get_x(), p2.get_y(), p2.get_z());
 }
 
 void TransformVisitor::visit(BaseCarcass& carcass)
@@ -35,5 +35,5 @@ void TransformVisitor::visit(BaseCarcass& carcass)
     if (_trans.expired())
         throw err::TransExpired(__FILE__, __LINE__-1);
     for (auto obj : carcass)
-        obj.accept(shared_ptr<ObjectVisitor>(this));
+        obj->accept(_this_ptr);
 }

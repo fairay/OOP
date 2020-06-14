@@ -64,7 +64,10 @@ SOURCES += \
     command/add_object.cpp \
     objects/creator/object_creator.cpp \
     command/remove_object.cpp \
-    command/change_camera.cpp
+    command/change_camera.cpp \
+    objects/scene_object.cpp \
+    builder/build_director.cpp \
+    builder/builder.cpp
 
 
 HEADERS += \
@@ -124,7 +127,8 @@ HEADERS += \
     command/load.h \
     command/add_object.h \
     command/remove_object.h \
-    command/change_camera.h
+    command/change_camera.h \
+    command/commands.h
 
 FORMS += \
         mainwindow.ui

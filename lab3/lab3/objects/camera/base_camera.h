@@ -11,7 +11,7 @@ public:
     explicit BaseCamera(const BaseCamera& other);
     virtual ~BaseCamera();
 
-    virtual bool is_observer() const final {return true;}
+    virtual bool is_observer() const final {cout <<"1"; return true;}
 
     double& get_x();
     double& get_y();

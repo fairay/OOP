@@ -11,7 +11,7 @@ public:
     BaseDrawerFactory();
     virtual ~BaseDrawerFactory() = 0;
 
-    virtual unique_ptr<BaseDrawer> create() = 0;
+    virtual BaseDrawer* create() = 0;
 };
 
 #endif // BASE_DRAWER_FACTORY_H

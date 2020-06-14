@@ -11,7 +11,7 @@ void Edge::accept(shared_ptr<ObjectVisitor> visitor)
     visitor->visit(*this);
 }
 
-unique_ptr<SceneObject> Edge::clone()
+SceneObject *Edge::clone()
 {
-    return unique_ptr<SceneObject>(new Edge(*this));
+    return (new Edge(*this));
 }

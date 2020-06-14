@@ -20,7 +20,7 @@ void QDrawer::draw_point(double x, double y)
 {
     if (_scene.expired()) throw err::SceneExpired(__FILE__, __LINE__);
     shared_ptr<QGraphicsScene> sc = _scene.lock();
-    sc->addEllipse(x-1, y-1, 2, 2, _point_pen, _point_brush);
+    sc->addEllipse(x-3, y-3, 6, 6, _point_pen, _point_brush);
 }
 
 void QDrawer::clear()

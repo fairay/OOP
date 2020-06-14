@@ -10,17 +10,17 @@ using namespace std;
 class SceneObject
 {
 public:
-    SceneObject() = default;
-    virtual ~SceneObject() = default;
+    SceneObject();
+    virtual ~SceneObject() = 0;
 
     virtual bool is_drawable() const {return false;}
-    virtual bool is_observer() const {return false;}
+    virtual bool is_observer() const { cout<< "0"; return false;}
     virtual bool is_complex() const {return false;}
 
     virtual void accept(shared_ptr<ObjectVisitor>)
     {throw err::UndefindeVisiter(__FILE__, __LINE__);}
 
-    virtual unique_ptr<SceneObject> clone()
+    virtual SceneObject* clone()
     { throw err::UndefindeClone(__FILE__, __LINE__);}
 };
 

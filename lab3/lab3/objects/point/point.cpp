@@ -11,7 +11,7 @@ void Point::accept(shared_ptr<ObjectVisitor> visitor)
     visitor->visit(*this);
 }
 
-unique_ptr<SceneObject> Point::clone()
+SceneObject* Point::clone()
 {
-    return unique_ptr<SceneObject>(new Point(*this));
+    return (new Point(*this));
 }

@@ -54,7 +54,42 @@ SOURCES       = ../lab3/main.cpp \
 		../lab3/errors/array_errors.cpp \
 		../lab3/errors/object_errors.cpp \
 		../lab3/objects/composite_object.cpp \
-		../lab3/objects/point/base_point.cpp debug/moc_mainwindow.cpp
+		../lab3/objects/point/base_point.cpp \
+		../lab3/objects/point/point.cpp \
+		../lab3/objects/camera/base_camera.cpp \
+		../lab3/objects/camera/camera.cpp \
+		../lab3/objects/edge/base_edge.cpp \
+		../lab3/objects/edge/edge.cpp \
+		../lab3/objects/carcass/base_carcass.cpp \
+		../lab3/objects/carcass/carcass.cpp \
+		../lab3/objects/visitor/draw_visitor.cpp \
+		../lab3/objects/visitor/transform_visitor.cpp \
+		../lab3/builder/carcass_builder/txt_builder.cpp \
+		../lab3/errors/builder_errors.cpp \
+		../lab3/visualiser/qdrawer.cpp \
+		../lab3/errors/drawer_errors.cpp \
+		../lab3/visualiser/qdrawer_factory.cpp \
+		../lab3/visualiser/visualiser.cpp \
+		../lab3/builder/carcass_builder/director.cpp \
+		../lab3/transform/transformation.cpp \
+		../lab3/scene/base_scene.cpp \
+		../lab3/scene/scene.cpp \
+		../lab3/objects/visitor/object_visitor.cpp \
+		../lab3/builder/carcass_builder/base_builder.cpp \
+		../lab3/managers/scene_manager.cpp \
+		../lab3/errors/managers_errors.cpp \
+		../lab3/command/base_command.cpp \
+		../lab3/command/transform.cpp \
+		../lab3/command/draw_scene.cpp \
+		../lab3/visualiser/base_drawer_factory.cpp \
+		../lab3/command/load.cpp \
+		../lab3/command/add_object.cpp \
+		../lab3/objects/creator/object_creator.cpp \
+		../lab3/command/remove_object.cpp \
+		../lab3/command/change_camera.cpp \
+		../lab3/objects/scene_object.cpp \
+		../lab3/builder/build_director.cpp \
+		../lab3/builder/builder.cpp debug/moc_mainwindow.cpp
 OBJECTS       = debug/main.o \
 		debug/mainwindow.o \
 		debug/base_array.o \
@@ -63,6 +98,41 @@ OBJECTS       = debug/main.o \
 		debug/object_errors.o \
 		debug/composite_object.o \
 		debug/base_point.o \
+		debug/point.o \
+		debug/base_camera.o \
+		debug/camera.o \
+		debug/base_edge.o \
+		debug/edge.o \
+		debug/base_carcass.o \
+		debug/carcass.o \
+		debug/draw_visitor.o \
+		debug/transform_visitor.o \
+		debug/txt_builder.o \
+		debug/builder_errors.o \
+		debug/qdrawer.o \
+		debug/drawer_errors.o \
+		debug/qdrawer_factory.o \
+		debug/visualiser.o \
+		debug/director.o \
+		debug/transformation.o \
+		debug/base_scene.o \
+		debug/scene.o \
+		debug/object_visitor.o \
+		debug/base_builder.o \
+		debug/scene_manager.o \
+		debug/managers_errors.o \
+		debug/base_command.o \
+		debug/transform.o \
+		debug/draw_scene.o \
+		debug/base_drawer_factory.o \
+		debug/load.o \
+		debug/add_object.o \
+		debug/object_creator.o \
+		debug/remove_object.o \
+		debug/change_camera.o \
+		debug/scene_object.o \
+		debug/build_director.o \
+		debug/builder.o \
 		debug/moc_mainwindow.o
 
 DIST          =  ../lab3/mainwindow.h \
@@ -85,14 +155,86 @@ DIST          =  ../lab3/mainwindow.h \
 		../lab3/objects/camera/base_camera.h \
 		../lab3/objects/carcass/base_carcass.h \
 		../lab3/objects/edge/base_edge.h \
-		../lab3/objects/point/base_point.h ../lab3/main.cpp \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/point/point.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/objects/creator/edge_creator.h \
+		../lab3/objects/creator/point_creator.h \
+		../lab3/objects/creator/camera_creator.h \
+		../lab3/objects/camera/camera.h \
+		../lab3/objects/edge/edge.h \
+		../lab3/objects/carcass/carcass.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/builder/builder.h \
+		../lab3/builder/build_director.h \
+		../lab3/builder/carcass_builder/base_builder.h \
+		../lab3/builder/carcass_builder/director.h \
+		../lab3/builder/carcass_builder/txt_builder.h \
+		../lab3/errors/builder_errors.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/scene/base_scene.h \
+		../lab3/scene/scene.h \
+		../lab3/scene/scene_interface.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/visualiser/qdrawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/visualiser/qdrawer_factory.h \
+		../lab3/errors/managers_errors.h \
+		../lab3/command/transform.h \
+		../lab3/command/draw_scene.h \
+		../lab3/command/load.h \
+		../lab3/command/add_object.h \
+		../lab3/command/remove_object.h \
+		../lab3/command/change_camera.h \
+		../lab3/command/commands.h ../lab3/main.cpp \
 		../lab3/mainwindow.cpp \
 		../lab3/array/base_array.cpp \
 		../lab3/errors/base_error.cpp \
 		../lab3/errors/array_errors.cpp \
 		../lab3/errors/object_errors.cpp \
 		../lab3/objects/composite_object.cpp \
-		../lab3/objects/point/base_point.cpp
+		../lab3/objects/point/base_point.cpp \
+		../lab3/objects/point/point.cpp \
+		../lab3/objects/camera/base_camera.cpp \
+		../lab3/objects/camera/camera.cpp \
+		../lab3/objects/edge/base_edge.cpp \
+		../lab3/objects/edge/edge.cpp \
+		../lab3/objects/carcass/base_carcass.cpp \
+		../lab3/objects/carcass/carcass.cpp \
+		../lab3/objects/visitor/draw_visitor.cpp \
+		../lab3/objects/visitor/transform_visitor.cpp \
+		../lab3/builder/carcass_builder/txt_builder.cpp \
+		../lab3/errors/builder_errors.cpp \
+		../lab3/visualiser/qdrawer.cpp \
+		../lab3/errors/drawer_errors.cpp \
+		../lab3/visualiser/qdrawer_factory.cpp \
+		../lab3/visualiser/visualiser.cpp \
+		../lab3/builder/carcass_builder/director.cpp \
+		../lab3/transform/transformation.cpp \
+		../lab3/scene/base_scene.cpp \
+		../lab3/scene/scene.cpp \
+		../lab3/objects/visitor/object_visitor.cpp \
+		../lab3/builder/carcass_builder/base_builder.cpp \
+		../lab3/managers/scene_manager.cpp \
+		../lab3/errors/managers_errors.cpp \
+		../lab3/command/base_command.cpp \
+		../lab3/command/transform.cpp \
+		../lab3/command/draw_scene.cpp \
+		../lab3/visualiser/base_drawer_factory.cpp \
+		../lab3/command/load.cpp \
+		../lab3/command/add_object.cpp \
+		../lab3/objects/creator/object_creator.cpp \
+		../lab3/command/remove_object.cpp \
+		../lab3/command/change_camera.cpp \
+		../lab3/objects/scene_object.cpp \
+		../lab3/builder/build_director.cpp \
+		../lab3/builder/builder.cpp
 QMAKE_TARGET  = lab3
 DESTDIR        = debug/ #avoid trailing-slash linebreak
 TARGET         = lab3.exe
@@ -104,7 +246,7 @@ first: all
 all: Makefile.Debug  debug/lab3.exe
 
 debug/lab3.exe: ui_mainwindow.h $(OBJECTS) 
-	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
+	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.lab3.Debug  $(LIBS)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Debug ../lab3/lab3.pro -spec win32-g++ CONFIG+=qml_debug
@@ -112,10 +254,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) lab3.zip $(SOURCES) $(DIST) ../lab3/lab3.pro ../../../../msys64/mingw64/share/qt5/mkspecs/features/spec_pre.prf ../../../../msys64/mingw64/share/qt5/mkspecs/qdevice.pri ../../../../msys64/mingw64/share/qt5/mkspecs/features/device_config.prf ../../../../msys64/mingw64/share/qt5/mkspecs/common/sanitize.conf ../../../../msys64/mingw64/share/qt5/mkspecs/common/gcc-base.conf ../../../../msys64/mingw64/share/qt5/mkspecs/common/g++-base.conf ../../../../msys64/mingw64/share/qt5/mkspecs/common/angle.conf ../../../../msys64/mingw64/share/qt5/mkspecs/common/windows-vulkan.conf ../../../../msys64/mingw64/share/qt5/mkspecs/common/g++-win32.conf ../../../../msys64/mingw64/share/qt5/mkspecs/qconfig.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3danimation.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3danimation_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dcore.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dcore_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dextras.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dextras_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dinput.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dinput_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dlogic.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dlogic_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquick.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquick_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickanimation.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickanimation_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickextras.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickextras_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickinput.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickinput_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickrender.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickrender_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickscene2d.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickscene2d_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3drender.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3drender_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axbase.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axbase_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axcontainer.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axcontainer_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axserver.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axserver_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bluetooth.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bluetooth_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_charts.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_charts_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_concurrent.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_concurrent_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_core.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_core_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_datavisualization.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_datavisualization_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_dbus.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_dbus_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designer.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designer_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_devicediscovery_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_edid_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_fb_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_fontdatabase_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gamepad.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gamepad_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gui.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gui_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_help.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_help_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_location.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_location_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimedia.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimedia_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimediawidgets_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_network.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_network_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_networkauth.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_networkauth_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_nfc.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_nfc_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_opengl.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_opengl_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_openglextensions.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_packetprotocol_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioning.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioning_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioningquick.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioningquick_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_printsupport.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_printsupport_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_purchasing.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_purchasing_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qml.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qml_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmldebug_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmldevtools_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmltest.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmltest_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quick.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quick_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickcontrols2.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickcontrols2_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickparticles_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickshapes_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quicktemplates2_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickwidgets.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickwidgets_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_remoteobjects.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_remoteobjects_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_repparser.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_repparser_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_script.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_script_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scripttools.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scripttools_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scxml.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scxml_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sensors.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sensors_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialbus.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialbus_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialport.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialport_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sql.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sql_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_svg.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_svg_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_testlib.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_testlib_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_texttospeech.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_texttospeech_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_theme_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uiplugin.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uitools.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uitools_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_virtualkeyboard.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_virtualkeyboard_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webchannel.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webchannel_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_websockets.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_websockets_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webview.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webview_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_widgets.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_widgets_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_windowsuiautomation_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_winextras.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_winextras_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xml.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xml_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xmlpatterns.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xmlpatterns_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/features/qt_functions.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/qt_config.prf ../../../../msys64/mingw64/share/qt5/mkspecs/win32-g++/qmake.conf ../../../../msys64/mingw64/share/qt5/mkspecs/features/spec_post.prf .qmake.stash ../../../../msys64/mingw64/share/qt5/mkspecs/features/exclusive_builds.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/toolchain.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/default_pre.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/win32/default_pre.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/resolve_config.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/exclusive_builds_post.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/default_post.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/build_pass.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/qml_debug.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/precompile_header.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/warn_on.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/qt.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/resources.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/moc.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/win32/opengl.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/uic.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/qmake_use.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/file_copies.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/win32/windows.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/testcase_targets.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/exceptions.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/yacc.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/lex.prf ../lab3/lab3.pro ../../../../msys64/mingw64/lib/Qt5Widgetsd.prl ../../../../msys64/mingw64/lib/Qt5Guid.prl ../../../../msys64/mingw64/lib/Qt5Cored.prl ../../../../msys64/mingw64/lib/qtmaind.prl    ../../../../msys64/mingw64/share/qt5/mkspecs/features/data/dummy.cpp ../lab3/mainwindow.h ../lab3/command/base_command.h ../lab3/array/array.h ../lab3/errors/base_error.h ../lab3/array/base_array.h ../lab3/array/base_iter.h ../lab3/array/base_iter.hpp ../lab3/errors/array_errors.h ../lab3/array/const_iter.h ../lab3/array/iter.h ../lab3/array/const_iter.hpp ../lab3/array/iter.hpp ../lab3/array/array.hpp ../lab3/errors/object_errors.h ../lab3/objects/simple_object.h ../lab3/objects/scene_object.h ../lab3/objects/composite_object.h ../lab3/objects/camera/base_camera.h ../lab3/objects/carcass/base_carcass.h ../lab3/objects/edge/base_edge.h ../lab3/objects/point/base_point.h  ../lab3/main.cpp ../lab3/mainwindow.cpp ../lab3/array/base_array.cpp ../lab3/errors/base_error.cpp ../lab3/errors/array_errors.cpp ../lab3/errors/object_errors.cpp ../lab3/objects/composite_object.cpp ../lab3/objects/point/base_point.cpp ../lab3/mainwindow.ui    
+	$(ZIP) lab3.zip $(SOURCES) $(DIST) ../lab3/lab3.pro ../../../../msys64/mingw64/share/qt5/mkspecs/features/spec_pre.prf ../../../../msys64/mingw64/share/qt5/mkspecs/qdevice.pri ../../../../msys64/mingw64/share/qt5/mkspecs/features/device_config.prf ../../../../msys64/mingw64/share/qt5/mkspecs/common/sanitize.conf ../../../../msys64/mingw64/share/qt5/mkspecs/common/gcc-base.conf ../../../../msys64/mingw64/share/qt5/mkspecs/common/g++-base.conf ../../../../msys64/mingw64/share/qt5/mkspecs/common/angle.conf ../../../../msys64/mingw64/share/qt5/mkspecs/common/windows-vulkan.conf ../../../../msys64/mingw64/share/qt5/mkspecs/common/g++-win32.conf ../../../../msys64/mingw64/share/qt5/mkspecs/qconfig.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3danimation.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3danimation_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dcore.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dcore_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dextras.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dextras_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dinput.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dinput_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dlogic.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dlogic_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquick.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquick_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickanimation.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickanimation_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickextras.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickextras_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickinput.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickinput_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickrender.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickrender_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickscene2d.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3dquickscene2d_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3drender.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_3drender_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_accessibility_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axbase.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axbase_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axcontainer.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axcontainer_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axserver.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_axserver_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bluetooth.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bluetooth_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_charts.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_charts_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_concurrent.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_concurrent_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_core.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_core_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_datavisualization.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_datavisualization_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_dbus.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_dbus_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designer.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designer_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_devicediscovery_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_edid_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_fb_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_fontdatabase_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gamepad.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gamepad_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gui.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_gui_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_help.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_help_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_location.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_location_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimedia.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimedia_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_multimediawidgets_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_network.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_network_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_networkauth.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_networkauth_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_nfc.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_nfc_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_opengl.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_opengl_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_openglextensions.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_packetprotocol_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioning.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioning_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioningquick.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_positioningquick_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_printsupport.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_printsupport_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_purchasing.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_purchasing_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qml.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qml_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmldebug_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmldevtools_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmltest.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qmltest_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quick.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quick_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickcontrols2.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickcontrols2_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickparticles_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickshapes_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quicktemplates2_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickwidgets.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_quickwidgets_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_remoteobjects.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_remoteobjects_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_repparser.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_repparser_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_script.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_script_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scripttools.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scripttools_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scxml.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_scxml_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sensors.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sensors_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialbus.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialbus_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialport.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_serialport_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sql.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_sql_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_svg.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_svg_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_testlib.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_testlib_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_texttospeech.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_texttospeech_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_theme_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uiplugin.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uitools.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_uitools_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_virtualkeyboard.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_virtualkeyboard_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_vulkan_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webchannel.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webchannel_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_websockets.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_websockets_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webview.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_webview_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_widgets.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_widgets_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_windowsuiautomation_support_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_winextras.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_winextras_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xml.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xml_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xmlpatterns.pri ../../../../msys64/mingw64/share/qt5/mkspecs/modules/qt_lib_xmlpatterns_private.pri ../../../../msys64/mingw64/share/qt5/mkspecs/features/qt_functions.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/qt_config.prf ../../../../msys64/mingw64/share/qt5/mkspecs/win32-g++/qmake.conf ../../../../msys64/mingw64/share/qt5/mkspecs/features/spec_post.prf .qmake.stash ../../../../msys64/mingw64/share/qt5/mkspecs/features/exclusive_builds.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/toolchain.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/default_pre.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/win32/default_pre.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/resolve_config.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/exclusive_builds_post.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/default_post.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/build_pass.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/qml_debug.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/precompile_header.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/warn_on.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/qt.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/resources.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/moc.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/win32/opengl.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/uic.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/qmake_use.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/file_copies.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/win32/windows.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/testcase_targets.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/exceptions.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/yacc.prf ../../../../msys64/mingw64/share/qt5/mkspecs/features/lex.prf ../lab3/lab3.pro ../../../../msys64/mingw64/lib/Qt5Widgetsd.prl ../../../../msys64/mingw64/lib/Qt5Guid.prl ../../../../msys64/mingw64/lib/Qt5Cored.prl ../../../../msys64/mingw64/lib/qtmaind.prl    ../../../../msys64/mingw64/share/qt5/mkspecs/features/data/dummy.cpp ../lab3/mainwindow.h ../lab3/command/base_command.h ../lab3/array/array.h ../lab3/errors/base_error.h ../lab3/array/base_array.h ../lab3/array/base_iter.h ../lab3/array/base_iter.hpp ../lab3/errors/array_errors.h ../lab3/array/const_iter.h ../lab3/array/iter.h ../lab3/array/const_iter.hpp ../lab3/array/iter.hpp ../lab3/array/array.hpp ../lab3/errors/object_errors.h ../lab3/objects/simple_object.h ../lab3/objects/scene_object.h ../lab3/objects/composite_object.h ../lab3/objects/camera/base_camera.h ../lab3/objects/carcass/base_carcass.h ../lab3/objects/edge/base_edge.h ../lab3/objects/point/base_point.h ../lab3/objects/point/point.h ../lab3/objects/visitor/object_visitor.h ../lab3/objects/creator/object_creator.h ../lab3/objects/creator/edge_creator.h ../lab3/objects/creator/point_creator.h ../lab3/objects/creator/camera_creator.h ../lab3/objects/camera/camera.h ../lab3/objects/edge/edge.h ../lab3/objects/carcass/carcass.h ../lab3/objects/visitor/draw_visitor.h ../lab3/objects/visitor/transform_visitor.h ../lab3/builder/builder.h ../lab3/builder/build_director.h ../lab3/builder/carcass_builder/base_builder.h ../lab3/builder/carcass_builder/director.h ../lab3/builder/carcass_builder/txt_builder.h ../lab3/errors/builder_errors.h ../lab3/managers/scene_manager.h ../lab3/scene/base_scene.h ../lab3/scene/scene.h ../lab3/scene/scene_interface.h ../lab3/transform/transformator.h ../lab3/transform/tranformation.h ../lab3/visualiser/visualizer.h ../lab3/visualiser/base_drawer.h ../lab3/visualiser/qdrawer.h ../lab3/errors/drawer_errors.h ../lab3/visualiser/base_drawer_factory.h ../lab3/visualiser/qdrawer_factory.h ../lab3/errors/managers_errors.h ../lab3/command/transform.h ../lab3/command/draw_scene.h ../lab3/command/load.h ../lab3/command/add_object.h ../lab3/command/remove_object.h ../lab3/command/change_camera.h ../lab3/command/commands.h  ../lab3/main.cpp ../lab3/mainwindow.cpp ../lab3/array/base_array.cpp ../lab3/errors/base_error.cpp ../lab3/errors/array_errors.cpp ../lab3/errors/object_errors.cpp ../lab3/objects/composite_object.cpp ../lab3/objects/point/base_point.cpp ../lab3/objects/point/point.cpp ../lab3/objects/camera/base_camera.cpp ../lab3/objects/camera/camera.cpp ../lab3/objects/edge/base_edge.cpp ../lab3/objects/edge/edge.cpp ../lab3/objects/carcass/base_carcass.cpp ../lab3/objects/carcass/carcass.cpp ../lab3/objects/visitor/draw_visitor.cpp ../lab3/objects/visitor/transform_visitor.cpp ../lab3/builder/carcass_builder/txt_builder.cpp ../lab3/errors/builder_errors.cpp ../lab3/visualiser/qdrawer.cpp ../lab3/errors/drawer_errors.cpp ../lab3/visualiser/qdrawer_factory.cpp ../lab3/visualiser/visualiser.cpp ../lab3/builder/carcass_builder/director.cpp ../lab3/transform/transformation.cpp ../lab3/scene/base_scene.cpp ../lab3/scene/scene.cpp ../lab3/objects/visitor/object_visitor.cpp ../lab3/builder/carcass_builder/base_builder.cpp ../lab3/managers/scene_manager.cpp ../lab3/errors/managers_errors.cpp ../lab3/command/base_command.cpp ../lab3/command/transform.cpp ../lab3/command/draw_scene.cpp ../lab3/visualiser/base_drawer_factory.cpp ../lab3/command/load.cpp ../lab3/command/add_object.cpp ../lab3/objects/creator/object_creator.cpp ../lab3/command/remove_object.cpp ../lab3/command/change_camera.cpp ../lab3/objects/scene_object.cpp ../lab3/builder/build_director.cpp ../lab3/builder/builder.cpp ../lab3/mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug/main.o debug/mainwindow.o debug/base_array.o debug/base_error.o debug/array_errors.o debug/object_errors.o debug/composite_object.o debug/base_point.o debug/moc_mainwindow.o
+	-$(DEL_FILE) debug/main.o debug/mainwindow.o debug/base_array.o debug/base_error.o debug/array_errors.o debug/object_errors.o debug/composite_object.o debug/base_point.o debug/point.o debug/base_camera.o debug/camera.o debug/base_edge.o debug/edge.o debug/base_carcass.o debug/carcass.o debug/draw_visitor.o debug/transform_visitor.o debug/txt_builder.o debug/builder_errors.o debug/qdrawer.o debug/drawer_errors.o debug/qdrawer_factory.o debug/visualiser.o debug/director.o debug/transformation.o debug/base_scene.o debug/scene.o debug/object_visitor.o debug/base_builder.o debug/scene_manager.o debug/managers_errors.o debug/base_command.o debug/transform.o debug/draw_scene.o debug/base_drawer_factory.o debug/load.o debug/add_object.o debug/object_creator.o debug/remove_object.o debug/change_camera.o debug/scene_object.o debug/build_director.o debug/builder.o debug/moc_mainwindow.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -146,6 +288,64 @@ compiler_moc_header_clean:
 debug/moc_mainwindow.cpp: ../lab3/mainwindow.h \
 		../../../../msys64/mingw64/include/QtWidgets/QMainWindow \
 		../../../../msys64/mingw64/include/QtWidgets/qmainwindow.h \
+		../../../../msys64/mingw64/include/QtWidgets/QGraphicsScene \
+		../../../../msys64/mingw64/include/QtWidgets/qgraphicsscene.h \
+		../lab3/scene/scene_interface.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/command/base_command.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h \
+		../lab3/scene/scene.h \
+		../lab3/command/commands.h \
+		../lab3/command/add_object.h \
+		../lab3/objects/creator/camera_creator.h \
+		../lab3/objects/camera/camera.h \
+		../lab3/objects/creator/point_creator.h \
+		../lab3/objects/point/point.h \
+		../lab3/command/change_camera.h \
+		../lab3/command/draw_scene.h \
+		../lab3/visualiser/qdrawer_factory.h \
+		../lab3/visualiser/qdrawer.h \
+		../lab3/command/load.h \
+		../lab3/builder/carcass_builder/director.h \
+		../lab3/builder/carcass_builder/base_builder.h \
+		../lab3/builder/builder.h \
+		../lab3/errors/builder_errors.h \
+		../lab3/objects/carcass/carcass.h \
+		../lab3/objects/edge/edge.h \
+		../lab3/builder/carcass_builder/txt_builder.h \
+		../lab3/command/remove_object.h \
+		../lab3/command/transform.h \
 		debug/moc_predefs.h \
 		../../../../msys64/mingw64/bin/moc.exe
 	/D/msys64/mingw64/bin/moc.exe $(DEFINES) --include D:/Work/OOP/lab3/build-lab3-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/debug/moc_predefs.h -ID:/msys64/mingw64/share/qt5/mkspecs/win32-g++ -ID:/Work/OOP/lab3/lab3 -ID:/msys64/mingw64/include/QtWidgets -ID:/msys64/mingw64/include/QtGui -ID:/msys64/mingw64/include/QtCore -I. -ID:/msys64/mingw64/include/c++/8.2.1 -ID:/msys64/mingw64/include/c++/8.2.1/x86_64-w64-mingw32 -ID:/msys64/mingw64/include/c++/8.2.1/backward -ID:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/8.2.1/include -ID:/msys64/mingw64/include -ID:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/8.2.1/include-fixed -ID:/msys64/mingw64/x86_64-w64-mingw32/include ../lab3/mainwindow.h -o debug/moc_mainwindow.cpp
@@ -176,8 +376,10 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 debug/main.o: ../lab3/main.cpp ../lab3/mainwindow.h \
 		../../../../msys64/mingw64/include/QtWidgets/QMainWindow \
 		../../../../msys64/mingw64/include/QtWidgets/qmainwindow.h \
-		../../../../msys64/mingw64/include/QtWidgets/QApplication \
-		../../../../msys64/mingw64/include/QtWidgets/qapplication.h \
+		../../../../msys64/mingw64/include/QtWidgets/QGraphicsScene \
+		../../../../msys64/mingw64/include/QtWidgets/qgraphicsscene.h \
+		../lab3/scene/scene_interface.h \
+		../lab3/scene/base_scene.h \
 		../lab3/array/array.h \
 		../lab3/array/base_array.h \
 		../lab3/array/iter.h \
@@ -188,12 +390,115 @@ debug/main.o: ../lab3/main.cpp ../lab3/mainwindow.h \
 		../lab3/array/iter.hpp \
 		../lab3/array/const_iter.h \
 		../lab3/array/const_iter.hpp \
-		../lab3/array/array.hpp
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/command/base_command.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h \
+		../lab3/scene/scene.h \
+		../lab3/command/commands.h \
+		../lab3/command/add_object.h \
+		../lab3/objects/creator/camera_creator.h \
+		../lab3/objects/camera/camera.h \
+		../lab3/objects/creator/point_creator.h \
+		../lab3/objects/point/point.h \
+		../lab3/command/change_camera.h \
+		../lab3/command/draw_scene.h \
+		../lab3/visualiser/qdrawer_factory.h \
+		../lab3/visualiser/qdrawer.h \
+		../lab3/command/load.h \
+		../lab3/builder/carcass_builder/director.h \
+		../lab3/builder/carcass_builder/base_builder.h \
+		../lab3/builder/builder.h \
+		../lab3/errors/builder_errors.h \
+		../lab3/objects/carcass/carcass.h \
+		../lab3/objects/edge/edge.h \
+		../lab3/builder/carcass_builder/txt_builder.h \
+		../lab3/command/remove_object.h \
+		../lab3/command/transform.h \
+		../../../../msys64/mingw64/include/QtWidgets/QApplication \
+		../../../../msys64/mingw64/include/QtWidgets/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/main.o ../lab3/main.cpp
 
 debug/mainwindow.o: ../lab3/mainwindow.cpp ../lab3/mainwindow.h \
 		../../../../msys64/mingw64/include/QtWidgets/QMainWindow \
 		../../../../msys64/mingw64/include/QtWidgets/qmainwindow.h \
+		../../../../msys64/mingw64/include/QtWidgets/QGraphicsScene \
+		../../../../msys64/mingw64/include/QtWidgets/qgraphicsscene.h \
+		../lab3/scene/scene_interface.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/command/base_command.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h \
+		../lab3/scene/scene.h \
+		../lab3/command/commands.h \
+		../lab3/command/add_object.h \
+		../lab3/objects/creator/camera_creator.h \
+		../lab3/objects/camera/camera.h \
+		../lab3/objects/creator/point_creator.h \
+		../lab3/objects/point/point.h \
+		../lab3/command/change_camera.h \
+		../lab3/command/draw_scene.h \
+		../lab3/visualiser/qdrawer_factory.h \
+		../lab3/visualiser/qdrawer.h \
+		../lab3/command/load.h \
+		../lab3/builder/carcass_builder/director.h \
+		../lab3/builder/carcass_builder/base_builder.h \
+		../lab3/builder/builder.h \
+		../lab3/errors/builder_errors.h \
+		../lab3/objects/carcass/carcass.h \
+		../lab3/objects/edge/edge.h \
+		../lab3/builder/carcass_builder/txt_builder.h \
+		../lab3/command/remove_object.h \
+		../lab3/command/transform.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/mainwindow.o ../lab3/mainwindow.cpp
 
@@ -233,6 +538,736 @@ debug/base_point.o: ../lab3/objects/point/base_point.cpp ../lab3/objects/point/b
 		../lab3/errors/object_errors.h \
 		../lab3/errors/base_error.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/base_point.o ../lab3/objects/point/base_point.cpp
+
+debug/point.o: ../lab3/objects/point/point.cpp ../lab3/objects/point/point.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/point.o ../lab3/objects/point/point.cpp
+
+debug/base_camera.o: ../lab3/objects/camera/base_camera.cpp ../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/base_camera.o ../lab3/objects/camera/base_camera.cpp
+
+debug/camera.o: ../lab3/objects/camera/camera.cpp ../lab3/objects/camera/camera.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/camera.o ../lab3/objects/camera/camera.cpp
+
+debug/base_edge.o: ../lab3/objects/edge/base_edge.cpp ../lab3/objects/edge/base_edge.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/objects/point/base_point.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/base_edge.o ../lab3/objects/edge/base_edge.cpp
+
+debug/edge.o: ../lab3/objects/edge/edge.cpp ../lab3/objects/edge/edge.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/point/point.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/edge.o ../lab3/objects/edge/edge.cpp
+
+debug/base_carcass.o: ../lab3/objects/carcass/base_carcass.cpp ../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/base_carcass.o ../lab3/objects/carcass/base_carcass.cpp
+
+debug/carcass.o: ../lab3/objects/carcass/carcass.cpp ../lab3/objects/carcass/carcass.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/point/base_point.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/carcass.o ../lab3/objects/carcass/carcass.cpp
+
+debug/draw_visitor.o: ../lab3/objects/visitor/draw_visitor.cpp ../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/draw_visitor.o ../lab3/objects/visitor/draw_visitor.cpp
+
+debug/transform_visitor.o: ../lab3/objects/visitor/transform_visitor.cpp ../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/transform_visitor.o ../lab3/objects/visitor/transform_visitor.cpp
+
+debug/txt_builder.o: ../lab3/builder/carcass_builder/txt_builder.cpp ../lab3/builder/carcass_builder/txt_builder.h \
+		../lab3/builder/carcass_builder/base_builder.h \
+		../lab3/builder/builder.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/errors/builder_errors.h \
+		../lab3/objects/carcass/carcass.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/point/point.h \
+		../lab3/objects/edge/edge.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/txt_builder.o ../lab3/builder/carcass_builder/txt_builder.cpp
+
+debug/builder_errors.o: ../lab3/errors/builder_errors.cpp ../lab3/errors/builder_errors.h \
+		../lab3/errors/base_error.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/builder_errors.o ../lab3/errors/builder_errors.cpp
+
+debug/qdrawer.o: ../lab3/visualiser/qdrawer.cpp ../lab3/visualiser/qdrawer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/errors/base_error.h \
+		../../../../msys64/mingw64/include/QtWidgets/QGraphicsScene \
+		../../../../msys64/mingw64/include/QtWidgets/qgraphicsscene.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/qdrawer.o ../lab3/visualiser/qdrawer.cpp
+
+debug/drawer_errors.o: ../lab3/errors/drawer_errors.cpp ../lab3/errors/drawer_errors.h \
+		../lab3/errors/base_error.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/drawer_errors.o ../lab3/errors/drawer_errors.cpp
+
+debug/qdrawer_factory.o: ../lab3/visualiser/qdrawer_factory.cpp ../lab3/visualiser/qdrawer_factory.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/visualiser/qdrawer.h \
+		../../../../msys64/mingw64/include/QtWidgets/QGraphicsScene \
+		../../../../msys64/mingw64/include/QtWidgets/qgraphicsscene.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/qdrawer_factory.o ../lab3/visualiser/qdrawer_factory.cpp
+
+debug/visualiser.o: ../lab3/visualiser/visualiser.cpp ../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/point/base_point.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/visualiser.o ../lab3/visualiser/visualiser.cpp
+
+debug/director.o: ../lab3/builder/carcass_builder/director.cpp ../lab3/builder/carcass_builder/director.h \
+		../lab3/builder/carcass_builder/base_builder.h \
+		../lab3/builder/builder.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/errors/builder_errors.h \
+		../lab3/objects/carcass/carcass.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/point/point.h \
+		../lab3/objects/edge/edge.h \
+		../lab3/builder/build_director.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/director.o ../lab3/builder/carcass_builder/director.cpp
+
+debug/transformation.o: ../lab3/transform/transformation.cpp ../lab3/transform/tranformation.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/transformation.o ../lab3/transform/transformation.cpp
+
+debug/base_scene.o: ../lab3/scene/base_scene.cpp ../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/base_scene.o ../lab3/scene/base_scene.cpp
+
+debug/scene.o: ../lab3/scene/scene.cpp ../lab3/scene/scene.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/scene.o ../lab3/scene/scene.cpp
+
+debug/object_visitor.o: ../lab3/objects/visitor/object_visitor.cpp ../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/object_visitor.o ../lab3/objects/visitor/object_visitor.cpp
+
+debug/base_builder.o: ../lab3/builder/carcass_builder/base_builder.cpp ../lab3/builder/carcass_builder/base_builder.h \
+		../lab3/builder/builder.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/errors/builder_errors.h \
+		../lab3/objects/carcass/carcass.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/point/point.h \
+		../lab3/objects/edge/edge.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/base_builder.o ../lab3/builder/carcass_builder/base_builder.cpp
+
+debug/scene_manager.o: ../lab3/managers/scene_manager.cpp ../lab3/managers/scene_manager.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/scene_manager.o ../lab3/managers/scene_manager.cpp
+
+debug/managers_errors.o: ../lab3/errors/managers_errors.cpp ../lab3/errors/managers_errors.h \
+		../lab3/errors/base_error.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/managers_errors.o ../lab3/errors/managers_errors.cpp
+
+debug/base_command.o: ../lab3/command/base_command.cpp ../lab3/command/base_command.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/base_command.o ../lab3/command/base_command.cpp
+
+debug/transform.o: ../lab3/command/transform.cpp ../lab3/command/transform.h \
+		../lab3/command/base_command.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/transform.o ../lab3/command/transform.cpp
+
+debug/draw_scene.o: ../lab3/command/draw_scene.cpp ../lab3/command/draw_scene.h \
+		../lab3/command/base_command.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h \
+		../lab3/visualiser/qdrawer_factory.h \
+		../lab3/visualiser/qdrawer.h \
+		../../../../msys64/mingw64/include/QtWidgets/QGraphicsScene \
+		../../../../msys64/mingw64/include/QtWidgets/qgraphicsscene.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/draw_scene.o ../lab3/command/draw_scene.cpp
+
+debug/base_drawer_factory.o: ../lab3/visualiser/base_drawer_factory.cpp ../lab3/visualiser/base_drawer_factory.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/errors/base_error.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/base_drawer_factory.o ../lab3/visualiser/base_drawer_factory.cpp
+
+debug/load.o: ../lab3/command/load.cpp ../lab3/command/load.h \
+		../lab3/command/base_command.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h \
+		../lab3/builder/carcass_builder/director.h \
+		../lab3/builder/carcass_builder/base_builder.h \
+		../lab3/builder/builder.h \
+		../lab3/errors/builder_errors.h \
+		../lab3/objects/carcass/carcass.h \
+		../lab3/objects/point/point.h \
+		../lab3/objects/edge/edge.h \
+		../lab3/builder/carcass_builder/txt_builder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/load.o ../lab3/command/load.cpp
+
+debug/add_object.o: ../lab3/command/add_object.cpp ../lab3/command/add_object.h \
+		../lab3/command/base_command.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h \
+		../lab3/objects/creator/camera_creator.h \
+		../lab3/objects/camera/camera.h \
+		../lab3/objects/creator/point_creator.h \
+		../lab3/objects/point/point.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/add_object.o ../lab3/command/add_object.cpp
+
+debug/object_creator.o: ../lab3/objects/creator/object_creator.cpp ../lab3/objects/creator/object_creator.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/objects/creator/camera_creator.h \
+		../lab3/objects/camera/camera.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/creator/edge_creator.h \
+		../lab3/objects/edge/edge.h \
+		../lab3/objects/point/point.h \
+		../lab3/objects/creator/point_creator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/object_creator.o ../lab3/objects/creator/object_creator.cpp
+
+debug/remove_object.o: ../lab3/command/remove_object.cpp ../lab3/command/remove_object.h \
+		../lab3/command/base_command.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/remove_object.o ../lab3/command/remove_object.cpp
+
+debug/change_camera.o: ../lab3/command/change_camera.cpp ../lab3/command/change_camera.h \
+		../lab3/command/base_command.h \
+		../lab3/scene/base_scene.h \
+		../lab3/array/array.h \
+		../lab3/array/base_array.h \
+		../lab3/array/iter.h \
+		../lab3/array/base_iter.h \
+		../lab3/errors/array_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/array/base_iter.hpp \
+		../lab3/array/iter.hpp \
+		../lab3/array/const_iter.h \
+		../lab3/array/const_iter.hpp \
+		../lab3/array/array.hpp \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/objects/camera/base_camera.h \
+		../lab3/objects/simple_object.h \
+		../lab3/managers/scene_manager.h \
+		../lab3/transform/transformator.h \
+		../lab3/transform/tranformation.h \
+		../lab3/visualiser/visualizer.h \
+		../lab3/visualiser/base_drawer.h \
+		../lab3/errors/drawer_errors.h \
+		../lab3/visualiser/base_drawer_factory.h \
+		../lab3/objects/point/base_point.h \
+		../lab3/objects/visitor/transform_visitor.h \
+		../lab3/objects/visitor/object_visitor.h \
+		../lab3/objects/edge/base_edge.h \
+		../lab3/objects/carcass/base_carcass.h \
+		../lab3/objects/composite_object.h \
+		../lab3/objects/visitor/draw_visitor.h \
+		../lab3/objects/creator/object_creator.h \
+		../lab3/builder/build_director.h \
+		../lab3/errors/managers_errors.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/change_camera.o ../lab3/command/change_camera.cpp
+
+debug/scene_object.o: ../lab3/objects/scene_object.cpp ../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/scene_object.o ../lab3/objects/scene_object.cpp
+
+debug/build_director.o: ../lab3/builder/build_director.cpp ../lab3/builder/build_director.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/build_director.o ../lab3/builder/build_director.cpp
+
+debug/builder.o: ../lab3/builder/builder.cpp ../lab3/builder/builder.h \
+		../lab3/objects/scene_object.h \
+		../lab3/errors/object_errors.h \
+		../lab3/errors/base_error.h \
+		../lab3/errors/builder_errors.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/builder.o ../lab3/builder/builder.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/moc_mainwindow.o debug/moc_mainwindow.cpp

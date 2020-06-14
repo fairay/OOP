@@ -12,11 +12,14 @@ class ObjectVisitor
 public:
     ObjectVisitor();
     virtual ~ObjectVisitor() = 0;
+    void set_ptr(shared_ptr<ObjectVisitor>& ptr);
 
     virtual void visit(BasePoint& point) = 0;
     virtual void visit(BaseCamera& point) = 0;
     virtual void visit(BaseEdge& point) = 0;
     virtual void visit(BaseCarcass& point) = 0;
+protected:
+    shared_ptr<ObjectVisitor> _this_ptr;
 };
 
 #endif // OBJECT_VISITOR_H

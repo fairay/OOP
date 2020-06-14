@@ -12,12 +12,10 @@ public:
         _x(x), _y(y), _z(z) {}
     virtual ~CameraCreator() override;
 
-    virtual unique_ptr<SceneObject> create() override
-    { return unique_ptr<SceneObject>(new Camera(_x, _y, _z));}
+    virtual SceneObject* create() override
+    { return new Camera(_x, _y, _z);}
 private:
     double _x, _y, _z;
 };
-
-CameraCreator::~CameraCreator() {}
 
 #endif // CAMERA_CREATOR_H

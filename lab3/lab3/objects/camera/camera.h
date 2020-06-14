@@ -14,7 +14,7 @@ public:
     virtual ~Camera();
 
     virtual void accept(shared_ptr<ObjectVisitor>);
-    virtual unique_ptr<SceneObject> clone();
+    virtual SceneObject* clone();
 };
 
 #endif // CAMERA_H

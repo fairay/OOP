@@ -4,6 +4,7 @@
 #include "base_command.h"
 #include "objects/creator/object_creator.h"
 #include "objects/creator/camera_creator.h"
+#include "objects/creator/point_creator.h"
 
 namespace command
 {
@@ -26,6 +27,12 @@ public:
     virtual ~AddCamera();
 };
 
+class AddPoint: public AddObject
+{
+public:
+    AddPoint(double x, double y, double z);
+    virtual ~AddPoint();
+};
 
 } // command
 
