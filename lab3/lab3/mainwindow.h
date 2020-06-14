@@ -35,6 +35,7 @@ private:
 
     void _show_error(const char* err);
     void _set_binds(void);
+    void _init_scene();
 
     shared_ptr<command::BaseCommand> _move_cmd(void);
     shared_ptr<command::BaseCommand> _scale_cmd(void);

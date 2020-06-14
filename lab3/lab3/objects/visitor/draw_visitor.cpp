@@ -19,7 +19,6 @@ void DrawVisitor::visit(BaseCamera&)
 
 void DrawVisitor::visit(BaseEdge& edge)
 {
-    cout << "Draw line" << endl;
     if (_visual.expired())
         throw err::VisualExpired(__FILE__, __LINE__-1);
     _visual.lock()->draw_line(edge.get_p1(), edge.get_p2());

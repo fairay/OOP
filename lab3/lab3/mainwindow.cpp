@@ -13,27 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->graphicsView->setScene(&(*_qscene));
     _set_binds();
-
-    try
-    {
-        command::AddCamera add_cmd(2, 4, 500);
-        _scene.execute(add_cmd);
-
-        command::LoadCarcass load_cmd(ui->name_file->text().toStdString());
-        _scene.execute(load_cmd);
-
-        command::QDrawScene draw_cmd(_qscene, QPen(Qt::red), QPen(Qt::blue));
-        _scene.execute(draw_cmd);
-        cout << ";)" << endl;
-    }
-    catch (err::SceneError &err)
-    {
-        cout << err.what() << endl;
-    }
-    catch (...)
-    {
-        cout << "Unknown error!" << endl;
-    }
+    _init_scene();
 }
 
 MainWindow::~MainWindow()
@@ -62,7 +42,6 @@ void MainWindow::on_transButton_clicked()
 
         command::QDrawScene draw_cmd(_qscene, QPen(Qt::red), QPen(Qt::blue));
         _scene.execute(draw_cmd);
-        cout << ";)" << endl;
     }
     catch (err::SceneError &err)
     {
@@ -72,9 +51,6 @@ void MainWindow::on_transButton_clicked()
     {
         _show_error("Unknown error!");
     }
-
-
-
 }
 
 void MainWindow::on_readButton_clicked()
@@ -83,14 +59,12 @@ void MainWindow::on_readButton_clicked()
     {
         command::LoadCarcass load_cmd(ui->name_file->text().toStdString());
         _scene.execute(load_cmd);
-        cout << ";)" << endl;
 
         command::RemoveObject del_cmd(1);
         _scene.execute(del_cmd);
 
         command::QDrawScene draw_cmd(_qscene, QPen(Qt::red), QPen(Qt::blue));
         _scene.execute(draw_cmd);
-        cout << ";)" << endl;
     }
     catch (err::SceneError &err)
     {
@@ -154,4 +128,27 @@ void MainWindow::_set_binds(void)
     ui->rotate_ax->setValidator(val);
     ui->rotate_ay->setValidator(val);
     ui->rotate_az->setValidator(val);
+}
+
+void MainWindow::_init_scene()
+{
+    try
+    {
+        command::AddCamera add_cmd(2, 4, 500);
+        _scene.execute(add_cmd);
+
+        command::LoadCarcass load_cmd(ui->name_file->text().toStdString());
+        _scene.execute(load_cmd);
+
+        command::QDrawScene draw_cmd(_qscene, QPen(Qt::red), QPen(Qt::blue));
+        _scene.execute(draw_cmd);
+    }
+    catch (err::SceneError &err)
+    {
+        _show_error(err.what());
+    }
+    catch (...)
+    {
+        _show_error("Unknown error!");
+    }
 }

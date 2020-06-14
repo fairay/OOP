@@ -20,6 +20,13 @@ public:
     virtual ~SceneExpired();
 };
 
+class NoSceneCamera: public DrawerError
+{
+public:
+    NoSceneCamera(const string file_, long line_n_);
+    virtual ~NoSceneCamera();
+};
+
 } // err
 
 

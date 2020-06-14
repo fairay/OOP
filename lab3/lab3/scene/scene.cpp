@@ -5,9 +5,11 @@ Scene::~Scene() {}
 
 shared_ptr<BaseCamera> Scene::get_camera()
 {
-    cout << "Getting camera" << endl;
-    BaseCamera *ptr = reinterpret_cast<BaseCamera*>((*_curr_cam)->clone());
-    cout << "Ok" << endl;
+    BaseCamera *ptr;
+    if (_curr_cam.is_end())
+        ptr = nullptr;
+    else
+        ptr = reinterpret_cast<BaseCamera*>((*_curr_cam)->clone());
     return shared_ptr<BaseCamera>(ptr);
 }
 void Scene::set_camera(Iterator<SceneObject*>& iter)
@@ -32,13 +34,8 @@ void Scene::remove_object(Iterator<SceneObject*>& iter)
 Iterator<SceneObject*> Scene::_find_camera()
 {
     Iterator<SceneObject*> iter = begin();
-    cout << "Serching for new camera: ";
-
-
     for (; iter; iter++)
         if ((*iter)->is_observer())
             break;
-    cout << endl;
-    if (iter.is_end()) cout << "CAMERA NOT FOUND" << endl;
     return iter;
 }

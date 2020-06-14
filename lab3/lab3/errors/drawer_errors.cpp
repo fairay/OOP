@@ -17,3 +17,12 @@ SceneExpired::SceneExpired(const string file_, long line_n_):
     fill_msg();
 }
 SceneExpired::~SceneExpired() = default;
+
+NoSceneCamera::NoSceneCamera(const string file_, long line_n_):
+    DrawerError(file_, line_n_)
+{
+    type += "NoSceneCamera";
+    add_info = "scene has no camera";
+    fill_msg();
+}
+NoSceneCamera::~NoSceneCamera() = default;

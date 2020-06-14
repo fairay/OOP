@@ -50,11 +50,9 @@ void DrawManager::execute()
 
     shared_ptr<ObjectVisitor> visitor(new DrawVisitor(visual));
     visitor->set_ptr(visitor);
-    cout << "Lets draw!" << endl;
     visual->clear();
     for (auto obj: *_scene.lock())
         obj->accept(visitor);
-    cout << "D" << endl;
 }
 
 

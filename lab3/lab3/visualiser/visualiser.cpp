@@ -9,7 +9,10 @@ void Visualizer::set_draw(BaseDrawerFactory& factory)
 }
 void Visualizer::set_camera(shared_ptr<BaseCamera> camera)
 {
-    _camera = camera;
+    if (camera.get())
+        _camera = camera;
+    else
+        throw err::NoSceneCamera(__FILE__, __LINE__-3);
 }
 
 void Visualizer::draw_line(const BasePoint& p1, const BasePoint& p2)
