@@ -4,12 +4,10 @@ CompositeObject::CompositeObject(): _obj_arr() {}
 CompositeObject::CompositeObject(const CompositeObject& other)
 {
     for (auto obj: other._obj_arr)
-        _obj_arr.append(obj->clone());
+        _obj_arr.append(shared_ptr<SceneObject>(obj->clone()));
 }
 CompositeObject::~CompositeObject()
 {
-    for (auto ptr: _obj_arr)
-        delete ptr;
     _obj_arr.clear();
 }
 
@@ -35,11 +33,13 @@ size_t CompositeObject::get_size() const
 
 void CompositeObject::add_object(SceneObject* obj)
 {
+    _obj_arr.append(shared_ptr<SceneObject>(obj));
+}
+void CompositeObject::add_object(shared_ptr<SceneObject> obj)
+{
     _obj_arr.append(obj);
 }
-void CompositeObject::remove_object(Iterator<SceneObject*> &rem_iter)
+void CompositeObject::remove_object(Iterator<shared_ptr<SceneObject>> &rem_iter)
 {
-    SceneObject* del_obj = *rem_iter;
-    delete del_obj;
     _obj_arr.remove(rem_iter);
 }
