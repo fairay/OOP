@@ -12,10 +12,8 @@ public:
     TxtBuilder(string f_name);
     virtual ~TxtBuilder();
 
-    virtual void open();
     virtual void load_nodes();
     virtual void load_edges();
-    virtual void close();
 
 private:
     string _filename;

@@ -3,29 +3,19 @@
 using namespace CarcassBuilder;
 
 TxtBuilder::TxtBuilder(string f_name):
-    _filename(f_name) {}
-
-TxtBuilder::~TxtBuilder()
+    _filename(f_name)
 {
-    if (_file.is_open())
-        close();
-}
-
-void TxtBuilder::open()
-{
-    if (_file.is_open()) close();
-
     _file.open(_filename);
-
     if (!_file)
         throw err::FileOpenFail(__FILE__, __LINE__-3, _filename);
 }
 
-void TxtBuilder::close()
+TxtBuilder::~TxtBuilder()
 {
     if (_file.is_open())
         _file.close();
 }
+
 
 void TxtBuilder::load_nodes()
 {
