@@ -2,12 +2,7 @@
 
 BaseScene::BaseScene():
     _arr(), _curr_cam(_arr.end()) {}
-BaseScene::~BaseScene()
-{
-    for (auto ptr: _arr)
-        delete ptr;
-    _arr.clear();
-}
+BaseScene::~BaseScene() {}
 
 
 size_t BaseScene::get_size()
@@ -15,29 +10,29 @@ size_t BaseScene::get_size()
     return _arr.get_size();
 }
 
-Iterator<SceneObject*> BaseScene::begin()
+Iterator<shared_ptr<SceneObject>> BaseScene::begin()
 {
     return _arr.begin();
 }
-Iterator<SceneObject*> BaseScene::end()
+Iterator<shared_ptr<SceneObject>> BaseScene::end()
 {
     return _arr.end();
 }
 
-ConstIterator<SceneObject*> BaseScene:: begin() const
+ConstIterator<shared_ptr<SceneObject>> BaseScene:: begin() const
 {
     return _arr.begin();
 }
-ConstIterator<SceneObject*> BaseScene::end() const
+ConstIterator<shared_ptr<SceneObject>> BaseScene::end() const
 {
     return _arr.end();
 }
 
-ConstIterator<SceneObject*> BaseScene::cbegin() const
+ConstIterator<shared_ptr<SceneObject>> BaseScene::cbegin() const
 {
     return _arr.cbegin();
 }
-ConstIterator<SceneObject*> BaseScene::cend() const
+ConstIterator<shared_ptr<SceneObject> > BaseScene::cend() const
 {
     return _arr.cend();
 }

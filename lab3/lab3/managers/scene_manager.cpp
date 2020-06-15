@@ -3,12 +3,12 @@
 SceneManageer::SceneManageer(weak_ptr<BaseScene> scene_ptr):
     _scene(scene_ptr) {}
 SceneManageer::~SceneManageer() {}
-Iterator<SceneObject*> SceneManageer::_find_i(size_t index)
+Iterator<shared_ptr<SceneObject>> SceneManageer::_find_i(size_t index)
 {
     if (_scene.expired())
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "SceneManageer");
 
-    Iterator<SceneObject*> iter = _scene.lock()->begin();
+    Iterator<shared_ptr<SceneObject>> iter = _scene.lock()->begin();
     size_t count = index;
     for (;iter && count; count--, iter++) {}
     if (count || iter.is_end())
@@ -26,7 +26,7 @@ void TransformManager::execute()
 {
     if (_scene.expired())
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "TransformManager");
-    Iterator<SceneObject*> iter = _find_i(_index);
+    Iterator<shared_ptr<SceneObject>> iter = _find_i(_index);
     shared_ptr<ObjectVisitor> visitor(new TransformVisitor(_trans));
     visitor->set_ptr(visitor);
     (*iter)->accept(visitor);
@@ -64,7 +64,7 @@ void CameraManager::execute()
 {
     if (_scene.expired())
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "CameraManager");
-    Iterator<SceneObject*> iter = _find_i(_index);
+    Iterator<shared_ptr<SceneObject>> iter = _find_i(_index);
     _scene.lock()->set_camera(iter);
 }
 
@@ -92,7 +92,7 @@ void RemoveManager::execute()
 {
     if (_scene.expired())
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "RemoveManager");
-    Iterator<SceneObject*> iter = _find_i(_index);
+    Iterator<shared_ptr<SceneObject>> iter = _find_i(_index);
     _scene.lock()->remove_object(iter);
 }
 
@@ -108,5 +108,5 @@ void LoadManager::execute()
     if (_director.expired())
         throw err::AttributePtrExpired(__FILE__, __LINE__-1, "LoadManager");
 
-    _scene.lock()->add_object((*_director.lock()->create()).clone());
+    _scene.lock()->add_object(_director.lock()->create());
 }

@@ -21,7 +21,7 @@ public:
 
 protected:
     weak_ptr<BaseScene> _scene;
-    Iterator<SceneObject*> _find_i(size_t index);
+    Iterator<shared_ptr<SceneObject> > _find_i(size_t index);
 };
 
 class TransformManager: public SceneManageer
