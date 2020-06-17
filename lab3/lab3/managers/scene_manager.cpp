@@ -1,9 +1,9 @@
 #include "scene_manager.h"
 
-SceneManageer::SceneManageer(weak_ptr<BaseScene> scene_ptr):
+SceneManager::SceneManager(weak_ptr<BaseScene> scene_ptr):
     _scene(scene_ptr) {}
-SceneManageer::~SceneManageer() {}
-Iterator<shared_ptr<SceneObject>> SceneManageer::_find_i(size_t index)
+SceneManager::~SceneManager() {}
+Iterator<shared_ptr<SceneObject>> SceneManager::_find_i(size_t index)
 {
     if (_scene.expired())
         throw err::ScenePtrExpired(__FILE__, __LINE__-1, "SceneManageer");
@@ -20,7 +20,7 @@ Iterator<shared_ptr<SceneObject>> SceneManageer::_find_i(size_t index)
 
 TransformManager::TransformManager(weak_ptr<BaseScene> scene_ptr,
                                    weak_ptr<Transformator> trans, size_t index):
-    SceneManageer(scene_ptr), _trans(trans), _index(index) {}
+    SceneManager(scene_ptr), _trans(trans), _index(index) {}
 TransformManager::~TransformManager() {}
 void TransformManager::execute()
 {
@@ -35,7 +35,7 @@ void TransformManager::execute()
 
 DrawManager::DrawManager(weak_ptr<BaseScene> scene_ptr,
                          weak_ptr<BaseDrawerFactory> draw_factory):
-    SceneManageer(scene_ptr), _draw(draw_factory) {}
+    SceneManager(scene_ptr), _draw(draw_factory) {}
 DrawManager::~DrawManager() {}
 void DrawManager::execute()
 {
@@ -58,7 +58,7 @@ void DrawManager::execute()
 
 CameraManager::CameraManager(weak_ptr<BaseScene> scene_ptr,
                              size_t index):
-    SceneManageer(scene_ptr), _index(index) {}
+    SceneManager(scene_ptr), _index(index) {}
 CameraManager::~CameraManager() {}
 void CameraManager::execute()
 {
@@ -71,7 +71,7 @@ void CameraManager::execute()
 
 AddManager::AddManager(weak_ptr<BaseScene> scene_ptr,
                        weak_ptr<ObjectCreator> creator):
-    SceneManageer(scene_ptr), _creator(creator) {}
+    SceneManager(scene_ptr), _creator(creator) {}
 AddManager::~AddManager() {}
 void AddManager::execute()
 {
@@ -86,7 +86,7 @@ void AddManager::execute()
 
 RemoveManager::RemoveManager(weak_ptr<BaseScene> scene_ptr,
                              size_t index):
-    SceneManageer(scene_ptr), _index(index) {}
+    SceneManager(scene_ptr), _index(index) {}
 RemoveManager::~RemoveManager() {}
 void RemoveManager::execute()
 {
@@ -99,7 +99,7 @@ void RemoveManager::execute()
 
 LoadManager::LoadManager(weak_ptr<BaseScene> scene_ptr,
                          weak_ptr<BuildDirector> dir):
-    SceneManageer(scene_ptr), _director(dir) {}
+    SceneManager(scene_ptr), _director(dir) {}
 LoadManager::~LoadManager() {}
 void LoadManager::execute()
 {

@@ -68,7 +68,7 @@ void Rotate::rotate_z(double& x_, double& y_, double&)
 {
     double y, x;
     x = x_*cos(_az) + y_*sin(_az);
-    y = x_*sin(_az) + y_*cos(_az);
+    y = -x_*sin(_az) + y_*cos(_az);
 
     x_ = x;
     y_ = y;

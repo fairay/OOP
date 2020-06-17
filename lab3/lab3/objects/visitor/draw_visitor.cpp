@@ -30,5 +30,5 @@ void DrawVisitor::visit(BaseCarcass& carcass)
         throw err::VisualExpired(__FILE__, __LINE__-1);
 
     for (auto obj : carcass)
-        obj->accept(_this_ptr);
+        obj->accept(_this_ptr.lock());
 }

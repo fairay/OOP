@@ -134,7 +134,7 @@ void MainWindow::_init_scene()
 {
     try
     {
-        command::AddCamera add_cmd(2, 4, 500);
+        command::AddCamera add_cmd(1000, 1000, 1000);
         _scene.execute(add_cmd);
 
         command::LoadCarcass load_cmd(ui->name_file->text().toStdString());

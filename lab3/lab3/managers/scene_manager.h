@@ -11,11 +11,11 @@
 
 #include "errors/managers_errors.h"
 
-class SceneManageer
+class SceneManager
 {
 public:
-    SceneManageer(weak_ptr<BaseScene> scene_ptr);
-    virtual ~SceneManageer() = 0;
+    SceneManager(weak_ptr<BaseScene> scene_ptr);
+    virtual ~SceneManager() = 0;
 
     virtual void execute() = 0;
 
@@ -24,7 +24,7 @@ protected:
     Iterator<shared_ptr<SceneObject> > _find_i(size_t index);
 };
 
-class TransformManager: public SceneManageer
+class TransformManager: public SceneManager
 {
 public:
     TransformManager(weak_ptr<BaseScene> scene_ptr,
@@ -37,7 +37,7 @@ private:
     size_t _index;
 };
 
-class DrawManager: public SceneManageer
+class DrawManager: public SceneManager
 {
 public:
     DrawManager(weak_ptr<BaseScene> scene_ptr,
@@ -49,7 +49,7 @@ private:
     weak_ptr<BaseDrawerFactory> _draw;
 };
 
-class CameraManager: public SceneManageer
+class CameraManager: public SceneManager
 {
 public:
     CameraManager(weak_ptr<BaseScene> scene_ptr,
@@ -61,7 +61,7 @@ private:
     size_t _index;
 };
 
-class AddManager: public SceneManageer
+class AddManager: public SceneManager
 {
 public:
     AddManager(weak_ptr<BaseScene> scene_ptr,
@@ -73,7 +73,7 @@ private:
     weak_ptr<ObjectCreator> _creator;
 };
 
-class RemoveManager: public SceneManageer
+class RemoveManager: public SceneManager
 {
 public:
     RemoveManager(weak_ptr<BaseScene> scene_ptr,
@@ -85,7 +85,7 @@ private:
     size_t _index;
 };
 
-class LoadManager: public SceneManageer
+class LoadManager: public SceneManager
 {
 public:
     LoadManager(weak_ptr<BaseScene> scene_ptr,
