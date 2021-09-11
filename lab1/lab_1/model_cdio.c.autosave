@@ -1,0 +1,155 @@
+// #include <defines.h>
+#include <stdlib.h>
+#include <assert.h>
+#include "defines.h"
+
+canv_size_t create_size(double xy_min, double xy_max,
+                        int canv_x, int canv_y)
+{
+    canv_size_t e =
+    {
+        .xy_min = xy_min,
+        .xy_max = xy_max,
+        .canv_x = canv_x,
+        .canv_y = canv_y
+    };
+    return e;
+}
+
+
+edge_t create_edge(int p1, int p2)
+{
+    edge_t e =
+    {
+        .p1 = p1,
+        .p2 = p2
+    };
+    return e;
+}
+
+angle_t create_angle(double ax, double ay, double az)
+{
+    angle_t a =
+    {
+        .ax = ax,
+        .ay = ay,
+        .az = az
+    };
+    return a;
+}
+
+
+int create_point_arr(point_arr_t *ptr, int n)
+{
+    int code = CORRECT_WORK;
+    *ptr = calloc(n, sizeof(point_t));
+    if (!(*ptr))
+        code = ALLOC_FAIL;
+    return code;
+}
+
+void delete_point_arr(point_arr_t *ptr)
+{
+    free(*ptr);
+    *ptr = NULL;
+}
+
+point_t arr_get_point(point_arr_t ptr, int i)
+{
+    return ptr[i];
+}
+
+
+int create_edge_arr(edge_arr_t *ptr, int n)
+{
+    int code = CORRECT_WORK;
+    *ptr = calloc(n, sizeof(edge_t));
+    if (!(*ptr))
+        code = ALLOC_FAIL;
+    return code;
+}
+
+void delete_edge_arr(edge_arr_t *ptr)
+{
+    free(*ptr);
+    *ptr = NULL;
+}
+
+edge_t arr_get_edge(edge_arr_t ptr, int i)
+{
+    return ptr[i];
+}
+
+
+/// Model CDIO
+model_t init_model(void)
+{
+    model_t model;
+    model.e_n = 0;
+    model.p_n = 0;
+    model.p_arr = NULL;
+    model.e_arr = NULL;
+
+    return  model;
+}
+
+int alloc_model(model_t *model, int p_n, int e_n)
+{
+    int code;
+
+    code = create_point_arr(&model->p_arr, p_n);
+    if (code != CORRECT_WORK)   return code;
+
+    code = create_edge_arr(&model->e_arr, e_n);
+    if (code != CORRECT_WORK)   return code;
+
+    model->p_n = p_n;
+    model->e_n = e_n;
+
+    return CORRECT_WORK;
+}
+
+void delete_model(model_t *model)
+{
+    delete_point_arr(&model->p_arr);
+    delete_edge_arr(&model->e_arr);
+}
+
+/// Model functions
+int mget_pn(model_t model)
+{
+    return model.p_n;
+}
+
+int mget_en(model_t model)
+{
+    return model.e_n;
+}
+
+point_t mget_point(model_t model, int i)
+{
+    return arr_get_point(model.p_arr, i);
+}
+
+edge_t mget_edge(model_t model, int i)
+{
+    return arr_get_edge(model.e_arr, i);
+}
+
+
+void add_point(model_t model, int i, point_t p)
+{
+    assert(i >= 0);
+    assert(i < model.p_n);
+
+    model.p_arr[i] = p;
+}
+
+void add_edge(model_t model, int i, edge_t e)
+{
+    assert(i >= 0);
+    assert(i < model.e_n);
+
+    model.e_arr[i] = e;
+}
+
